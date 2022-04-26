@@ -1,4 +1,4 @@
-package com.softserve.edu;
+package com.softserve.homework1;
 
 import org.testng.annotations.Test;
 
