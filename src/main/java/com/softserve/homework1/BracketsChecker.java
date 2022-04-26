@@ -2,10 +2,11 @@ package com.softserve.homework1;
 
 public class BracketsChecker {
     public boolean checkBrackets(String txt) {
+        if (txt.isEmpty()) return false;
         char[] chars = parseStringToArray(txt);
         int bracketsCounter = 0;
 
-        if (chars[0] != '(' || chars.length / 2 == 1) {
+        if (chars[0] != '(' || chars.length % 2 == 1) {
             return false;
         }
 
