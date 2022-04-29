@@ -62,6 +62,15 @@
             <scope>test</scope>
         </dependency>
 
+        <!--
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        -->
+
         <!-- <dependency> -->
         <!-- <groupId>org.testng</groupId> -->
         <!-- <artifactId>testng</artifactId> -->
@@ -72,7 +81,9 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.5</version>
+<!--            <version>6.14.3</version>-->
+             <version>7.4.0</version>
+            <!--  <version>7.5</version>-->
             <scope>test</scope>
         </dependency>
 
@@ -97,19 +108,63 @@
         </dependency>
 
         <!-- - - - - - Mocks - - - - - -->
+        <!--
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
+        -->
+
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-core</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito2</artifactId>
             <version>2.0.9</version>
+<!--             <version>1.7.4</version>-->
             <scope>test</scope>
         </dependency>
+
+        <!--
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-support</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+        -->
 
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-testng</artifactId>
             <version>2.0.9</version>
+<!--             <version>1.7.4</version>-->
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+        -->
 
         <!-- - - - - - Automation - - - - - -->
         <!-- <dependency> -->
@@ -213,25 +268,27 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <!--
                     <includes>
                         <include>**/*.java</include>
                     </includes>
+                    -->
                     <systemPropertyVariables>
                         <surefire.application.password>
                             ${application.password}
                         </surefire.application.password>
                     </systemPropertyVariables>
                     <reportsDirectory>${testng.reports.directory}</reportsDirectory>
-                    <!-- <suiteXmlFiles> -->
-                    <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
-                    <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
-                    <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
-                    <!-- 						<suiteXmlFile>testng3par.xml</suiteXmlFile> -->
-                    <!-- </suiteXmlFiles> -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
+                        <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+                         <suiteXmlFile>testng03par.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                     <!--
-                                        <argLine>
-                                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                                        </argLine>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     -->
                 </configuration>
             </plugin>
