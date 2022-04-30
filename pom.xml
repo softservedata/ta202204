@@ -166,6 +166,18 @@
             <version>1.7.36</version>
             <scope>runtime</scope>
         </dependency>
+        
+        <dependency>
+    		<groupId>org.apache.logging.log4j</groupId>
+    		<artifactId>log4j-api</artifactId>
+    		<version>2.17.2</version>
+		</dependency>
+        
+        <dependency>
+    		<groupId>org.apache.logging.log4j</groupId>
+    		<artifactId>log4j-core</artifactId>
+    		<version>2.17.2</version>
+		</dependency>
 
         <!-- - - - Reports - - - -->
         <dependency>
@@ -180,6 +192,19 @@
             <version>1.9.9.1</version>
             <!-- <scope>test</scope> -->
         </dependency>
+        
+        <!-- - - - Excel - - - -->
+        <dependency>
+    		<groupId>org.apache.poi</groupId>
+    		<artifactId>poi</artifactId>
+    		<version>5.2.2</version>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-ooxml</artifactId>
+    		<version>5.2.2</version>
+		</dependency>
 
     </dependencies>
 
@@ -220,8 +245,9 @@
                         </surefire.application.password>
                     </systemPropertyVariables>
                     <reportsDirectory>${testng.reports.directory}</reportsDirectory>
-                    <!-- <suiteXmlFiles> -->
-                    <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
+                    <suiteXmlFiles>
+                    	<suiteXmlFile>hw4testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
                     <!-- 						<suiteXmlFile>testng3par.xml</suiteXmlFile> -->
