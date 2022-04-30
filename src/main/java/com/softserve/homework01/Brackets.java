@@ -1,6 +1,9 @@
 package com.softserve.homework01;
 
 public class Brackets {
+    public Brackets(){
+    }
+    //
     public boolean verifyBrackets(String brackText) {
         char [] brackChar = brackText.toCharArray();
         char [] compareBracket = {'(' , ')'};
