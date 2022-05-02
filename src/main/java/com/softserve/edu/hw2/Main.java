@@ -5,9 +5,8 @@ public class Main {
 	public static void main( String[] args) {
 		
 		String text = "()(())";
-		
 		StringVerifier stringVerifier = new StringVerifier();
-		stringVerifier.verifyBrackets(text);
+		System.out.println(stringVerifier.numberBrackets(text));
 		
 	}
 	
