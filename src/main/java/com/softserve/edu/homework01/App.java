@@ -1,7 +1,7 @@
 package com.softserve.edu.homework01;
 
 /*
-    1) Дано стрічку, яка може містити круглі дужки '(' та ')'.
+    1.1) Дано стрічку, яка може містити круглі дужки '(' та ')'.
     Напишіть метод public boolean verifyBrackets(String text) { ... }
     для перевірки коректного розміщення дужок у стрічці.
     Наприклад, для випадків "()", "(())", "(())()" ми повинні отримати true,
@@ -9,28 +9,15 @@ package com.softserve.edu.homework01;
     Для коду використати пакет com.softserve.homework01
 */
 
+/*
+    3.1) Додати до класу попереднього завдання метод обчислення кількості дужок
+    public int numberBrackets()
+    На початку методу викликати verifyBrackets() і у випадку false викидати RuntimeException.
+*/
+
 public class App {
     public static void main(String[] args) {
         BracketsApp bracketsApp = new BracketsAppImp();
-        App.verifyCorrectString(bracketsApp);
-        App.verifyIncorrectString(bracketsApp);
-    }
-
-    private static void verifyCorrectString (BracketsApp bracketsApp) {
-        System.out.println("Should be true:");
-        System.out.println(bracketsApp.verifyBrackets("()"));
-        System.out.println(bracketsApp.verifyBrackets("(())"));
-        System.out.println(bracketsApp.verifyBrackets("(())()"));
-        System.out.println(bracketsApp.verifyBrackets("aa()"));
-        System.out.println(bracketsApp.verifyBrackets("aa(__)dsadasdas(dsadas())"));
-    }
-
-    private static void verifyIncorrectString (BracketsApp bracketsApp) {
-        System.out.println("Should be false:");
-        System.out.println(bracketsApp.verifyBrackets("(()"));
-        System.out.println(bracketsApp.verifyBrackets(")("));
-        System.out.println(bracketsApp.verifyBrackets("())"));
-        System.out.println(bracketsApp.verifyBrackets("aa"));
-        System.out.println(bracketsApp.verifyBrackets(""));
+        System.out.println(bracketsApp.numberBrackets("(O.T.) (did ((hw3)) <3)"));
     }
 }
