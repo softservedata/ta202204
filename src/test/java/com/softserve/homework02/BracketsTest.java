@@ -1,4 +1,4 @@
-package com.softserve.edu;
+package com.softserve.homework02;
 
 import com.softserve.homework01.Brackets;
 import org.testng.Assert;
