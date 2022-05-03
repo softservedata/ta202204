@@ -16,7 +16,6 @@ public class NumberOfBracketsTest {
         when(mockVerifyBrackets.isCorrectBrackets(anyString())).thenReturn(true);
         when(mockVerifyBrackets.countBrackets(anyString())).thenCallRealMethod();
 
-
         Assert.assertEquals(6, mockVerifyBrackets.countBrackets("(((str)))"));
         Assert.assertEquals(1, mockVerifyBrackets.countBrackets("( String"));
         Assert.assertEquals(8, mockVerifyBrackets.countBrackets("(((str)))()"));

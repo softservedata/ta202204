@@ -30,7 +30,7 @@ public class VerifyBrackets {
         }
 
         if (closeBrackets == 0 && openBrackets == 0){
-            System.out.println("You don`t have brackets in text.");
+            System.out.println("You don`t have brackets in text");
             return false;
         }
         return (closeBrackets == openBrackets);
