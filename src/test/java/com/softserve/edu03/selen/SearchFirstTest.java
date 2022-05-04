@@ -1,8 +1,10 @@
 package com.softserve.edu03.selen;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -30,14 +32,28 @@ public class SearchFirstTest {
 
     @Test
     public void checkMac() {
-        System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
+        //
         WebDriver driver = new ChromeDriver();
         //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS)); // 0 by default
         driver.manage().window().maximize();
         presentationSleep(); // For Presentation ONLY
-        driver.get(BASE_URL);
+        //driver.get(BASE_URL);
+        driver.navigate().to(BASE_URL);
         presentationSleep(); // For Presentation ONLY
+        //
+        List<WebElement> elements = driver.findElements(By.className("form-control"));
+        System.out.println("***elements.size() = " + elements.size());
+        //
+        List<WebElement> elements2 = driver.findElements(By.className("form-Acontrol"));
+        System.out.println("***elements2.size() = " + elements2.size());
+        if (elements2.size() == 0) {
+            // Develop Custom Exception
+            //throw new RuntimeException("Element(s) not found");
+            System.out.println("\tElement(s) not found");
+        }
         //
         // Choose Curency
         driver.findElement(By.cssSelector("button.btn.btn-link.dropdown-toggle")).click();
@@ -59,8 +75,8 @@ public class SearchFirstTest {
         presentationSleep(); // For Presentation ONLY
         //
         // Check
-        WebElement price = driver
-                .findElement(By.xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
+        WebElement price = driver.findElement(By
+                .xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
         Assert.assertTrue(price.getText().contains("$602.00"));
         System.out.println("***contains: " + price.getText());
         presentationSleep(); // For Presentation ONLY
