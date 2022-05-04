@@ -61,7 +61,7 @@ public class SearchFirstTest {
         // Check
         WebElement price = driver.findElement(By
                 .xpath("//a[text()='MacBook']/../following-sibling::p[@class='price']"));
-        Assert.assertTrue(price.getText().contains("$602.00a"));
+        Assert.assertTrue(price.getText().contains("$602.00"));
         System.out.println("***contains: " + price.getText());
         presentationSleep(); // For Presentation ONLY
         //
