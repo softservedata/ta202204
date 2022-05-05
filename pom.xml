@@ -99,6 +99,13 @@
         <!-- - - - - - Mocks - - - - - -->
         <dependency>
             <groupId>org.powermock</groupId>
+            <artifactId>powermock-core</artifactId>
+            <version>2.0.9</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito2</artifactId>
             <version>2.0.9</version>
             <scope>test</scope>
@@ -122,10 +129,11 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.1.3</version>
+            <version>4.1.4</version>
             <scope>test</scope>
         </dependency>
 
+		<!-- Add needed webdriver version -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -246,7 +254,10 @@
                     </systemPropertyVariables>
                     <reportsDirectory>${testng.reports.directory}</reportsDirectory>
                     <suiteXmlFiles>
-                    	<suiteXmlFile>hw4testng.xml</suiteXmlFile>
+                    	<!-- HW4 -->
+                    	<!-- <suiteXmlFile>hw4testng.xml</suiteXmlFile> -->
+                    	<!-- HW5 -->
+                    	<suiteXmlFile>testng-additems.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
