@@ -72,7 +72,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.5</version>
+            <version>7.4.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -257,7 +257,9 @@
                     	<!-- HW4 -->
                     	<!-- <suiteXmlFile>hw4testng.xml</suiteXmlFile> -->
                     	<!-- HW5 -->
-                    	<suiteXmlFile>testng-additems.xml</suiteXmlFile>
+                    	<!-- <suiteXmlFile>testng-additems.xml</suiteXmlFile> -->
+                    	<!-- HW6 -->
+                    	<suiteXmlFile>testng-verifylogin.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
