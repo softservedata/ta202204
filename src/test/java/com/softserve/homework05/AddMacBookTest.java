@@ -38,7 +38,7 @@ public class AddMacBookTest {
         driver.findElement(By.xpath("//button[@onclick=\"cart.add('43', '1');\"]")).click();
         delaySec();
         driver.findElement(By.xpath("//button[@class=\"btn btn-inverse btn-block btn-lg dropdown-toggle\"]")).click();
-        WebElement macBook = driver.findElement(By.xpath("//table[@class=\"table table-striped\"]"));
+        WebElement macBook = driver.findElement(By.xpath("//ul[@class=\"dropdown-menu pull-right\"]//a[text()='MacBook']"));
         Assert.assertTrue(macBook.getText().contains("MacBook"));
         System.out.println("***contains: " + macBook.getText());
         driver.quit();
