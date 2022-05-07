@@ -46,7 +46,7 @@ hs_err_pid*
 /bin/
 /build/
 /doc/
-#/lib/
+/lib/
 /test-output/
 /allure-results/
 /.classpath
