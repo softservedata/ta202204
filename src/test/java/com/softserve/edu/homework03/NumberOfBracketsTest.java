@@ -10,16 +10,15 @@ import static org.mockito.Mockito.*;
 public class NumberOfBracketsTest {
 
     @Test
-    public void testCountBrackets() {
+    public void testCountBracketsTrue_1() {
+        VerifyBrackets VerifyBracketsMock = Mockito.spy(new VerifyBrackets());
+        Mockito.when(VerifyBracketsMock.isCorrectBrackets(anyString())).thenReturn(true);
+        Mockito.doCallRealMethod().when(VerifyBracketsMock).countBrackets(anyString());
 
-        VerifyBrackets mockVerifyBrackets = mock(VerifyBrackets.class);
-        when(mockVerifyBrackets.isCorrectBrackets(anyString())).thenReturn(true);
-        when(mockVerifyBrackets.countBrackets(anyString())).thenCallRealMethod();
-
-        Assert.assertEquals(6, mockVerifyBrackets.countBrackets("(((str)))"));
-        Assert.assertEquals(1, mockVerifyBrackets.countBrackets("( String"));
-        Assert.assertEquals(8, mockVerifyBrackets.countBrackets("(((str)))()"));
-
+        Assert.assertEquals(6, VerifyBracketsMock.countBrackets("(((str)))"));
+        Assert.assertEquals(1, VerifyBracketsMock.countBrackets("( String"));
+        Assert.assertEquals(8, VerifyBracketsMock.countBrackets("(((str)))()"));
+        Assert.assertEquals(0, VerifyBracketsMock.countBrackets(" "));
     }
 
 }

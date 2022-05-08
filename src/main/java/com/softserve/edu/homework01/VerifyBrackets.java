@@ -13,10 +13,6 @@ public class VerifyBrackets implements IVerifyBrackets {
         int closeBrackets = 0;
         char[] textInChars = text.toCharArray();
 
-        if (text.length() == 0){
-            throw new RuntimeException("The string is empty!");
-        }
-
         for (char textInChar : textInChars) {
             if (textInChar == '(') {
                 openBrackets++;
@@ -28,11 +24,6 @@ public class VerifyBrackets implements IVerifyBrackets {
                 }
             }
         }
-
-        if (closeBrackets == 0 && openBrackets == 0){
-            System.out.println("You don`t have brackets in text");
-            return false;
-        }
         return (closeBrackets == openBrackets);
     }
 
@@ -40,25 +31,36 @@ public class VerifyBrackets implements IVerifyBrackets {
         boolean bracketsFormat = isCorrectBrackets(text);
 
         char[] textInChars = text.toCharArray();
-        int numberOfBrackets = 0;
+        int open = 0;
+        int close = 0;
 
         if (!bracketsFormat){
             throw new RuntimeException("Incorrect brackets format!");
         }
-
         for (char textInChar : textInChars) {
-            if (textInChar == '(' || textInChar == ')'){
-                numberOfBrackets++;
+            if (textInChar == '(') {
+                open++;
+            }
+            if (textInChar == ')') {
+                close++;
             }
         }
-        return numberOfBrackets;
+        if (close == 0 && open == 0){
+            System.out.println("You don`t have brackets in text");
+        }
+
+        return open+close;
     }
 
     public String getString() {
         Scanner scanner  = new Scanner(System.in);
         String text;
         System.out.println("Enter your string: ");
-        return text = scanner.nextLine();
+        text = scanner.nextLine();
+        if (text.length() == 0){
+            throw new RuntimeException("The string is empty!");
+        }
+        return text;
     }
 
 
