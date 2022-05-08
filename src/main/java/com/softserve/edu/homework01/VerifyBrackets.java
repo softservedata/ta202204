@@ -1,12 +1,12 @@
 package com.softserve.edu.homework01;
 
-import org.junit.Test;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VerifyBrackets {
+public class VerifyBrackets implements IVerifyBrackets {
+
+    public VerifyBrackets(){}
 
     public boolean isCorrectBrackets(String text) {
         int openBrackets = 0;
@@ -37,12 +37,15 @@ public class VerifyBrackets {
     }
 
     public int countBrackets(String text) {
+        boolean bracketsFormat = isCorrectBrackets(text);
+
         char[] textInChars = text.toCharArray();
         int numberOfBrackets = 0;
 
-        if (!isCorrectBrackets(text)){
+        if (!bracketsFormat){
             throw new RuntimeException("Incorrect brackets format!");
         }
+
         for (char textInChar : textInChars) {
             if (textInChar == '(' || textInChar == ')'){
                 numberOfBrackets++;
@@ -50,5 +53,13 @@ public class VerifyBrackets {
         }
         return numberOfBrackets;
     }
+
+    public String getString() {
+        Scanner scanner  = new Scanner(System.in);
+        String text;
+        System.out.println("Enter your string: ");
+        return text = scanner.nextLine();
+    }
+
 
 }
