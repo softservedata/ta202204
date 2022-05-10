@@ -1,27 +1,42 @@
 package com.softserve.edu.homework04;
 
+import com.softserve.edu.homework01.IVerifyBrackets;
 import com.softserve.edu.homework01.VerifyBrackets;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+import org.mockito.Mockito;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CountBracketsTest {
 
-       @DisplayName("Should check the number of brackets")
-       @ParameterizedTest(name = "{index} => text={0}, number={1}")
-        @CsvFileSource(resources = "/testCountBracketsData.csv")
+       @ParameterizedTest
+       @CsvFileSource(resources = "/testCountBracketsData.csv")
         void testCheckNumber(String text, int number) {
 
-                VerifyBrackets mockVerifyBrackets = mock(VerifyBrackets.class);
-                when(mockVerifyBrackets.isCorrectBrackets(anyString())).thenReturn(true);
-                when(mockVerifyBrackets.countBrackets(anyString())).thenCallRealMethod();
+           VerifyBrackets VerifyBracketsMock = Mockito.spy(new VerifyBrackets());
+           Mockito.when(VerifyBracketsMock.isCorrectBrackets(anyString())).thenReturn(true);
+           Mockito.doCallRealMethod().when(VerifyBracketsMock).countBrackets(anyString());
 
-                Assertions.assertEquals(number, mockVerifyBrackets.countBrackets(text));
-                Assertions.assertEquals(number, mockVerifyBrackets.countBrackets(text));
-                Assertions.assertEquals(number, mockVerifyBrackets.countBrackets(text));
+                Assertions.assertEquals(number, VerifyBracketsMock.countBrackets(text));
+                Assertions.assertEquals(number, VerifyBracketsMock.countBrackets(text));
+                Assertions.assertEquals(number, VerifyBracketsMock.countBrackets(text));
         }
+        @ParameterizedTest
+        @CsvFileSource(resources = "/testExceptionThrown.csv")
+    void testExceptionThrown(String text){
+            VerifyBrackets checkCountBrackets = new VerifyBrackets();
+
+            RuntimeException thrown = Assertions.assertThrows(
+                    RuntimeException.class,
+                    () -> {
+                        checkCountBrackets.countBrackets(text);
+                    },"Incorrect brackets format!");
+        }
+
 }
