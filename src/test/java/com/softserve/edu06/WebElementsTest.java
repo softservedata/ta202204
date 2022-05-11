@@ -1,12 +1,10 @@
 package com.softserve.edu06;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -57,7 +55,7 @@ public class WebElementsTest {
         presentationSleep(); // For Presentation ONLY
         // driver.close();
         if (driver != null) {
-            driver.quit();
+            driver.quit(); // close()
         }
     }
 
@@ -98,9 +96,9 @@ public class WebElementsTest {
         presentationSleep(); // For Presentation ONLY
         //
         // Search Web Elements
-        //WebElement login = driver.findElement(By.id("input-email"));
+        WebElement login = driver.findElement(By.id("input-email"));
         //WebElement login = driver.findElement(By.name("email"));
-        WebElement login = driver.findElement(By.cssSelector("input[placeholder='E-Mail Address']"));
+        //WebElement login = driver.findElement(By.cssSelector("input[placeholder='E-Mail Address']"));
         /*-
         List<WebElement> elements = driver.findElements(By.className("form-control"));
         System.out.println("***elements.size() = " + elements.size());
@@ -122,7 +120,8 @@ public class WebElementsTest {
         //
         //WebElement login = (WebElement) ((JavascriptExecutor)driver).executeScript("return document.getElementById('input-email')");
         //
-        login.sendKeys("hahaha");
+        //login.sendKeys("hahaha");
+        login.sendKeys("hahaha@gmail.com");
         presentationSleep(); // For Presentation ONLY
         //
         Assert.assertTrue(login.getAttribute("value").contains("hahaha"));
@@ -134,13 +133,29 @@ public class WebElementsTest {
         driver.switchTo().alert().accept( );
         presentationSleep(); // For Presentation ONLY
         */
+        //
+        driver.findElement(By.id("input-password")).click();
+        driver.findElement(By.id("input-password")).clear();
+        //driver.findElement(By.id("input-password")).sendKeys("qwerty");
+        driver.findElement(By.id("input-password")).sendKeys("qwerty" + Keys.ENTER);
+        presentationSleep(); // For Presentation ONLY
+        //
+        //driver.findElement(By.id("input-password")).submit();
+        //driver.findElement(By.cssSelector("form input.btn.btn-primary")).click();
+        presentationSleep(); // For Presentation ONLY
     }
     
     //@Test
     public void checkExistWebElement() throws Exception {
         //
+        System.out.println("1. isVisible Login Link = "
+                + driver.findElement(By.cssSelector("div#top-links a[href*='route=account/login']")).isDisplayed());
+        //
         driver.findElement(By.cssSelector("a[title='My Account']")).click();
         presentationSleep(); // For Presentation ONLY
+        //
+        System.out.println("2. isVisible Login Link = "
+                + driver.findElement(By.cssSelector("div#top-links a[href*='route=account/login']")).isDisplayed());
         //
         driver.findElement(By.cssSelector("div#top-links a[href*='route=account/login']")).click();
         presentationSleep(); // For Presentation ONLY
@@ -151,7 +166,7 @@ public class WebElementsTest {
         driver.findElement(By.id("input-email")).sendKeys("hahaha");
         String content = driver.findElement(By.id("input-email")).getAttribute("value");
         System.out.println("***content email = " + content);
-        presentationSleep(); // For Presentation ONLY
+        presentationSleep(2); // For Presentation ONLY
         //
         // Refresh some webelements
         driver.navigate().refresh();
@@ -173,7 +188,7 @@ public class WebElementsTest {
         // Refresh some webelements
         driver.navigate().refresh();
         presentationSleep(); // For Presentation ONLY
-        email.sendKeys("bebebe");
+        email.sendKeys("bebebe"); // Runtime Error
         presentationSleep(); // For Presentation ONLY
         */
         //
