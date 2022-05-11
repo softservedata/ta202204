@@ -15,8 +15,17 @@ public class Main {
         return count == 0;
     }
 
-    public static void main(String[] args) {
-        Main main = new Main();
-        System.out.println(main.verifyBrackets("()"));
+    public int numberBrackets(String text) {
+        if (!verifyBrackets(text)) {
+            throw new RuntimeException();
+        }
+        String[] letters = text.split("");
+        int count = 0;
+        for (String letter : letters) {
+            if (letter.equals("(") || letter.equals(")")) {
+                count++;
+            }
+        }
+        return count;
     }
 }

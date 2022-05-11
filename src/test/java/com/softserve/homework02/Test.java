@@ -14,5 +14,11 @@ public class Test {
     @org.junit.Test
     public void secondTest() {
         Assertions.assertFalse(main.verifyBrackets(")("));
+
+    }
+    @org.junit.Test
+    public void thirdTest() {
+        Assertions.assertEquals(main.numberBrackets("()"), 2);
+
     }
 }
