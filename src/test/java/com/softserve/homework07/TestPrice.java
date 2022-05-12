@@ -30,19 +30,6 @@ public class TestPrice {
 	private final String directory = "screenshots\\hw7\\";
 	private final String baseURL = "http://taqc-opencart.epizy.com/";
 	private final Long implicitlyWaitSeconds = 5L;
-	private final Long oneSecondDelay = 1000L;
-
-	private void presentationSleep() {
-		presentationSleep(1);
-	}
-
-	private void presentationSleep(int seconds) {
-		try {
-			Thread.sleep(seconds * oneSecondDelay);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	@BeforeSuite
 	public void beforeSuite() {
@@ -84,9 +71,6 @@ public class TestPrice {
 	
 	@AfterMethod
     public void afterMethod(ITestResult result) {
-        presentationSleep();
-        // logout;
-        // Save Screen;
         if (result.getStatus() == ITestResult.FAILURE) {
             String testName = result.getName();
             System.out.println("TC with name " + testName + " failed");
@@ -104,12 +88,10 @@ public class TestPrice {
             	driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
             }
         }
-        presentationSleep();
     }
 	
 	@AfterClass
 	public void afterClass() {
-		presentationSleep();
         if (driver != null) {
             driver.quit();
         }
