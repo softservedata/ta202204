@@ -1,16 +1,10 @@
 package com.softserve.edu.homework04;
 
-import com.softserve.edu.homework01.IVerifyBrackets;
 import com.softserve.edu.homework01.VerifyBrackets;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import org.mockito.Mockito;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 
 public class CountBracketsTest {
