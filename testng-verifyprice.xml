@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="HW7 TestSuite">
+	<test name="Test HW7 Total Price">
+		<classes>
+			<class name="com.softserve.homework07.TestPrice"></class>
+		</classes>
+	</test>
+</suite>
