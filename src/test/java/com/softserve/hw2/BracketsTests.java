@@ -5,20 +5,19 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class BracketsTests {
-    Brackets BracketsTests = new Brackets();
+    Brackets bracketsTests = new Brackets();
 
     @Test
     public void verifyBracketsCorrect() {
-        Assert.assertTrue(BracketsTests.verifyBrackets("()"));
-        Assert.assertTrue(BracketsTests.verifyBrackets("(())"));
-        Assert.assertTrue(BracketsTests.verifyBrackets("(())()"));
+        Assert.assertTrue(bracketsTests.verifyBrackets("()"));
+        Assert.assertTrue(bracketsTests.verifyBrackets("(())"));
+        Assert.assertTrue(bracketsTests.verifyBrackets("(())()"));
     }
 
     @Test
     public void verifyBracketsFalse() {
-        Assert.assertFalse(BracketsTests.verifyBrackets("(()"));
-        Assert.assertFalse(BracketsTests.verifyBrackets(")("));
-        Assert.assertFalse(BracketsTests.verifyBrackets("())"));
-        Assert.assertFalse(BracketsTests.verifyBrackets(""));
+        Assert.assertFalse(bracketsTests.verifyBrackets("(()"));
+        Assert.assertFalse(bracketsTests.verifyBrackets(")("));
+        Assert.assertFalse(bracketsTests.verifyBrackets("())"));
     }
 }

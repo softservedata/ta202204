@@ -1,4 +1,5 @@
 package com.softserve.hw1;
+
 public class Brackets {
     public boolean verifyBrackets(String text) {
         int closed = 0;
@@ -18,5 +19,18 @@ public class Brackets {
         } else {
             return false;
         }
+    }
+
+    public int numberBrackets(String text) {
+        int cnt = 0;
+        boolean qtBrackets = verifyBrackets(text);
+        if (!qtBrackets) {
+            throw new RuntimeException("Incorrect Brackets");
+        }
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '(' || text.charAt(i) == ')')
+                cnt++;
+        }
+        return cnt;
     }
 }
