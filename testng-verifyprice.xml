@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="HW7 TestSuite">
-	<test name="Test HW7 Total Price">
+<suite name="HW8 TestSuite">
+	<test name="Test HW8">
+		<groups>
+			<define name="hw7">
+				<include name="css"></include>
+			</define>
+			<define name="hw8">
+				<include name="xpath"></include>
+			</define>
+			<run>
+				<include name="hw8"></include>
+			</run>
+		</groups>
 		<classes>
 			<class name="com.softserve.homework07.TestPrice"></class>
+			<class name="com.softserve.homework08.TestPriceXPath"></class>
 		</classes>
 	</test>
 </suite>

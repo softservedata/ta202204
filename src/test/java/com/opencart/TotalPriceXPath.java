@@ -3,51 +3,49 @@ package com.opencart;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-// import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class TotalPrice {
+public class TotalPriceXPath {
+WebDriver driver;
 	
-	WebDriver driver;
-	
-	@FindBy(css="#form-currency button[data-toggle=dropdown]")
+	@FindBy(xpath="//form[@id='form-currency']//button[@data-toggle='dropdown']")
 	WebElement currencyTab;
 	
-	@FindBy(css="#form-currency button[name=USD]")
+	@FindBy(xpath="//form[@id='form-currency']//button[@name='USD']")
 	WebElement currencyButton;
 	
-	@FindBy(css="#search input[name=search]")
+	@FindBy(xpath="//div[@id='search']/input")
 	WebElement searchField;
 	
-	@FindBy(css="button[onclick*=\"cart.add('43'\"]")
+	@FindBy(xpath="//a[contains(text(),'MacBook')]/../following-sibling::p[contains(text(),'Intel Core')]/../following-sibling::div//span/..")
 	WebElement addMacBookToCartButton;
 	
-	@FindBy(css=".button-group button[onclick*='cart.add']")
+	@FindBy(xpath="//a[contains(text(),'iPhone 3')]/../following-sibling::p[contains(text(),'revolutionary')]/../following-sibling::div//span/..")
 	WebElement addIPhoneToCartButton;
 	
-	@FindBy(css="#cart>button")
+	@FindBy(xpath="//div[@id='cart']/button")
 	WebElement cartButton;
 	
-	@FindBy(css="img[alt='iPhone 3'][class*='thumbnail']")
-	WebElement iPhoneImg;
+	@FindBy(xpath="//table[@class='table table-striped']//a[contains(text(),'iPhone 3')]")
+	WebElement iPhone;
 	
-	@FindBy(css="img[alt='MacBook'][class*='thumbnail']")
-	WebElement macBookImg;
+	@FindBy(xpath="//table[@class='table table-striped']//a[contains(text(),'MacBook')]")
+	WebElement macBook;
 	
-	@FindBy(css="#top-links a[href*='checkout/cart']")
+	@FindBy(xpath="//div[@id='top-links']//a[contains(@href,'checkout/cart')]")
 	WebElement shoppingCartButton;
 	
-	@FindBy(css="form[action*='checkout'] tbody>tr:first-child>td:nth-child(4)>div>input")
+	@FindBy(xpath="//div[@id='content']//a[contains(text(),'iPhone 3')]/../following-sibling::td//input[contains(@name,'quantity')]")
 	WebElement iPhoneQty;
 	
-	@FindBy(css="form[action*='checkout'] tbody>tr:last-child>td:nth-child(4) input")
+	@FindBy(xpath="//div[@id='content']//a[contains(text(),'MacBook')]/../following-sibling::td//input[contains(@name,'quantity')]")
 	WebElement macBookQty;
 	
-	@FindBy(css="div.col-sm-4.col-sm-offset-8>table.table.table-bordered tr:last-child>td:last-child")
+	@FindBy(xpath="//table[@class='table table-bordered']//strong[starts-with(text(),'Total:')]/../following-sibling::td")
 	WebElement totalPrice;
 	
-	public TotalPrice(WebDriver driver) {
+	public TotalPriceXPath(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -78,7 +76,7 @@ public class TotalPrice {
 	}
 	
 	public boolean verifyAddedItems() {
-		if(!iPhoneImg.isEnabled() || !macBookImg.isEnabled())
+		if(!iPhone.isDisplayed() || !macBook.isDisplayed())
 			return false;
 		else
 			return true;
@@ -90,7 +88,6 @@ public class TotalPrice {
 
 	
 	public void setIPhoneQty(int iPhone) {
-		// action.moveToElement(iPhoneQty);
 		iPhoneQty.clear();
 		iPhoneQty.sendKeys(Integer.toString(iPhone) + Keys.TAB + Keys.ENTER);
 	}
