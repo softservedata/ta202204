@@ -1,6 +1,7 @@
 package com.softserve.homework05;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -33,12 +34,11 @@ public class AddMacBookTest {
         driver.manage().window().maximize();
         driver.get("http://taqc-opencart.epizy.com");
         driver.findElement(By.name("search")).click();
-        driver.findElement(By.name("search")).sendKeys("mac");
-        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        driver.findElement(By.name("search")).sendKeys("mac", Keys.ENTER);
         driver.findElement(By.xpath("//button[@onclick=\"cart.add('43', '1');\"]")).click();
         delaySec();
         driver.findElement(By.xpath("//button[@class=\"btn btn-inverse btn-block btn-lg dropdown-toggle\"]")).click();
-        WebElement macBook = driver.findElement(By.xpath("//ul[@class=\"dropdown-menu pull-right\"]//a[text()='MacBook']"));
+        WebElement macBook = driver.findElement(By.xpath("//ul[@class=\"dropdown-menu pull-right\"]"));
         Assert.assertTrue(macBook.getText().contains("MacBook"));
         System.out.println("***contains: " + macBook.getText());
         driver.quit();
