@@ -16,8 +16,14 @@ public class TestBrackets {
 	@Test
 	public void testMethod() {
 		boolean actual = true, expected = true;
+		actual = message.verifyBrackets("()())(()(())");
+		System.out.println("\tResult of verifying brackets ()())(()(()) is: " + actual);
+		actual = message.verifyBrackets(")()");
+		System.out.println("\tResult of verifying brackets )() is: " + actual);
+		actual = message.verifyBrackets("()()((())))");
+		System.out.println("\tResult of verifying brackets ()()((()))) is: " + actual);
 		actual = message.verifyBrackets("()()((()))");
-		System.out.println("\tResult of verifying brackets is: " + actual);
+		System.out.println("\tResult of verifying brackets ()()((())) is: " + actual);
 		Assert.assertEquals(actual, expected);
 	}
 
