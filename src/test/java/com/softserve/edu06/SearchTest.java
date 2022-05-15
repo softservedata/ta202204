@@ -13,11 +13,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -38,22 +34,22 @@ public class SearchTest {
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
     private WebDriver driver;
 
-    private void takeScreenShot() {
+    private void takeScreenShot(String name) {
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File("./" + currentTime + "_screenshot.png"));
+            FileUtils.copyFile(scrFile, new File("./" + name + "_" + currentTime + "_screenshot.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
-    private void takePageSource() {
+    private void takePageSource(String name) {
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         String pageSource = driver.getPageSource();
         byte[] strToBytes = pageSource.getBytes();
-        Path path = Paths.get("./" + currentTime + "_source.html");
+        Path path = Paths.get("./" + name + "_" + currentTime + "_source.html");
         try {
             Files.write(path, strToBytes, StandardOpenOption.CREATE);
         } catch (IOException e) {
@@ -114,8 +110,8 @@ public class SearchTest {
             System.out.println("***TC error, name = " + testName + " ERROR");
             // Take Screenshot, save sourceCode, save to log, prepare report, Return to;
             // previous state, logout, etc.
-            //takeScreenShot();
-            //takePageSource();
+            takeScreenShot(testName);
+            takePageSource(testName);
             // driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
             // session;
         }
@@ -141,7 +137,7 @@ public class SearchTest {
         return result;
     }
 
-    @Test
+    //@Test
     public void findByCss() {
         // Precondition
         WebElement usd = driver.findElement(By.cssSelector("button[name='USD']"));
@@ -186,6 +182,49 @@ public class SearchTest {
         // Scroll to element
         Actions action = new Actions(driver);
         action.moveToElement(price).perform();
+        //
+        Assert.assertTrue(price.getText().contains("$602.00"));
+        //
+        // Return to Previous State
+        presentationSleep(); // For Presentation ONLY
+    }
+
+    @Test
+    public void findByMix() {
+        // Precondition
+        WebElement usd = driver.findElement(By.cssSelector("button[name='USD']"));
+        System.out.println("*** 1. usd.isDisplayed() = " + usd.isDisplayed());
+        //
+        // Choose Curency
+        driver.findElement(By.cssSelector("button.btn.btn-link.dropdown-toggle")).click();
+        presentationSleep(); // For Presentation ONLY
+        System.out.println("*** 2. usd.isDisplayed() = " + usd.isDisplayed());
+        //
+        driver.findElement(By.cssSelector("button[name='USD']")).click();
+        presentationSleep(); // For Presentation ONLY
+        //
+        // Steps
+        driver.findElement(By.cssSelector("#search > input")).click();
+        driver.findElement(By.cssSelector("#search > input")).clear();
+        driver.findElement(By.cssSelector("#search > input")).sendKeys("mac");
+        presentationSleep(); // For Presentation ONLY
+        //
+        driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
+        presentationSleep(); // For Presentation ONLY
+        //
+        //WebElement price = getProductByName("MacBook").findElement(By.cssSelector("p.price"));
+        // Continue search by XPath
+        WebElement price = getProductByName("MacBook").findElement(By.xpath(".//p[@class='price']"));
+        //
+        System.out.println("price.getText() = " + price.getText());
+        //
+        // Scroll to element
+        //Actions action = new Actions(driver);
+        //action.moveToElement(price).perform();
+        //
+        // Scrolling by JavaScript injection
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", price);
+        presentationSleep(); // For Presentation ONLY
         //
         Assert.assertTrue(price.getText().contains("$602.00"));
         //
