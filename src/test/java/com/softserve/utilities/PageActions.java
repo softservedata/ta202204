@@ -19,14 +19,14 @@ public class PageActions {
 	
 	public PageActions(WebDriver driver){
 		this.driver = driver;
-		wait = new WebDriverWait(driver, Duration.ofSeconds(5L));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		action = new Actions(driver);
 	}
 	
 	public void clickButton(WebElement element) {
 		try {
-			action.moveToElement(element).build().perform();
 			wait.until(ExpectedConditions.elementToBeClickable(element));
+			action.moveToElement(element).build().perform();
 			element.click();
 		}
 		catch (Exception e) {
@@ -39,8 +39,8 @@ public class PageActions {
 	
 	public void enterDataIntoTextbox(WebElement element, String text) {
 		try {
-			action.moveToElement(element).build().perform();
 			wait.until(ExpectedConditions.visibilityOf(element));
+			action.moveToElement(element).build().perform();
 			element.clear();
 			element.sendKeys(text + Keys.TAB + Keys.ENTER);
 		}
@@ -54,8 +54,8 @@ public class PageActions {
 	
 	public void selectVisibleTextInDropdown(WebElement element, String text) {
 		try {
-			action.moveToElement(element).build().perform();
 			wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+			action.moveToElement(element).build().perform();
 			Select s = new Select(element);
 			s.selectByVisibleText(text);
 		}

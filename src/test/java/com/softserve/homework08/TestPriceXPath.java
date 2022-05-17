@@ -1,7 +1,5 @@
 package com.softserve.homework08;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -23,7 +21,7 @@ public class TestPriceXPath {
 	private TotalPriceXPath verifyProducts;
 	private double expected, actual;
 	private final String baseURL = "http://taqc-opencart.epizy.com/";
-	private final Long implicitlyWaitSeconds = 5L;
+	//private final Long implicitlyWaitSeconds = 5L;
 	
 	@BeforeSuite(alwaysRun = true)
 	public void beforeSuite() {
@@ -36,7 +34,7 @@ public class TestPriceXPath {
 		verifyProducts = new TotalPriceXPath(driver);
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
 		expected = 123.20d * 2 + 602.00d * 3;
 	}
 
