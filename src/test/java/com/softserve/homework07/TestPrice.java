@@ -17,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import com.opencart.TotalPrice;
+import com.opencart.pages.TotalPrice;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 

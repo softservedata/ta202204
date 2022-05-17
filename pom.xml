@@ -20,8 +20,10 @@
         <java.version>1.8</java.version>
         <!-- - - - - - Reports - - - - - -->
         <testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
+        <!-- - - - - - Resources - - - - -->
+        <testng.runners>./resources/runner/</testng.runners>
         <!-- - - - - - Password - - - - - -->
-        <application.password>null123</application.password>
+        <!-- <application.password>null123</application.password> -->
     </properties>
 
     <dependencies>
@@ -247,21 +249,21 @@
                     <includes>
                         <include>**/*.java</include>
                     </includes>
-                    <systemPropertyVariables>
+                    <!-- <systemPropertyVariables>
                         <surefire.application.password>
                             ${application.password}
                         </surefire.application.password>
-                    </systemPropertyVariables>
+                    </systemPropertyVariables> -->
                     <reportsDirectory>${testng.reports.directory}</reportsDirectory>
                     <suiteXmlFiles>
                     	<!-- HW4 -->
-                    	<!-- <suiteXmlFile>hw4testng.xml</suiteXmlFile> -->
+                    	<!-- <suiteXmlFile>${testng.runners}hw4testng.xml</suiteXmlFile> -->
                     	<!-- HW5 -->
-                    	<!-- <suiteXmlFile>testng-additems.xml</suiteXmlFile> -->
+                    	<!-- <suiteXmlFile>${testng.runners}testng-additems.xml</suiteXmlFile> -->
                     	<!-- HW6 -->
-                    	<!-- <suiteXmlFile>testng-verifylogin.xml</suiteXmlFile> -->
+                    	<!-- <suiteXmlFile>${testng.runners}testng-verifylogin.xml</suiteXmlFile> -->
                     	<!-- HW7, HW8 -->
-                    	<suiteXmlFile>testng-verifyprice.xml</suiteXmlFile>
+                    	<suiteXmlFile>${testng.runners}testng-verifyprice.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->

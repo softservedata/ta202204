@@ -1,11 +1,7 @@
 package com.softserve.homework08;
 
-import java.io.File;
 import java.time.Duration;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -17,20 +13,18 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import com.opencart.TotalPrice;
+import com.opencart.pages.TotalPriceXPath;
+import com.softserve.utilities.CaptureScreenshot;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestPriceXPath {
 	private WebDriver driver;
-	private TotalPrice verifyProducts;
-	private String filename;
-	private File sourceFile;
+	private TotalPriceXPath verifyProducts;
 	private double expected, actual;
-	private final String directory = "screenshots\\hw8\\";
 	private final String baseURL = "http://taqc-opencart.epizy.com/";
 	private final Long implicitlyWaitSeconds = 5L;
-
+	
 	@BeforeSuite(alwaysRun = true)
 	public void beforeSuite() {
 		WebDriverManager.chromedriver().setup();
@@ -39,7 +33,7 @@ public class TestPriceXPath {
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() {
 		driver = new ChromeDriver();
-		verifyProducts = new TotalPrice(driver);
+		verifyProducts = new TotalPriceXPath(driver);
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
@@ -52,7 +46,7 @@ public class TestPriceXPath {
 	}
 
 	@Test(groups= {"xpath"})
-	public void testTotalPrice() throws InterruptedException {
+	public void testTotalPriceXPath() throws InterruptedException {
 		verifyProducts.clickOnCurrencyTab();
 		verifyProducts.selectCurrency();
 		verifyProducts.searchProduct("MacBook");
@@ -74,17 +68,8 @@ public class TestPriceXPath {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String testName = result.getName();
 			System.out.println("TC with name " + testName + " failed");
-			filename = result.getName() + ".png";
-			// Take Screenshot, save sourceCode, save to log, prepare report, Return to;
-			// previous state, logout, etc.
-			sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			try {
-				FileUtils.copyFile(sourceFile, new File(directory + filename));
-			} catch (Exception e) {
-				System.out.println("Failed to place screenshot on failure");
-			} finally {
-				driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
-			}
+			CaptureScreenshot.takeScreenshot(driver, testName);
+			driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
 		}
 	}
 

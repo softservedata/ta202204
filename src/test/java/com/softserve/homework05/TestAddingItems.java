@@ -5,10 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.opencart.pages.AddingItems;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import com.opencart.AddingItems;
 
 public class TestAddingItems {
 	private WebDriver driver;

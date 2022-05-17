@@ -20,7 +20,7 @@ public class TestDataProviders {
 		message = new CheckBrackets();
 		
 		//Location of Excel file with test data
-		ExcelUtility.setExcelFile("resources\\test-data.xlsx", "BracketsNumber");
+		ExcelUtility.setExcelFile("./resources/excel/test-data.xlsx", "BracketsNumber");
 	}
 	
 	@DataProvider(name="even-brackets")
