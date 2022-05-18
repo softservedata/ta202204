@@ -17,10 +17,10 @@ public class NumberBracketsRuntimeException {
         Mockito.when(service.verifyBrackets(Mockito.anyString())).thenReturn(true);
         Mockito.doCallRealMethod().when(service).numberBrackets(ArgumentMatchers.anyString());
 
-        Assertions.assertEquals(expected,service.numberBrackets(input));
-        Assertions.assertEquals(expected,service.numberBrackets(input));
-        Assertions.assertEquals(expected,service.numberBrackets(input));
-        Assertions.assertEquals(expected,service.numberBrackets(input));
+        Assertions.assertEquals(expected, service.numberBrackets(input));
+        Assertions.assertEquals(expected, service.numberBrackets(input));
+        Assertions.assertEquals(expected, service.numberBrackets(input));
+        Assertions.assertEquals(expected, service.numberBrackets(input));
     }
 
     @Test
