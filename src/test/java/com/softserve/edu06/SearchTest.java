@@ -82,6 +82,8 @@ public class SearchTest {
         driver = new ChromeDriver();
         //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS)); // 0 by default
+        driver.manage( ).timeouts( ).pageLoadTimeout(Duration.ofSeconds(100));
+        driver.manage( ).timeouts().scriptTimeout(Duration.ofSeconds(100));
         driver.manage().window().maximize();
     }
 
