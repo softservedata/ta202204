@@ -1,5 +1,7 @@
 package com.opencart.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.support.CacheLookup;
@@ -13,6 +15,7 @@ import com.softserve.utilities.PageActions;
 public class TotalPriceXPath {
 	WebDriver driver;
 	PageActions action;
+	private static final Logger log = LogManager.getLogger(TotalPriceXPath.class.getName());
 	
 	@FindBy(xpath="//form[@id='form-currency']//button[@data-toggle='dropdown']")
 	WebElement currencyTab;
@@ -59,6 +62,7 @@ public class TotalPriceXPath {
 	public void clickOnCurrencyTab() {
 		try {
 			action.clickButton(currencyTab);
+			log.info("Currency tab is clicked");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -72,6 +76,7 @@ public class TotalPriceXPath {
 	public void selectCurrency() {
 		try {
 			action.clickButton(currencyButton);
+			log.info("Currency is selected");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -85,6 +90,7 @@ public class TotalPriceXPath {
 	public void searchProduct(String product) {
 		try {
 			action.enterDataIntoTextbox(searchField, product);
+			log.info("\'{s}\' is typed", product);
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -99,6 +105,7 @@ public class TotalPriceXPath {
 	public void addMacBookToCart() {
 		try {
 			action.clickButton(addMacBookToCartButton);
+			log.info("\'MacBook\' is added to cart");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -112,6 +119,7 @@ public class TotalPriceXPath {
 	public void addIPhoneToCart() {
 		try {
 			action.clickButton(addIPhoneToCartButton);
+			log.info("\'iPhone 3\' is added to cart");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -125,6 +133,7 @@ public class TotalPriceXPath {
 	public void clickOnCartButton() {
 		try {
 			action.clickButton(cartButton);
+			log.info("Cart button is clicked");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -136,15 +145,20 @@ public class TotalPriceXPath {
 	}
 	
 	public boolean verifyAddedItems() {
-		if(!iPhone.isDisplayed() || !macBook.isDisplayed())
+		if(!iPhone.isDisplayed() || !macBook.isDisplayed()) {
+			log.error("One of the products has not been added to the cart");
 			return false;
-		else
+		}
+		else {
+			log.info("\'MacBook\' and \'iPhone 3\' are in the cart");
 			return true;
+		}
 	}
 	
 	public void clickOnShoppingCartButton() {
 		try {
 			action.clickButton(shoppingCartButton);
+			log.info("Shopping Cart button is clicked");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -159,6 +173,7 @@ public class TotalPriceXPath {
 	public void setIPhoneQty(int iPhone) {
 		try {
 			action.enterDataIntoTextbox(iPhoneQty, Integer.toString(iPhone));
+			log.info("\'iPhone 3\' quantity is set");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
@@ -173,6 +188,7 @@ public class TotalPriceXPath {
 	public void setMacBookQty(int macBook) {
 		try {
 			action.enterDataIntoTextbox(macBookQty, Integer.toString(macBook));
+			log.info("\'MacBook\' quantity is set");
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
