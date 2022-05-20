@@ -3,15 +3,12 @@ package com.softserve.edu08;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -45,14 +42,14 @@ public class Browsers {
         FileUtils.copyFile(scrFile, new File("./" + currentTime + "_screenshot.png"));
     }
 
-    // @Test
+    //@Test
     public void testFirefox1_3xx() throws Exception {
-        //        System.setProperty("webdriver.gecko.driver",
-        //                "./lib/geckodriver.exe");
+        // System.setProperty("webdriver.gecko.driver", "./lib/geckodriver.exe");
         WebDriverManager.firefoxdriver().setup();
         WebDriver driver = new FirefoxDriver();
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
@@ -69,7 +66,7 @@ public class Browsers {
     }
 
     // Using default profile of firefox
-    // @Test
+    //@Test
     public void testFirefox2() throws Exception {
         ProfilesIni profileIni = new ProfilesIni();
         FirefoxProfile profile = profileIni.getProfile("default-release"); // TODO NOT Start
@@ -90,7 +87,8 @@ public class Browsers {
         // "eager")));
         WebDriver driver = new FirefoxDriver(options);
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
@@ -111,13 +109,14 @@ public class Browsers {
         FirefoxProfile profile = new FirefoxProfile(new File(
                 // "C:\\Users\\yharasym\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\5cbpt6mc.default"));
                 System.getenv("HOMEPATH")
-                        + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ag2q6v21.default-release"));
+                        + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\x875cizh.default-release"));
         //
         //		DesiredCapabilities dc = DesiredCapabilities.firefox();
         //		dc.setCapability(FirefoxDriver.PROFILE, profile);
         //		FirefoxDriver driver = new FirefoxDriver(dc);
         //
         FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+        //        .addArguments("-headless");
         // .setBinary("c:/Program Files/Nightly/firefox.exe")
         // .addArguments("-console")
         // .addPreference("browser.cache.disk.enable", false)
@@ -125,7 +124,8 @@ public class Browsers {
         // "eager")));
         WebDriver driver = new FirefoxDriver(options);
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
@@ -138,7 +138,7 @@ public class Browsers {
     }
 
     // Use UntrustedCertificates
-    // @Test
+    //@Test
     public void testFirefox3() throws Exception {
         //       DesiredCapabilities capabilities = new DesiredCapabilities();
         //       capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
@@ -158,34 +158,40 @@ public class Browsers {
         WebDriver driver = new FirefoxDriver(options);
         // WebDriver driver = new FirefoxDriver();
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://192.168.195.249/Index#/Home");
         Thread.sleep(2000);
         takeScreenShot(driver);
         // driver.quit();
     }
 
-
     //@Test
     public void testInternetExplorer1() throws Exception {
         //      System.setProperty("webdriver.ie.driver",
         //              "C:\\Program Files\\Internet Explorer\\IEDriverServer64.exe");
-        //        System.setProperty("webdriver.ie.driver",
-        //                "./lib/IEDriverServer32.exe");
-        WebDriverManager.iedriver().setup();
+        System.setProperty("webdriver.ie.driver", "./lib/IEDriverServer32.exe");
+        //
+        //WebDriverManager.iedriver().setup();
         WebDriver driver = new InternetExplorerDriver();
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get("http://www.google.com");
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("Cheese!");
-        element.submit();
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //driver.get("http://www.google.com");
+        //WebElement element = driver.findElement(By.name("q"));
+        //element.sendKeys("Cheese!");
+        // element.submit();
+        //
+        driver.get("http://taqc-opencart.epizy.com/");
+        WebElement element = driver.findElement(By.name("search"));
+        element.sendKeys("mac" + Keys.ENTER);
+        //
         Thread.sleep(2000);
         takeScreenShot(driver);
         // driver.quit();
     }
 
-    // @Test
+    //@Test
     public void testChrome1() throws Exception {
         //        System.setProperty("webdriver.chrome.driver",
         //                this.getClass().getResource("/chromedriver-windows-32bit.exe").getPath());
@@ -193,7 +199,8 @@ public class Browsers {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
@@ -206,7 +213,7 @@ public class Browsers {
         driver.quit();
     }
 
-    // @Test
+    //@Test
     // chrome command line arguments
     // https://peter.sh/experiments/chromium-command-line-switches/
     public void testChrome2() throws Exception {
@@ -225,7 +232,8 @@ public class Browsers {
         // options.addArguments("--disable-extensions");
         WebDriver driver = new ChromeDriver(options);
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
@@ -251,7 +259,8 @@ public class Browsers {
         // options.addArguments("--disable-machine-cert-request");
         WebDriver driver = new ChromeDriver(options);
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://192.168.195.249/Index#/Home");
         // driver.get("https://ita.edu.softserveinc.com/");
         // driver.get("http://www.google.com");
@@ -293,7 +302,8 @@ public class Browsers {
         // MacOS, etc. Do not working on Windows.
         WebDriver driver = new ChromeDriver(options);
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
@@ -318,15 +328,17 @@ public class Browsers {
         //
         // WebDriver driver = new ChromeDriver(options); // Comment
         //
-        options.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
-        // options.setBinary("C:\\Windows\\system32\\calc.exe");
+        //options.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
+        options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+        //options.setBinary("C:\\Windows\\system32\\calc.exe");
         // options.setBinary("C:\\Windows\\notepad.exe");
         // DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         // capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         // WebDriver driver = new ChromeDriver(capabilities);
         WebDriver driver = new ChromeDriver(options);
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
@@ -337,7 +349,7 @@ public class Browsers {
     }
 
     // Chrome Without UI
-    @Test
+    //@Test
     public void testChrome5() throws Exception {
         // Firefox https://developer.mozilla.org/en-US/Firefox/Headless_mode
         // Chrome https://peter.sh/experiments/chromium-command-line-switches/
@@ -351,7 +363,8 @@ public class Browsers {
         options.addArguments("--headless"); // Chrome Without UI
         WebDriver driver = new ChromeDriver(options);
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         System.out.println("\tdriver.get http://www.google.com DONE");
         System.out.println("\tCurrent title is: " + driver.getTitle());
@@ -381,8 +394,10 @@ public class Browsers {
         WebDriver driver = new HtmlUnitDriver(true);
         //((HtmlUnitDriver) driver).setJavascriptEnabled(true); // TODO Enable CSS
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
         //driver.get("https://en.wikipedia.org/wiki/Cheese");
         driver.get("http://www.google.com");
         //driver.get("https://www.yahoo.com/");
@@ -417,17 +432,19 @@ public class Browsers {
     // Download from phantomjsdriver-1.4.4.jar
     // https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver/1.4.4
     // Use Selenium 3.0.1, 3.x.x; Do not use Selenium 2.5.x
-    //@Test
+    @Test
     public void testPhantomjs() throws Exception {
         //        System.setProperty("phantomjs.binary.path", "./lib/phantomjs.exe");
-//        WebDriverManager.phantomjs().setup();
+        //WebDriverManager.phantomjs().setup();  // io.github.bonigarcia  use version 4.4.3
+        //
         //PhantomJsDriverManager.getInstance().setup();
         // WebDriver driver = new ChromeDriver();
         WebDriver driver = new PhantomJSDriver();
         // WebDriver driver = new HtmlUnitDriver(true);
         driver.manage().window().maximize();
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         System.out.println("\tdriver.get http://www.google.com DONE");
         System.out.println("\tCurrent title is: " + driver.getTitle());
@@ -501,7 +518,8 @@ public class Browsers {
         WebDriver driver = new RemoteWebDriver(service.getUrl(), capabilities);
         System.out.println("\t+++RemoteWebDriver Start, service.getUrl()=" + service.getUrl());
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!");
