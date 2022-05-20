@@ -31,4 +31,10 @@
 			<class name="com.softserve.homework08.TestPriceXPath"></class>
 		</classes>
 	</test>
+	<test name="HW8 Firefox Test" enabled="false">
+	<parameter name="browser" value="firefox"></parameter>
+		<classes>
+			<class name="com.softserve.homework08.TestPriceXPath"></class>
+		</classes>
+	</test>
 </suite>
