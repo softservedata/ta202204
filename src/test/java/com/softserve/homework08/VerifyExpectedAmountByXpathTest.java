@@ -45,7 +45,7 @@ public class VerifyExpectedAmountByXpathTest {
         final String iphoneName = "iPhone 3";
         final String macBookName = "MacBook";
 
-        shoppingCart.changeCurrency();
+        shoppingCart.changeCurrencyUSD();
         shoppingCart.addMacBookToCart();
         shoppingCart.addIPhoneToCart();
         delaySec();
