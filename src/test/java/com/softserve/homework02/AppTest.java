@@ -1,9 +1,8 @@
-package com.softserve.homework01;
+package com.softserve.homework02;
 
+import com.softserve.homework01.App;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class AppTest {
 

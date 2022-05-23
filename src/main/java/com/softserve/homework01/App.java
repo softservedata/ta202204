@@ -24,6 +24,19 @@ public class App {
         return count == 0;
     }
 
+    public int numberBrackets(String text){
+        int qauntity = 0;
+        boolean verifyBrackets = verifyBrackets(text);
+        if (!verifyBrackets){
+            throw new RuntimeException("Incorrect expression");
+        }
+        for (int c = 0; c < text.length(); c++){
+            if (text.charAt(c) == '(' || text.charAt(c) == ')')
+                qauntity++;
+        }
+        return qauntity;
+    }
+
     public static void main(String[] args) {
         App main = new App();
         System.out.println(main.verifyBrackets("()"));
@@ -32,6 +45,8 @@ public class App {
         System.out.println(main.verifyBrackets("(()"));
         System.out.println(main.verifyBrackets(")("));
         System.out.println(main.verifyBrackets("()) "));
+//        System.out.println(main.numberBrackets("(())()"));
+//        System.out.println(main.numberBrackets(")()"));
 
     }
 }
