@@ -8,7 +8,7 @@ import org.testng.annotations.*;
 import java.time.Duration;
 import java.util.List;
 
-public class CheckPriceInCart {
+public class CheckPriceInCartTest {
 
     private static final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private static final Long IMPLICITLY_WAIT_SECONDS = 10L;
