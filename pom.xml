@@ -272,7 +272,9 @@
                     	<!-- HW7, HW8 -->
                     	<!-- <suiteXmlFile>${testng.runners}testng-verifyprice.xml</suiteXmlFile> -->
                     	<!-- HW9 -->
-                    	<suiteXmlFile>${testng.runners}testng-filtercities.xml</suiteXmlFile>
+                    	<!-- <suiteXmlFile>${testng.runners}testng-filtercities.xml</suiteXmlFile> -->
+                    	<!-- HW10 -->
+                    	<suiteXmlFile>${testng.runners}testng-browsers.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
