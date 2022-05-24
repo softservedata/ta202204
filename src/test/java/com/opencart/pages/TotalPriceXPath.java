@@ -201,6 +201,7 @@ public class TotalPriceXPath {
 	}
 	
 	public String verifyTotalPrice() {
+		log.info(totalPrice.getText());
 		return totalPrice.getText();
 	}
 }

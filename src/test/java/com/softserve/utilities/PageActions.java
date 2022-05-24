@@ -2,6 +2,7 @@ package com.softserve.utilities;
 
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,17 +17,21 @@ public class PageActions {
 	WebDriver driver;
 	WebDriverWait wait;
 	Actions action;
+	JavascriptExecutor js;
 	
 	public PageActions(WebDriver driver){
 		this.driver = driver;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		action = new Actions(driver);
+		js = (JavascriptExecutor) driver;
 	}
 	
 	public void clickButton(WebElement element) {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
-			action.moveToElement(element).build().perform();
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+			//js.executeScript("window.scrollBy(0, 200);");
+			//action.moveToElement(element).build().perform();
 			element.click();
 		}
 		catch (Exception e) {
@@ -40,7 +45,8 @@ public class PageActions {
 	public void enterDataIntoTextbox(WebElement element, String text) {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(element));
-			action.moveToElement(element).build().perform();
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+			//action.moveToElement(element).build().perform();
 			element.clear();
 			element.sendKeys(text + Keys.TAB + Keys.ENTER);
 		}
@@ -55,7 +61,8 @@ public class PageActions {
 	public void selectVisibleTextInDropdown(WebElement element, String text) {
 		try {
 			wait.until(ExpectedConditions.textToBePresentInElement(element, text));
-			action.moveToElement(element).build().perform();
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+			//action.moveToElement(element).build().perform();
 			Select s = new Select(element);
 			s.selectByVisibleText(text);
 		}

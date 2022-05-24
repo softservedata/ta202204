@@ -1,4 +1,4 @@
-package com.softserve.homework08;
+package com.softserve.homework09;
 
 import java.time.Duration;
 
@@ -17,17 +17,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.opencart.pages.TotalPriceXPath;
+import com.opencart.pages.GridFilteringPage;
 import com.softserve.utilities.CaptureScreenshot;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TestPriceXPath {
+public class TestFilterCity {
 	private WebDriver driver;
-	private TotalPriceXPath verifyProducts;
-	private double expected, actual;
-	private final String baseURL = "http://taqc-opencart.epizy.com/";
-	private static final Logger log = LogManager.getLogger(TotalPriceXPath.class.getName());
+	private GridFilteringPage verifyCities;
+	private final String baseURL = "https://devexpress.github.io/devextreme-reactive/react/grid/docs/guides/filtering/";
+	private static final Logger log = LogManager.getLogger(GridFilteringPage.class.getName());
 	private final int implicitlyWaitSeconds = 0;
 	
 //	@BeforeSuite(alwaysRun = true)
@@ -35,11 +34,11 @@ public class TestPriceXPath {
 //		WebDriverManager.chromedriver().setup();
 //	}
 
-	@BeforeClass(alwaysRun = true)
+	@BeforeClass
 	@Parameters({"browser"})
 	public void beforeClass(String browser) {
 		//driver = new ChromeDriver();
-		log.info("Homework 08 Test");
+		log.info("Homework 09 Test");
 		if(browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
@@ -54,43 +53,29 @@ public class TestPriceXPath {
 			driver = new FirefoxDriver();
 			log.info("New driver instantiated");
 		}
-		verifyProducts = new TotalPriceXPath(driver);
+		verifyCities = new GridFilteringPage(driver);
 
 		driver.manage().window().maximize();
 		log.info("Window maximized");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
 		log.info("Implicit wait is set to 0");
-		expected = 123.20d * 2 + 602.00d * 3;
 	}
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeMethod
 	public void beforeMethod() {
 		driver.get(baseURL);
 		log.info("Web application is launched");
 	}
 
-	@Test(groups= {"xpath"})
+	@Test
 	public void testTotalPriceXPath() throws InterruptedException {
-		verifyProducts.clickOnCurrencyTab();
-		verifyProducts.selectCurrency();
-		verifyProducts.searchProduct("MacBook");
-		verifyProducts.addMacBookToCart();
-		verifyProducts.searchProduct("iPhone");
-		verifyProducts.addIPhoneToCart();
-		verifyProducts.clickOnCartButton();
-		Assert.assertTrue(verifyProducts.verifyAddedItems());
-		verifyProducts.clickOnShoppingCartButton();
-		verifyProducts.setIPhoneQty(2);
-		Thread.sleep(3000);
-		verifyProducts.setMacBookQty(3);
-		Thread.sleep(3000);
-		actual = Double.parseDouble(verifyProducts.verifyTotalPrice().replace("$", "").replace(",", ""));
-		Assert.assertEquals(actual, expected);
-		log.info("XPath: Total price is correct");
-		//System.out.println("XPath: Total price is correct");
+		verifyCities.acceptCookies();
+		verifyCities.searchCity("L");
+		Assert.assertTrue(verifyCities.verifyFilteredCities());
+		log.info("All cities are in the list");
 	}
 
-	@AfterMethod(alwaysRun = true)
+	@AfterMethod
 	public void afterMethod(ITestResult result) {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String testName = result.getName();
@@ -102,7 +87,7 @@ public class TestPriceXPath {
 		}
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterClass
 	public void afterClass() {
 		if (driver != null) {
 			driver.quit();
