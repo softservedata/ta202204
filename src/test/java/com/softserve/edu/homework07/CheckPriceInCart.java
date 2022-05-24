@@ -26,7 +26,6 @@ public class CheckPriceInCart {
         try {
             Thread.sleep(seconds * ONE_SECOND_DELAY); // For Presentation ONLY
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
