@@ -1,13 +1,10 @@
 package com.softserve.edu.homework07;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.hc.core5.util.Asserts;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.lang.reflect.Array;
 import java.time.Duration;
 import java.util.List;
 
@@ -129,7 +126,6 @@ public class CheckPriceInCart {
     public void checkTotalPrice(String name, int quantity) {
         String priceInString = "";
         double priceForUnit = 0;
-        boolean result = false;
 
         WebElement item = null;
         item = checkProductsInCart(name);
