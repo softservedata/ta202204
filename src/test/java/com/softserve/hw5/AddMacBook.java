@@ -37,7 +37,9 @@ public class AddMacBook {
 
         driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[1]/div/div[3]/button[1]")).click();
         driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[4]/a/i")).click();
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/table/tbody/tr/td[2]/a")).isDisplayed());
+        WebElement laptop = driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/table/tbody/tr/td[2]/a"));
+        Assert.assertTrue(laptop.getText().contains("MacBook"));
+        System.out.println("Item added to the basket - " + laptop.getText());
         driver.quit();
     }
 }
