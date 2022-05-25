@@ -27,6 +27,7 @@ public class LogIn {
             e.printStackTrace();
         }
     }
+
     /*- @BeforeAll
     public void beforeClass() {
         WebDriverManager.chromedriver().setup();
@@ -66,6 +67,4 @@ public class LogIn {
         System.out.println("If I'm Login, so I can " + logout.getText());
         driver.quit();
     }
-
-
 }
