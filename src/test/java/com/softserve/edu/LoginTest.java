@@ -55,7 +55,9 @@ public class LoginTest {
     public void afterClass() {
         presentationSleep(); // For Presentation ONLY
         // driver.close();
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @BeforeMethod
