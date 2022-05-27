@@ -1,7 +1,6 @@
-package com.softserve.hw7;
+package com.softserve.hw8;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,12 +10,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AddMacBookAndIphone3 {
+public class AddMacBookandIphone32 {
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final long IMPLICITLY_WAIT_SECONDS = 10L;
     private WebDriver driver;
     private WebDriverWait webDriverWait;
-    //private Actions actions;
 
     @BeforeAll
     public static void beforeAll() {
@@ -27,19 +25,18 @@ public class AddMacBookAndIphone3 {
     public void beforeEach() {
         driver = new ChromeDriver();
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
-        //actions = new Actions(driver);
         driver.manage().window().maximize();
     }
 
     @Test
-    public void testAddMacBookAndIphone3() throws InterruptedException{
+    public void testAddMacBookAndIphone32() throws InterruptedException{
         driver.navigate().to(BASE_URL);
 
-        driver.findElement(By.cssSelector("#form-currency")).click();
-        driver.findElement(By.cssSelector("button[name='USD']")).click();
+        driver.findElement(By.xpath("//form[@id=\"form-currency\"]")).click();
+        driver.findElement(By.xpath("//button[@name=\"USD\"]")).click();
 
-        driver.findElement(By.cssSelector("div#content button[onclick*='43']")).click();
-        driver.findElement(By.cssSelector("div#content button[onclick*='40']")).click();
+        driver.findElement(By.xpath("//div[@class='product-thumb transition']//a[text()='MacBook']/../../..//i[@class='fa fa-shopping-cart']")).click();
+        driver.findElement(By.xpath("//div[@class='product-thumb transition']//a[text()='iPhone 3']/../../..//i[@class='fa fa-shopping-cart']")).click();
 
         WebElement cartButton = driver.findElement(By.cssSelector("button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle"));
         Thread.sleep(1000);
