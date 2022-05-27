@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -32,6 +33,7 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ScrolleTest {
+    private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
     private WebDriver driver;
     int count = 0;
@@ -60,11 +62,13 @@ public class ScrolleTest {
     //    public void beforeClass() {
     //        driver = new ChromeDriver();
     //        driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
+    // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
     //        driver.manage().window().maximize();
     //    }
 
     @AfterMethod
     public void afterMethod(ITestResult result) throws Exception {
+        Thread.sleep(4000); // For Presentation Only
         if (!result.isSuccess()) {
             String testName = result.getName();
             System.out.println("***TC error, name = " + testName + " ERROR");
@@ -84,18 +88,21 @@ public class ScrolleTest {
         driver = new ChromeDriver();
         Thread.sleep(1000); // For Presentation Only
         //
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         driver.manage().window().maximize();
         //
         driver.get("https://selenium.dev/downloads/");
-        Thread.sleep(2000); // For Presentation Only
+        Thread.sleep(4000); // For Presentation Only
         //
         WebElement linkProject = driver.findElement(By.cssSelector("a[href='https://www.perfecto.io/']"));
         //
-        /* // Scrolling by Action class
-         * Actions action = new Actions(driver);
-         * action.moveToElement(linkProject).perform();
-         * Thread.sleep(2000); // For Presentation Only */
+        // Scrolling by Action class
+        /*
+        Actions action = new Actions(driver);
+        action.moveToElement(linkProject).perform();
+        Thread.sleep(2000); // For Presentation Only
+        */
         // /*-
         // Scrolling by JavaScript injection
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", linkProject);
@@ -110,18 +117,20 @@ public class ScrolleTest {
         System.out.println("browserstack.isEnabled() = " + browserstack.isEnabled());
         System.out.println("browserstack.isSelected() = " + browserstack.isSelected());
         //
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        /*-
-        //        WebElement browserstack2 = (new WebDriverWait(driver, 10))
-        //            .until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href*='www.browserstack.com']")));
-        WebElement browserstack2 = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href*='www.browserstack.com']")));
-         browserstack2.click();
-        */
+        //driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        // /*-
+        WebElement browserstack2 = (new WebDriverWait(driver, Duration.ofSeconds(10)))
+                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href*='www.browserstack.com']")));
+//        WebElement browserstack2 = (new WebDriverWait(driver, Duration.ofSeconds(10)))
+//                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href*='www.browserstack.com']")));
+        //browserstack2.click(); // Error
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", browserstack2);
+        // */
         //
         //int count = 0;
         /*-------
-        (new WebDriverWait(driver, 10)).until(new 
+        (new WebDriverWait(driver, Duration.ofSeconds(10))).until(new
                 ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
                         count++;
@@ -140,9 +149,9 @@ public class ScrolleTest {
                         }
                         return true;
             }    }    );
-         */
+        */
         /*-
-        WebElement browserstack2 = (new WebDriverWait(driver, 10))
+        WebElement browserstack2 = (new WebDriverWait(driver, Duration.ofSeconds(10)))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href*='www.browserstack.com']")));
         try {
             browserstack2.click(); // Error
