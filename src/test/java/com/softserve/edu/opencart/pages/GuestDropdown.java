@@ -21,4 +21,38 @@ public class GuestDropdown {
         login = driver.findElement(By.xpath("//div[@id='top-links']//a[contains(@href,'account/login')]"));
     }
 
+    // Page Object
+
+    // register
+    public WebElement getRegister() {
+        // return driver.findElement(By.xpath("//div[@id='top-links']//a[contains(@href,'account/register')]"));
+        return register;
+    }
+
+    public String getRegisterText() {
+        return getRegister().getText();
+    }
+
+    public void clickRegister() {
+        getRegister().click();
+    }
+
+    // login
+    public WebElement getLogin() {
+        return login;
+    }
+
+    public String getLoginText() {
+        return getLogin().getText();
+    }
+
+    public void clickLogin() {
+        getLogin().click();
+    }
+
+    // Functional
+
+    // Business Logic
+
 }
+
