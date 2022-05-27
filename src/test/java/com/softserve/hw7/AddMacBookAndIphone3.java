@@ -32,7 +32,7 @@ public class AddMacBookAndIphone3 {
     }
 
     @Test
-    public void testLogIn() {
+    public void testLogIn() throws InterruptedException{
         driver.navigate().to(BASE_URL);
 
         driver.findElement(By.cssSelector("#form-currency")).click();
@@ -42,14 +42,16 @@ public class AddMacBookAndIphone3 {
         driver.findElement(By.cssSelector("div#content button[onclick*='40']")).click();
 
         WebElement cartButton = driver.findElement(By.cssSelector("button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle"));
-        //Assertions.assertTrue(cartButton.getText().contains(" 2 item(s) - $725.20"));
+        Thread.sleep(1000);
+        Assertions.assertEquals("2 item(s) - $725.20", cartButton.getText());
         System.out.println("What inside my basket - " + cartButton.getText());
 
         driver.findElement(By.cssSelector("#top-links a[href*='checkout/cart']")).click();
 
-        driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) input[type='text']")).click();
-        driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) input[type='text']")).clear();
-        driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) input[type='text']")).sendKeys("2");
+        WebElement phoneQt = driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) input[type='text']"));
+        phoneQt.click();
+        phoneQt.clear();
+        phoneQt.sendKeys("2");
 
         driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) button[type='submit']")).click();
 
