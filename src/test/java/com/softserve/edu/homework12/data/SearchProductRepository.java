@@ -1,4 +1,6 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.homework12.data;
+
+import com.softserve.edu.homework12.data.Currencies;
 
 public final class SearchProductRepository {
 
@@ -11,13 +13,13 @@ public final class SearchProductRepository {
     
     public static SearchProduct getMacEuro() {
         return new SearchProduct("mac", "Desktops", true,
-                Currencies.EURO,
+                com.softserve.edu.homework12.data.Currencies.EURO,
                 ProductRepository.getMacBook());
     }
     
     public static SearchProduct getMacPoundSterling() {
         return new SearchProduct("mac", "Desktops", true,
-                Currencies.POUND_STERLING,
+                com.softserve.edu.homework12.data.Currencies.POUND_STERLING,
                 ProductRepository.getMacBook());
     }
     

@@ -1,15 +1,20 @@
-package com.softserve.edu.opencart.tests;
-
-import com.softserve.edu.opencart.pages.HomePage;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+package com.softserve.edu.homework12.test;
 
 import java.time.Duration;
 
-public abstract class TestRunnerFirst {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
+import com.softserve.edu.homework12.pages.HomePage;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public abstract class TestRunner {
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;

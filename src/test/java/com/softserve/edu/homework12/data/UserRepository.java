@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.homework12.data;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -93,15 +93,12 @@ public final class UserRepository {
     public List<IUser> fromCsv(String filename) {
         return User.getByLists(new CSVReader(filename).getAllCells());
     }
-
     public List<IUser> fromCsv() {
         return fromCsv("users.csv");
     }
-
     public List<IUser> fromExcel(String filename) {
         return User.getByLists(new ExcelReader(filename).getAllCells());
     }
-
     public List<IUser> fromExcel() {
         return fromExcel("users.xlsx");
     }

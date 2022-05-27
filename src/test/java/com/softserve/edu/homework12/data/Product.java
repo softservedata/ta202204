@@ -1,4 +1,6 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.homework12.data;
+
+import com.softserve.edu.homework12.data.Currencies;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,13 +13,13 @@ public class Product {
     private String priceDollarExTax;
     // TODO
     // private Map<Currencies, Decimal> prices;
-    private Map<Currencies, String> prices;
+    private Map<com.softserve.edu.homework12.data.Currencies, String> prices;
 
     public Product(String name, String description, String priceDollarExTax) {
         this.name = name;
         this.description = description;
         this.priceDollarExTax = priceDollarExTax;
-        prices = new HashMap<Currencies, String>();
+        prices = new HashMap<com.softserve.edu.homework12.data.Currencies, String>();
         //prices.put(Currencies.US_DOLLAR, priceDollarExTax);
     }
 
@@ -35,7 +37,7 @@ public class Product {
         this.priceDollarExTax = priceDollarExTax;
     }
 
-    public Product addPrice(Currencies currency, String price) {
+    public Product addPrice(com.softserve.edu.homework12.data.Currencies currency, String price) {
         prices.put(currency, price);
         return this;
     }

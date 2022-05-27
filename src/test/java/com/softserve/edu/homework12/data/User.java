@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.homework12.data;
 
 interface IFirstname {
     ILastname setFirstname(String firstname);

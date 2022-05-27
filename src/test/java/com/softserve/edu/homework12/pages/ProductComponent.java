@@ -1,7 +1,6 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.homework12.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProductComponent {

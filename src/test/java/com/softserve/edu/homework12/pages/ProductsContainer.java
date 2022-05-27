@@ -1,6 +1,6 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.homework12.pages;
 
-import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.homework12.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

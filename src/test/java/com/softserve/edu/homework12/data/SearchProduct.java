@@ -1,4 +1,6 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.homework12.data;
+
+import com.softserve.edu.homework12.data.Currencies;
 
 public class SearchProduct {
 
@@ -7,12 +9,12 @@ public class SearchProduct {
     private boolean searchInSubcategories;
     //private boolean searchInDescriptions;
     //
-    private Currencies currency;
+    private com.softserve.edu.homework12.data.Currencies currency;
     private Product product;
 
     // TODO add Builder
     public SearchProduct(String searchText, String category,
-            boolean searchInSubcategories, Currencies currency,
+            boolean searchInSubcategories, com.softserve.edu.homework12.data.Currencies currency,
             Product product) {
         this.searchText = searchText;
         this.category = category;
@@ -35,7 +37,7 @@ public class SearchProduct {
         this.searchInSubcategories = searchInSubcategories;
     }
 
-    public void setCurrency(Currencies currency) {
+    public void setCurrency(com.softserve.edu.homework12.data.Currencies currency) {
         this.currency = currency;
     }
 
