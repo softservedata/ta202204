@@ -41,7 +41,7 @@ public class AddMacBookandIphone32 {
         WebElement cartButton = driver.findElement(By.xpath("//div[@id='cart']/button"));
         Thread.sleep(1000);
         Assertions.assertEquals("2 item(s) - $725.20", cartButton.getText());
-        System.out.println("What was inside my basket when after added MacBook and iPhone 3 - " + cartButton.getText());
+        System.out.println("What was inside my basket when I added MacBook and iPhone 3 - " + cartButton.getText());
 
         driver.findElement(By.xpath("//a[@title='Shopping Cart']")).click();
 
