@@ -44,7 +44,7 @@ public class AddMacBookAndIphone3 {
         WebElement cartButton = driver.findElement(By.cssSelector("button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle"));
         Thread.sleep(1000);
         Assertions.assertEquals("2 item(s) - $725.20", cartButton.getText());
-        System.out.println("What inside my basket - " + cartButton.getText());
+        System.out.println("What was inside my basket when after added MacBook and iPhone 3 - " + cartButton.getText());
 
         driver.findElement(By.cssSelector("#top-links a[href*='checkout/cart']")).click();
 
@@ -64,7 +64,7 @@ public class AddMacBookAndIphone3 {
 
         WebElement total = driver.findElement(By.cssSelector("div.col-sm-4.col-sm-offset-8>table.table.table-bordered tr:last-child>td:last-child"));
         Assertions.assertTrue(total.getText().contains("$2,052.40"));
-        System.out.println("How much do you want to charge from me - " + total.getText());
+        System.out.println("How much do you want to charge me after I change amounts of items - " + total.getText());
     }
 
     @AfterEach

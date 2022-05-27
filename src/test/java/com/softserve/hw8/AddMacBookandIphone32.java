@@ -38,28 +38,28 @@ public class AddMacBookandIphone32 {
         driver.findElement(By.xpath("//div[@class='product-thumb transition']//a[text()='MacBook']/../../..//i[@class='fa fa-shopping-cart']")).click();
         driver.findElement(By.xpath("//div[@class='product-thumb transition']//a[text()='iPhone 3']/../../..//i[@class='fa fa-shopping-cart']")).click();
 
-        WebElement cartButton = driver.findElement(By.cssSelector("button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle"));
+        WebElement cartButton = driver.findElement(By.xpath("//div[@id='cart']/button"));
         Thread.sleep(1000);
         Assertions.assertEquals("2 item(s) - $725.20", cartButton.getText());
-        System.out.println("What inside my basket - " + cartButton.getText());
+        System.out.println("What was inside my basket when after added MacBook and iPhone 3 - " + cartButton.getText());
 
-        driver.findElement(By.cssSelector("#top-links a[href*='checkout/cart']")).click();
+        driver.findElement(By.xpath("//a[@title='Shopping Cart']")).click();
 
-        WebElement phoneQt = driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) input[type='text']"));
+        WebElement phoneQt = driver.findElement(By.xpath("//div[@class=\"table-responsive\"]//tr//td[@class=\"text-left\"]//a[text()='iPhone 3']/../..//input[@type=\"text\"]"));
         phoneQt.click();
         phoneQt.clear();
         phoneQt.sendKeys("2");
 
-        driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) button[type='submit']")).click();
+        driver.findElement(By.xpath("//tr[contains(., 'iPhone 3')]//button[@data-original-title='Update']")).click();
 
-        WebElement macBookQt = driver.findElement(By.cssSelector("table tr:nth-child(2) td:nth-child(4) input[type='text']"));
+        WebElement macBookQt = driver.findElement(By.xpath("//div[@class=\"table-responsive\"]//tr//td[@class=\"text-left\"]//a[text()='MacBook']/../..//input[@type=\"text\"]"));
         macBookQt.click();
         macBookQt.clear();
         macBookQt.sendKeys("3");
 
-        driver.findElement(By.cssSelector("table tr:nth-child(2) td:nth-child(4) button[type='submit']")).click();
+        driver.findElement(By.xpath("//tr[contains(., 'MacBook')]//button[@data-original-title='Update']")).click();
 
-        WebElement total = driver.findElement(By.cssSelector("div.col-sm-4.col-sm-offset-8>table.table.table-bordered tr:last-child>td:last-child"));
+        WebElement total = driver.findElement(By.xpath("//table[@class='table table-bordered']//strong[starts-with(text(),'Total:')]/../following-sibling::td"));
         Assertions.assertTrue(total.getText().contains("$2,052.40"));
         System.out.println("How much do you want to charge from me - " + total.getText());
     }
