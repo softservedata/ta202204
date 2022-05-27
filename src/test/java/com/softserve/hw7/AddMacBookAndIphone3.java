@@ -55,9 +55,10 @@ public class AddMacBookAndIphone3 {
 
         driver.findElement(By.cssSelector("table tr:nth-child(1) td:nth-child(4) button[type='submit']")).click();
 
-        driver.findElement(By.cssSelector("table tr:nth-child(2) td:nth-child(4) input[type='text']")).click();
-        driver.findElement(By.cssSelector("table tr:nth-child(2) td:nth-child(4) input[type='text']")).clear();
-        driver.findElement(By.cssSelector("table tr:nth-child(2) td:nth-child(4) input[type='text']")).sendKeys("3");
+        WebElement macBookQt = driver.findElement(By.cssSelector("table tr:nth-child(2) td:nth-child(4) input[type='text']"));
+        macBookQt.click();
+        macBookQt.clear();
+        macBookQt.sendKeys("3");
 
         driver.findElement(By.cssSelector("table tr:nth-child(2) td:nth-child(4) button[type='submit']")).click();
 
