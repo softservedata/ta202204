@@ -44,7 +44,7 @@ public class AddMacBookAndIphone3 {
         WebElement cartButton = driver.findElement(By.cssSelector("button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle"));
         Thread.sleep(1000);
         Assertions.assertEquals("2 item(s) - $725.20", cartButton.getText());
-        System.out.println("What was inside my basket when after added MacBook and iPhone 3 - " + cartButton.getText());
+        System.out.println("What was inside my basket when I added MacBook and iPhone 3 - " + cartButton.getText());
 
         driver.findElement(By.cssSelector("#top-links a[href*='checkout/cart']")).click();
 

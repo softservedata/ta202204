@@ -61,7 +61,7 @@ public class AddMacBookandIphone32 {
 
         WebElement total = driver.findElement(By.xpath("//table[@class='table table-bordered']//strong[starts-with(text(),'Total:')]/../following-sibling::td"));
         Assertions.assertTrue(total.getText().contains("$2,052.40"));
-        System.out.println("How much do you want to charge from me - " + total.getText());
+        System.out.println("How much do you want to charge me after I change amounts of items - " + total.getText());
     }
 
     @AfterEach
