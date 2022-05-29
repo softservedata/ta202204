@@ -97,6 +97,7 @@ workspace.xml
 *.bin
 *.exe
 *.xpi
+*.au3
 
 # Ignore log
 # *.log
