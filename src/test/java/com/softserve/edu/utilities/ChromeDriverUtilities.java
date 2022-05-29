@@ -28,4 +28,8 @@ public class ChromeDriverUtilities {
     public WebElement findById(String condition) {
         return this.driver.findElement(By.id(condition));
     }
+
+    public void switchToIframe(WebElement iframe) {
+        this.driver.switchTo().frame(iframe);
+    }
 }
