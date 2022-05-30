@@ -8,8 +8,8 @@ package com.softserve.edu.homework09;
     Запушати код на github у свою вітку.
 */
 
-import com.softserve.edu.devexpress.UncontrolledModeTableFlow;
-import com.softserve.edu.utilities.ChromeDriverUtilities;
+import com.softserve.edu.browsersDrivers.ChromeDriverUtilitiesImp;
+import com.softserve.edu.sites.devexpress.UncontrolledModeTableFlow;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +25,7 @@ import java.util.List;
 public class TableFilterTests {
     private final String baseUrl = "https://devexpress.github.io/devextreme-reactive/react/grid/docs/guides/filtering/";
     private WebDriver driver;
-    private ChromeDriverUtilities driverUtilities;
+    private ChromeDriverUtilitiesImp driverUtilities;
     private Long implicitlyWaitSeconds = 10L;
     private UncontrolledModeTableFlow uncontrolledModeTableFlow;
 
@@ -37,7 +37,7 @@ public class TableFilterTests {
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(this.implicitlyWaitSeconds));
         this.driver.manage().window().maximize();
         this.driver.get(this.baseUrl);
-        this.driverUtilities = new ChromeDriverUtilities(this.driver);
+        this.driverUtilities = new ChromeDriverUtilitiesImp(this.driver);
 
         this.uncontrolledModeTableFlow = new UncontrolledModeTableFlow(this.driverUtilities);
     }

@@ -9,7 +9,7 @@ package com.softserve.edu.homework06;
     Запушати код на github у свою вітку.
 */
 
-import com.softserve.edu.utilities.ChromeDriverUtilities;
+import com.softserve.edu.browsersDrivers.ChromeDriverUtilitiesImp;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 public class LoginTest {
     private final String baseUrl = "http://taqc-opencart.epizy.com/";
     private WebDriver driver;
-    private ChromeDriverUtilities driverUtilities;
+    private ChromeDriverUtilitiesImp driverUtilities;
 
     public LoginTest() {
         WebDriverManager.chromedriver().setup();
@@ -35,7 +35,7 @@ public class LoginTest {
     @BeforeTest
     public void beforeTest() {
         this.driver.get(this.baseUrl);
-        this.driverUtilities = new ChromeDriverUtilities(this.driver);
+        this.driverUtilities = new ChromeDriverUtilitiesImp(this.driver);
     }
 
     @AfterClass(alwaysRun = true)

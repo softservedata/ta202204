@@ -11,7 +11,7 @@ package com.softserve.edu.homework07;
     Запушати код на github у свою вітку.
 */
 
-import com.softserve.edu.utilities.ChromeDriverUtilities;
+import com.softserve.edu.browsersDrivers.ChromeDriverUtilitiesImp;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 public class PriceTest {
     private final String baseUrl = "http://taqc-opencart.epizy.com/";
     private WebDriver driver;
-    private ChromeDriverUtilities driverUtilities;
+    private ChromeDriverUtilitiesImp driverUtilities;
 
     @BeforeTest
     public void beforeClass() {
@@ -33,7 +33,7 @@ public class PriceTest {
         this.driver = new ChromeDriver();
         this.driver.manage().window().maximize();
         this.driver.get(this.baseUrl);
-        this.driverUtilities = new ChromeDriverUtilities(this.driver);
+        this.driverUtilities = new ChromeDriverUtilitiesImp(this.driver);
     }
 
     @AfterTest(alwaysRun = true)

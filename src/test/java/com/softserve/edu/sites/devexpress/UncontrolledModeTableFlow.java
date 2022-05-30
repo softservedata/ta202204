@@ -1,6 +1,6 @@
-package com.softserve.edu.devexpress;
+package com.softserve.edu.sites.devexpress;
 
-import com.softserve.edu.utilities.ChromeDriverUtilities;
+import com.softserve.edu.browsersDrivers.ChromeDriverUtilitiesImp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UncontrolledModeTableFlow {
-    public ChromeDriverUtilities driverUtilities;
+    public ChromeDriverUtilitiesImp driverUtilities;
 
-    public UncontrolledModeTableFlow(ChromeDriverUtilities driver) {
+    public UncontrolledModeTableFlow(ChromeDriverUtilitiesImp driver) {
         this.driverUtilities = driver;
     }
 

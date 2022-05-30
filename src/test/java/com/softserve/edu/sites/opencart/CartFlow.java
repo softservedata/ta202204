@@ -1,6 +1,6 @@
-package com.softserve.edu.opencart;
+package com.softserve.edu.sites.opencart;
 
-import com.softserve.edu.utilities.ChromeDriverUtilities;
+import com.softserve.edu.browsersDrivers.ChromeDriverUtilitiesImp;
 import com.softserve.edu.utilities.ConvertorUtilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,9 +8,9 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class CartFlow {
-    public ChromeDriverUtilities driverUtilities;
+    public ChromeDriverUtilitiesImp driverUtilities;
 
-    public CartFlow(ChromeDriverUtilities driver) {
+    public CartFlow(ChromeDriverUtilitiesImp driver) {
         this.driverUtilities = driver;
     }
 

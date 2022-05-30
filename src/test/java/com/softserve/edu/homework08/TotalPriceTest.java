@@ -12,9 +12,9 @@ package com.softserve.edu.homework08;
     Запушати код на github у свою вітку.
  */
 
-import com.softserve.edu.opencart.CartFlow;
-import com.softserve.edu.opencart.SettingsFlow;
-import com.softserve.edu.utilities.ChromeDriverUtilities;
+import com.softserve.edu.browsersDrivers.ChromeDriverUtilitiesImp;
+import com.softserve.edu.sites.opencart.CartFlow;
+import com.softserve.edu.sites.opencart.SettingsFlow;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
 public class TotalPriceTest {
     private final String baseUrl = "http://taqc-opencart.epizy.com/";
     private WebDriver driver;
-    private ChromeDriverUtilities driverUtilities;
+    private ChromeDriverUtilitiesImp driverUtilities;
     private SettingsFlow settingsFlow;
     private CartFlow cartFlow;
 
@@ -37,7 +37,7 @@ public class TotalPriceTest {
         this.driver = new ChromeDriver();
         this.driver.manage().window().maximize();
         this.driver.get(this.baseUrl);
-        this.driverUtilities = new ChromeDriverUtilities(this.driver);
+        this.driverUtilities = new ChromeDriverUtilitiesImp(this.driver);
         this.settingsFlow = new SettingsFlow(this.driverUtilities);
         this.cartFlow = new CartFlow(this.driverUtilities);
     }
