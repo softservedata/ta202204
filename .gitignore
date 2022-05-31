@@ -95,7 +95,7 @@ workspace.xml
 
 # Ignore binary
 *.bin
-*.exe
+#*.exe
 *.xpi
 
 # Ignore log
