@@ -1,36 +1,60 @@
-package com.softserve.hw6;
+package com.softserve.hw10;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.stream.Stream;
 
-public class LogIn {
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
+public class LogInSecond {
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final long IMPLICITLY_WAIT_SECONDS = 10L;
     private WebDriver driver;
     private WebDriverWait webDriverWait;
 
     @BeforeAll
-    public static void beforeAll() {
-        WebDriverManager.chromedriver().setup();
+    public static void startTest() {
+        System.out.println("Start test");
     }
 
-    @BeforeEach
-    public void beforeEach() {
-        driver = new ChromeDriver();
+    public void setup(String browser) {
+        System.out.println("Setting up the drivers and browsers");
+        if (browser.equals("Chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        } else if (browser.equals("Firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+        } else if (browser.equals("Edge")) {
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
+        }
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         driver.manage().window().maximize();
     }
 
-    @Test
-    public void testLogIn() {
+    /*@BeforeEach
+       public void beforeEach() {
+           webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
+           driver.manage().window().maximize();
+       }
+     */
+    @ParameterizedTest
+    @MethodSource("browser")
+    public void testLogInSecond(String browser) {
+        setup(browser);
         driver.navigate().to(BASE_URL);
         driver.findElement(By.cssSelector("a[title='My Account']")).click();
         driver.findElement(By.cssSelector("div#top-links a[href*='route=account/login']")).click();
@@ -44,8 +68,17 @@ public class LogIn {
         System.out.println("If I'm Login, so I can " + logout.getText());
     }
 
+    static Stream<Arguments> browser() {
+        return Stream.of(
+                arguments("Chrome"),
+                arguments("Firefox"),
+                arguments("Edge")
+        );
+    }
+
     @AfterEach
     public void tearDown() {
+        driver.manage().deleteAllCookies();
         if (driver != null) {
             driver.quit();
         }
