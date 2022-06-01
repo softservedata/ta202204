@@ -31,15 +31,19 @@ public class LogInSecond {
 
     public void setup(String browser) {
         System.out.println("Setting up the drivers and browsers");
-        if (browser.equals("Chrome")) {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-        } else if (browser.equals("Firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-        } else if (browser.equals("Edge")) {
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
+        switch (browser) {
+            case "Chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case "Firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "Edge":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
         }
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         driver.manage().window().maximize();
