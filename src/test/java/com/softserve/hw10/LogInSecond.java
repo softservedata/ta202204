@@ -30,7 +30,7 @@ public class LogInSecond {
     }
 
     public void setup(String browser) {
-        System.out.println("Setting up the drivers and browsers");
+        System.out.println("Setting up the browsers");
         switch (browser) {
             case "Chrome":
                 WebDriverManager.chromedriver().setup();
@@ -45,21 +45,16 @@ public class LogInSecond {
                 driver = new EdgeDriver();
                 break;
         }
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
-        driver.manage().window().maximize();
     }
 
-    /*@BeforeEach
-       public void beforeEach() {
-           webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
-           driver.manage().window().maximize();
-       }
-     */
     @ParameterizedTest
     @MethodSource("browser")
     public void testLogInSecond(String browser) {
         setup(browser);
         driver.navigate().to(BASE_URL);
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
+        driver.manage().window().maximize();
+
         driver.findElement(By.cssSelector("a[title='My Account']")).click();
         driver.findElement(By.cssSelector("div#top-links a[href*='route=account/login']")).click();
         driver.findElement(By.id("input-email")).sendKeys("hahaha@gmail.com");
