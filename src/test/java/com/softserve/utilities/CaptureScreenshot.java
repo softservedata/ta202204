@@ -10,7 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class CaptureScreenshot {
-	
+
 	public static void takeScreenshot(WebDriver driver, String methodName) {
 		try {
 			String directory = "./screenshots/";

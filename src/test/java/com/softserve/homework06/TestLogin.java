@@ -10,15 +10,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.Test;
-
-import com.opencart.pages.LoginPage;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+import com.opencart.pageobject.LoginPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -43,7 +42,7 @@ public class TestLogin {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@BeforeSuite
 	public void beforeSuite() {
         WebDriverManager.chromedriver().setup();
@@ -57,7 +56,7 @@ public class TestLogin {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
 	}
-	
+
 	@BeforeMethod
     public void beforeMethod() {
         driver.get(baseURL);
@@ -79,7 +78,7 @@ public class TestLogin {
 		presentationSleep();
 		System.out.println("Login successful");
 	}
-	
+
 	@AfterMethod
     public void afterMethod(ITestResult result) {
         presentationSleep();
@@ -104,7 +103,7 @@ public class TestLogin {
         }
         presentationSleep();
     }
-	
+
 	@AfterClass
 	public void afterClass() {
 		presentationSleep();

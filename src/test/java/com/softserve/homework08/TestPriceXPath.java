@@ -17,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.opencart.pages.TotalPriceXPath;
+import com.opencart.pageobject.TotalPriceXPath;
 import com.softserve.utilities.CaptureScreenshot;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -29,7 +29,7 @@ public class TestPriceXPath {
 	private final String baseURL = "http://taqc-opencart.epizy.com/";
 	private static final Logger log = LogManager.getLogger(TotalPriceXPath.class.getName());
 	private final int implicitlyWaitSeconds = 0;
-	
+
 //	@BeforeSuite(alwaysRun = true)
 //	public void beforeSuite() {
 //		WebDriverManager.chromedriver().setup();

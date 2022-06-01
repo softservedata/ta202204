@@ -12,15 +12,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.Test;
-
-import com.opencart.pages.FormFillOut;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+import com.opencart.pageobject.FormFillOut;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -54,7 +53,7 @@ public class TestFillForm {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
 		log.info("Implicit wait is set to 0");
 	}
-	
+
 	@BeforeMethod
     public void beforeMethod() {
         driver.get(baseURL);
@@ -78,7 +77,7 @@ public class TestFillForm {
 		Assert.assertEquals(fillform.verifyTotalPrice(), EXPECTED);
 		log.info("Apple Cinema 30\" is successfully added to the cart");
 	}
-	
+
 	@AfterMethod
     public void afterMethod(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -99,7 +98,7 @@ public class TestFillForm {
             }
         }
     }
-	
+
 	@AfterClass
 	public void afterClass() {
         if (driver != null) {

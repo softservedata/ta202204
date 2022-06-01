@@ -17,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.opencart.pages.GridFilteringPage;
+import com.opencart.pageobject.GridFilteringPage;
 import com.softserve.utilities.CaptureScreenshot;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,7 +28,7 @@ public class TestFilterCity {
 	private final String baseURL = "https://devexpress.github.io/devextreme-reactive/react/grid/docs/guides/filtering/";
 	private static final Logger log = LogManager.getLogger(GridFilteringPage.class.getName());
 	private final int implicitlyWaitSeconds = 0;
-	
+
 //	@BeforeSuite(alwaysRun = true)
 //	public void beforeSuite() {
 //		WebDriverManager.chromedriver().setup();

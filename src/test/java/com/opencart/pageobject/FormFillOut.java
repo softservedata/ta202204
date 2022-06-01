@@ -1,4 +1,4 @@
-package com.opencart.pages;
+package com.opencart.pageobject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,61 +16,61 @@ public class FormFillOut {
 	WebDriver driver;
 	PageActions action;
 	private static final Logger log = LogManager.getLogger(FormFillOut.class.getName());
-	
+
 	@FindBy(xpath="//a[contains(text(),'Apple Cinema 30')]/../following-sibling::p[contains(text(),'Cinema HD')]/../following-sibling::div//span/..")
 	WebElement addCinemaToCartButton;
-	
+
 	@FindBy(css="#input-option218 input[value='7']")
 	WebElement sizeRadioButton;
-	
+
 	@FindBy(css="#input-option223 input[value='10']")
 	WebElement checkbox;
-	
+
 	@FindBy(id="input-option208")
 	WebElement inputTextbox;
-	
+
 	@FindBy(id="input-option217")
 	WebElement selectColor;
-	
+
 	@FindBy(id="input-option209")
 	WebElement textarea;
-	
+
 	@FindBy(id="button-upload222")
 	WebElement uploadFileButton;
-	
+
 	@FindBy(id="input-option219")
 	WebElement inputDate;
-	
+
 	@FindBy(css="input[name='option[221]']")
 	WebElement inputTime;
-	
+
 	@FindBy(id="input-option220")
 	WebElement inputDateTime;
-	
+
 	@FindBy(css="div.input-group.datetime button.btn.btn-default")
 	WebElement dateTimeButton;
-	
+
 	@FindBy(css="div.input-group.date button.btn.btn-default")
 	WebElement dateButton;
-	
+
 	@FindBy(css="div.input-group.time button.btn.btn-default")
 	WebElement timeButton;
-	
+
 	@FindBy(id="input-quantity")
 	WebElement inputQuantity;
-	
+
 	@FindBy(css=".container > .alert.alert-success")
 	WebElement successMSG;
-	
+
 	@FindBy(id="cart-total")
 	WebElement totalPrice;
-	
+
 	public FormFillOut(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		action = new PageActions(driver);
 	}
-	
+
 	public void clickAddCinemaToCart() {
 		try {
 			action.clickButton(addCinemaToCartButton);
@@ -84,7 +84,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void selectSizeRadioButton() {
 		try {
 			action.clickButton(sizeRadioButton);
@@ -97,7 +97,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void selectCheckbox() {
 		try {
 			action.clickButton(checkbox);
@@ -110,7 +110,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void enterText(String text) {
 		try {
 			action.enterDataIntoTextbox(inputTextbox, text);
@@ -123,7 +123,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void selectColor(String text) {
 		try {
 			action.selectVisibleTextInDropdown(selectColor, text);
@@ -136,7 +136,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void enterAdditionalText(String text) {
 		try {
 			action.enterDataIntoTextbox(textarea, text);
@@ -149,7 +149,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void uploadFile(String filePath) {
 		try {
 			action.clickButton(uploadFileButton);
@@ -165,7 +165,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void enterDate(String date) {
 		try {
 			action.enterDataIntoTextbox(inputDate, date);
@@ -179,7 +179,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void enterTime(String time) {
 		try {
 			action.enterDataIntoTextbox(inputTime, time);
@@ -194,7 +194,7 @@ public class FormFillOut {
 		}
 	}
 
-	
+
 	public void enterDateTime(String value) {
 		try {
 			action.enterDataIntoTextbox(inputDateTime, value);
@@ -208,7 +208,7 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public void setQuantity(int qty) {
 		try {
 			action.enterDataIntoTextbox(inputQuantity, Integer.toString(qty));
@@ -222,12 +222,12 @@ public class FormFillOut {
 			Assert.fail();
 		}
 	}
-	
+
 	public String verifySuccessMessage() {
 		action.messageToBeVisible(successMSG);
 		return successMSG.getText();
 	}
-	
+
 	public String verifyTotalPrice() throws InterruptedException {
 		Thread.sleep(1500);
 		//action.elementToBeLoaded(totalPrice);

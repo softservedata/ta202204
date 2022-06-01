@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class PageActions {
-	
+
 	WebDriver driver;
 	WebDriverWait wait;
 	Actions action;
@@ -24,7 +24,7 @@ public class PageActions {
 	ProcessBuilder pb;
 	Process process;
 	//Screen s;
-	
+
 	public PageActions(WebDriver driver){
 		this.driver = driver;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -33,7 +33,7 @@ public class PageActions {
 		pb = new ProcessBuilder();
 		//s = new Screen();
 	}
-	
+
 	public void clickButton(WebElement element) {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -49,7 +49,7 @@ public class PageActions {
 			Assert.fail();
 		}
 	}
-	
+
 	public void enterDataIntoTextbox(WebElement element, String text) {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(element));
@@ -65,7 +65,7 @@ public class PageActions {
 			Assert.fail();
 		}
 	}
-	
+
 	public void selectVisibleTextInDropdown(WebElement element, String text) {
 		try {
 			//wait.until(ExpectedConditions.textToBePresentInElement(element, text));
@@ -83,7 +83,7 @@ public class PageActions {
 			Assert.fail();
 		}
 	}
-	
+
 	public void acceptPopUp() {
 		try {
 			wait.until(ExpectedConditions.alertIsPresent());
@@ -97,14 +97,14 @@ public class PageActions {
 			Assert.fail();
 		}
 	}
-	
+
 	public void uploadFileAI(String path) {
 		try {
 			Thread.sleep(500);
 			pb.command(path);
 			process = pb.start();
 			//process.waitFor(5, TimeUnit.SECONDS);
-			
+
 			//Runtime.getRuntime().exec(path);
 			//Thread.sleep(3000);
 		}
@@ -115,7 +115,7 @@ public class PageActions {
 			Assert.fail();
 		}
 	}
-	
+
 	public void messageToBeVisible(WebElement element) {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(element));
@@ -127,7 +127,7 @@ public class PageActions {
 			Assert.fail();
 		}
 	}
-	
+
 	public void elementToBeLoaded(WebElement element) {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));

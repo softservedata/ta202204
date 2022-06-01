@@ -17,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import com.opencart.pages.TotalPrice;
+import com.opencart.pageobject.TotalPrice;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -30,7 +30,7 @@ public class TestPrice {
 	private final String directory = "screenshots\\hw7\\";
 	private final String baseURL = "http://taqc-opencart.epizy.com/";
 	private final Long implicitlyWaitSeconds = 5L;
-	
+
 	@BeforeSuite(alwaysRun = true)
 	public void beforeSuite() {
         WebDriverManager.chromedriver().setup();
@@ -45,7 +45,7 @@ public class TestPrice {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
 		expected = 123.20d * 2 + 602.00d * 3;
 	}
-	
+
 	@BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
         driver.get(baseURL);
@@ -64,11 +64,11 @@ public class TestPrice {
 		verifyProducts.clickOnShoppingCartButton();
 		verifyProducts.setIPhoneQty(2);
 		verifyProducts.setMacBookQty(3);
-		actual = Double.parseDouble(verifyProducts.verifyTotalPrice().replace("$", "").replace(",", "")); // 
+		actual = Double.parseDouble(verifyProducts.verifyTotalPrice().replace("$", "").replace(",", "")); //
 		Assert.assertEquals(actual, expected);
 		System.out.println("CSS: Total price is correct");
 	}
-	
+
 	@AfterMethod(alwaysRun = true)
     public void afterMethod(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -89,7 +89,7 @@ public class TestPrice {
             }
         }
     }
-	
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
         if (driver != null) {

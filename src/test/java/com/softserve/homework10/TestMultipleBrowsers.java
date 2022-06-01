@@ -12,14 +12,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import com.opencart.pages.LoginPage;
-
-import org.testng.annotations.AfterMethod;
+import com.opencart.pageobject.LoginPage;
+import com.softserve.utilities.DataProviders;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import com.softserve.utilities.DataProviders;
 
 public class TestMultipleBrowsers {
 	private WebDriver driver;
@@ -43,14 +42,14 @@ public class TestMultipleBrowsers {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		}
-		
+
 		verifyLogin = new LoginPage(driver);
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWaitSeconds));
-		
+
 		driver.get(baseURL);
-		
+
 		// Test starts
 		verifyLogin.clickMyAccountTab();
 		verifyLogin.clickOnLoginLink();
@@ -64,7 +63,7 @@ public class TestMultipleBrowsers {
             driver.quit();
         }
 	}
-	
+
 	@AfterMethod
     public void afterMethod(ITestResult result) {
         // logout;

@@ -2,6 +2,7 @@ package com.softserve.homework01;
 
 public class CheckBrackets implements ICheckBrackets
 {
+	@Override
 	public boolean verifyBrackets(String text) {
 		int brackets = 0;
 		if(text.isEmpty())
@@ -20,7 +21,8 @@ public class CheckBrackets implements ICheckBrackets
 		else
 			return false;
 	}
-	
+
+	@Override
 	public int numberBrackets(String text) {
 		int count = 0;
 		boolean brackets = verifyBrackets(text);
@@ -33,5 +35,5 @@ public class CheckBrackets implements ICheckBrackets
 		}
 		return count;
 	}
-	
+
 }

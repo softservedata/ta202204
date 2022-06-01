@@ -15,7 +15,7 @@ public class BracketsTest {
     	System.out.println("\tBefore Method");
     	message = new CheckBrackets();
     }
-    
+
     @Test
     public void testMethod() {
 		boolean actual = true;
@@ -23,7 +23,7 @@ public class BracketsTest {
 		System.out.println("\t\tResult of verifying brackets is: " + actual);
 		Assert.assertTrue(actual);
     }
-    
+
     @After
     public void tearDown() throws Exception {
     	System.out.println("\tAfter Method");

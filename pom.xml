@@ -276,7 +276,9 @@
                     	<!-- HW10 -->
                     	<!-- <suiteXmlFile>${testng.runners}testng-browsers.xml</suiteXmlFile> -->
                     	<!-- HW11 -->
-                    	<suiteXmlFile>${testng.runners}testng-filloutform.xml</suiteXmlFile>
+                    	<!-- <suiteXmlFile>${testng.runners}testng-filloutform.xml</suiteXmlFile> -->
+                    	<!-- HW12 -->
+                    	<suiteXmlFile>${testng.runners}testng-selectcurrency.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->

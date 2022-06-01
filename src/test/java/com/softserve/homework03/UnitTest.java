@@ -1,6 +1,6 @@
 package com.softserve.homework03;
 
-import org.mockito.Mockito;
+import org.mockito.ArgumentMatchers;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.testng.PowerMockTestCase;
@@ -17,7 +17,7 @@ import com.softserve.homework01.CheckBrackets;
 public class UnitTest extends PowerMockTestCase {
 	private CheckBrackets check;
 	private String text;
-	
+
 //	@ObjectFactory
 //	public ITestObjectFactory setObjectFactory() {
 //		return new PowerMockObjectFactory();
@@ -32,7 +32,7 @@ public class UnitTest extends PowerMockTestCase {
 	@Test
 	public void testMethod() {
 		check = PowerMockito.mock(CheckBrackets.class);
-		PowerMockito.when(check.verifyBrackets(Mockito.anyString())).thenReturn(true);
+		PowerMockito.when(check.verifyBrackets(ArgumentMatchers.anyString())).thenReturn(true);
 		Brackets bracket = new Brackets(check);
 		int actual, expected = 10;
 		actual = bracket.getNumberBrackets(text);
