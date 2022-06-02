@@ -31,6 +31,7 @@ public abstract class TopPart {
     //
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
+    private CurrencyDropdown currencyDropdown;
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
@@ -157,6 +158,24 @@ public abstract class TopPart {
         getCartButton().click();
     }
 
+    protected CurrencyDropdown getCurrencyDropdown() {
+        return currencyDropdown;
+    }
+    
+    protected void clickDropdownEurCurrency() {
+        getCurrencyDropdown().clickEur();
+    }
+    
+    private CurrencyDropdown createCurrencyDropdown() {
+        currencyDropdown = new CurrencyDropdown(driver);
+        return getCurrencyDropdown();
+    }
+    
+    private void clickEurCurrency() {
+        getCurrencyDropdown().clickEur();
+        //currencyDropdown = null;
+    }
+    
     // dropdownGuest
     protected GuestDropdown getDropdownGuest() {
         if (dropdownGuest == null) {
@@ -234,6 +253,11 @@ public abstract class TopPart {
 
     // Functional
 
+
+    public void openCurrencyDropdown() {
+        clickCurrency();
+    }
+
     // myAccount
     protected void openMyAccountDropdown() {
         clickSearchTopField();
@@ -280,6 +304,14 @@ public abstract class TopPart {
         createDropdownLogged();
         clickDropdownLoggedLogout();
         return new AccountLogoutPage(driver);
+    }
+    
+    public void selectEurCurrency() {
+        //clickCurrency();
+        openCurrencyDropdown();
+        createCurrencyDropdown();
+        clickEurCurrency();
+        //new CurrencyDropdown(driver);
     }
 
 }
