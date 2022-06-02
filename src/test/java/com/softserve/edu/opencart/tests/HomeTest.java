@@ -23,9 +23,9 @@ public class HomeTest extends TestRunnerFirst {
         HomePage homePage = loadApplication();
         homePage.selectEurCurrency(); // NullPointer on eurCurrency element initialization (CurrencyDropdown->initElement())
         //homePage.gotoCurrencyDropdown();
-        /*CurrencyDropdown currencyDropdown = currencyDropdownLoading();//NullPointerException
+        CurrencyDropdown currencyDropdown = currencyDropdownLoading();//NullPointerException
         currencyDropdown.selectEurCurrency();
-        Assert.assertTrue(currencyDropdown.getEurCurrencyText().contains(CurrencyDropdown.EUR));*/
+        Assert.assertTrue(currencyDropdown.getEurCurrencyText().contains(CurrencyDropdown.EUR));
         //=c
         //
         //
