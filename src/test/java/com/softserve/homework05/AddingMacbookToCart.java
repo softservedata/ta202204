@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SearchFirstTest {
+public class AddingMacbookToCart {
     private static final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private static final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private static final Long ONE_SECOND_DELAY = 1000L;
@@ -28,7 +28,7 @@ public class SearchFirstTest {
     }
 
     @Test
-    public void checkMac() {
+    public void AddingMacbook() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
