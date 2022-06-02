@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
+import com.softserve.edu.opencart.pages.CurrencyDropdown;
 import com.softserve.edu.opencart.pages.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -69,5 +70,9 @@ public abstract class TestRunnerFirst {
     protected HomePage loadApplication() {
         return new HomePage(driver);
         //return new HomePage(getDriver());
+    }
+    
+    protected CurrencyDropdown currencyDropdownLoading() {
+        return new CurrencyDropdown(driver);
     }
 }
