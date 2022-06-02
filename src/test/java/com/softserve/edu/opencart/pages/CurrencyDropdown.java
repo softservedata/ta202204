@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CurrencyDropdown extends TopPart{
+public class CurrencyDropdown {
 	
-	public static final String EUR = "Euro";
+	public static final String EUR = "€";
 	public static final String USD = "US Dollar";
 	public static final String GBP = "Pound Sterling";
 
@@ -17,7 +17,8 @@ public class CurrencyDropdown extends TopPart{
 	private WebElement gbpCurrency;
 	
 	public CurrencyDropdown(WebDriver driver) {
-		super(driver);
+		//super(driver);
+		this.driver = driver;
 		initElement();
 	}
 

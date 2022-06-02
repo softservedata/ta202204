@@ -21,17 +21,9 @@ public class HomeTest extends TestRunnerFirst {
     @Test
     public void checkEurCurrency() {
         HomePage homePage = loadApplication();
-        homePage.selectEurCurrency(); // NullPointer on eurCurrency element initialization (CurrencyDropdown->initElement())
-        //homePage.gotoCurrencyDropdown();
-<<<<<<< HEAD
-        CurrencyDropdown currencyDropdown = currencyDropdownLoading();//NullPointerException
-        currencyDropdown.selectEurCurrency();
-        Assert.assertTrue(currencyDropdown.getEurCurrencyText().contains(CurrencyDropdown.EUR));
-=======
-        /*CurrencyDropdown currencyDropdown = currencyDropdownLoading();//NullPointerException
-        currencyDropdown.selectEurCurrency();
-        Assert.assertTrue(currencyDropdown.getEurCurrencyText().contains(CurrencyDropdown.EUR));*/
->>>>>>> 5377b8bdf4b41443c4c91dc22bb1a740512d60c6
+        homePage.selectEurCurrency();
+        //org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+        Assert.assertEquals(homePage.getCurrencyText(), CurrencyDropdown.EUR);
         //=c
         //
         //

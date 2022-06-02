@@ -62,7 +62,6 @@ public abstract class TopPart {
     public String getCurrencyText() {
         return getCurrency().getText();
     }
-
     public void clickCurrency() {
         getCurrency().click();
     }
@@ -162,10 +161,6 @@ public abstract class TopPart {
         return currencyDropdown;
     }
     
-    protected void clickDropdownEurCurrency() {
-        getCurrencyDropdown().clickEur();
-    }
-    
     private CurrencyDropdown createCurrencyDropdown() {
         currencyDropdown = new CurrencyDropdown(driver);
         return getCurrencyDropdown();
@@ -173,7 +168,7 @@ public abstract class TopPart {
     
     private void clickEurCurrency() {
         getCurrencyDropdown().clickEur();
-        //currencyDropdown = null;
+        currencyDropdown = null;
     }
     
     // dropdownGuest
@@ -306,12 +301,13 @@ public abstract class TopPart {
         return new AccountLogoutPage(driver);
     }
     
-    public void selectEurCurrency() {
-        //clickCurrency();
-        openCurrencyDropdown();
+    public HomePage selectEurCurrency() {
+        clickCurrency();
+        //openCurrencyDropdown();
         createCurrencyDropdown();
         clickEurCurrency();
         //new CurrencyDropdown(driver);
+        return new HomePage(driver);
     }
 
 }
