@@ -61,6 +61,7 @@ public class AppleCinema {
         driver.findElement(By.id("button-upload222")).click();
         try {
             Runtime.getRuntime().exec("C:\\Users\\oihna\\OneDrive - SoftServe, Inc\\Documents\\UploadFile.exe");
+            //Runtime.getRuntime().exec("./resources/UploadFile.exe");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,7 +95,7 @@ public class AppleCinema {
 
         driver.findElement(By.id("button-cart")).click();
 
-        WebElement alertSuccess = driver.findElement(By.cssSelector(".alert alert-success"));
+        WebElement alertSuccess = driver.findElement(By.cssSelector(".container > .alert.alert-success"));
         Assertions.assertTrue(alertSuccess.isDisplayed());
     }
 
