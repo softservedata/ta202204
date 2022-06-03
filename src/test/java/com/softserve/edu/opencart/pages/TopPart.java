@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages;
 
+import com.softserve.edu.opencart.data.Currencies;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -233,6 +234,21 @@ public abstract class TopPart {
     // menu // TODO
 
     // Functional
+
+    // currency
+    private void openCurrencyDropdownComponent() {
+        clickSearchTopField();
+        //closeDropdownComponent();
+        clickCurrency();
+        ////createDropdownComponent(By.cssSelector(LIST_CURRENCIES_CSSSELECTOR));
+    }
+
+    //protected void clickCurrencyByPartialName(String currencyName) { // Code Smell
+    protected void clickCurrencyByPartialName(Currencies optionName) {
+        openCurrencyDropdownComponent();
+        //clickDropdownComponentByPartialName(currencyName);
+        //clickDropdownComponentByPartialName(optionName.toString());
+    }
 
     // myAccount
     protected void openMyAccountDropdown() {
