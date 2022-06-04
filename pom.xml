@@ -139,7 +139,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.1.1</version>
+            <version>5.2.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -278,7 +278,9 @@
                     	<!-- HW11 -->
                     	<!-- <suiteXmlFile>${testng.runners}testng-filloutform.xml</suiteXmlFile> -->
                     	<!-- HW12 -->
-                    	<suiteXmlFile>${testng.runners}testng-selectcurrency.xml</suiteXmlFile>
+                    	<!-- <suiteXmlFile>${testng.runners}testng-selectcurrency.xml</suiteXmlFile> -->
+                    	<!-- HW13 -->
+                    	<suiteXmlFile>${testng.runners}testng-productpresence.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->

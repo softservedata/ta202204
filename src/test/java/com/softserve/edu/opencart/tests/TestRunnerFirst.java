@@ -1,4 +1,4 @@
-package com.softserve.homework12;
+package com.softserve.edu.opencart.tests;
 
 import java.time.Duration;
 
@@ -14,15 +14,16 @@ import com.softserve.edu.opencart.pages.HomePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class TestRunner {
+public abstract class TestRunnerFirst {
 	
 	// public static final String EXPECTED_CURRENCY = "£ Currency"; // works through .xml file, but Maven doesn't recognize £ symbol
 	public static final String EXPECTED_CURRENCY = "\u00A3 Currency";
 	public static final String EXPECTED_CURRENCY_CODE = "\u00A3";
+	public static final String PRODUCT_NAME = "MacBook";
     private final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
-    private WebDriver driver;
+    protected WebDriver driver;
 
     // Overload
     protected void presentationSleep() {

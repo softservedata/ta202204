@@ -315,7 +315,6 @@ public abstract class TopPart {
     	createDropdownCurrency(currency);
     	clickDropdownCurrencySelect(currency);
     	return new HomePage(driver);
-    	//return new CurrencyDropdown(driver, currency);
     }
 
 }

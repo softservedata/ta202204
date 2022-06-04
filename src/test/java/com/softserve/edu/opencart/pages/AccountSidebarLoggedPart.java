@@ -23,4 +23,64 @@ public abstract class AccountSidebarLoggedPart extends AccountSidebarPart {
         logoutRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/logout')]"));
     }
 
+    // Page Object
+
+    // editAccountRight
+    public WebElement getEditAccountRight() {
+        return editAccountRight;
+    }
+
+    public String getEditAccountRightText() {
+        return getEditAccountRight().getText();
+    }
+
+    public void clickEditAccountRight() {
+        getEditAccountRight().click();
+    }
+
+    // passwordRight
+    public WebElement getPasswordRight() {
+        return passwordRight;
+    }
+
+    public String getPasswordRightText() {
+        return getPasswordRight().getText();
+    }
+
+    public void clickPasswordRight() {
+        getPasswordRight().click();
+    }
+
+    // logoutRight
+    public WebElement getLogoutRight() {
+        return logoutRight;
+    }
+
+    public String getLogoutRightText() {
+        return getLogoutRight().getText();
+    }
+
+    public void clickLogoutRight() {
+        getLogoutRight().click();
+    }
+
+    // Functional
+
+    // Business Logic
+
+    public EditAccountPage gotoEditAccountRight() {
+        clickEditAccountRight();
+        return new EditAccountPage(driver);
+    }
+
+    public AccountLogoutPage gotoLogoutRight() {
+        clickLogoutRight();
+        return new AccountLogoutPage(driver);
+    }
+
+    public MyAccountPage gotoMyAccountRight() {
+        clickMyAccountRight();
+        return new MyAccountPage(driver);
+    }
+
 }
