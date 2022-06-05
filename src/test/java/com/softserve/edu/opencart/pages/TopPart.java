@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages;
 
+import com.softserve.edu.opencart.data.Currencies;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,7 @@ public abstract class TopPart {
     private WebElement searchTopField;
     private WebElement searchTopButton;
     private WebElement cartButton;
+    private WebElement selectedCurrency;
 
     // List<MenuComponent> menu;
     //
@@ -49,6 +51,7 @@ public abstract class TopPart {
         searchTopField = driver.findElement(By.name("search"));
         searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
+        selectedCurrency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle strong"));
     }
 
     // Page Object
@@ -60,7 +63,7 @@ public abstract class TopPart {
     }
 
     public String getCurrencyText() {
-        return getCurrency().getText();
+        return selectedCurrency.getText();
     }
     public void clickCurrency() {
         getCurrency().click();
@@ -252,62 +255,76 @@ public abstract class TopPart {
     public void openCurrencyDropdown() {
         clickCurrency();
     }
-
-    // myAccount
-    protected void openMyAccountDropdown() {
-        clickSearchTopField();
-        clickMyAccount();
-    }
-
-    // searchTopField
-    private void fillSearchTopField(String searchText) {
-        clickSearchTopField();
-        clearSearchTopField();
-        setSearchTopField(searchText);
-    }
-
-    protected void scrollToElement(WebElement webElement) {
-        //        Actions action = new Actions(driver);
-        //        action.moveToElement(webElement).perform();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
-    }
-
-    // Business Logic
-
-    public HomePage gotoHomePage() {
-        clickLogo();
-        return new HomePage(driver);
-    }
-
-    // dropdownGuest
-    public LoginPage gotoLoginPage() {
-        openMyAccountDropdown();
-        createDropdownGuest();
-        clickDropdownGuestLogin();
-        return new LoginPage(driver);
-    }
-
-    public RegisterPage gotoRegisterPage() {
-        openMyAccountDropdown();
-        createDropdownGuest();
-        clickDropdownGuestRegister();
-        return new RegisterPage(driver);
-    }
-
-    public AccountLogoutPage logout() {
-        openMyAccountDropdown();
-        createDropdownLogged();
-        clickDropdownLoggedLogout();
-        return new AccountLogoutPage(driver);
-    }
+        // currency
+        private void openCurrencyDropdownComponent () {
+            clickSearchTopField();
+            //closeDropdownComponent();
+            clickCurrency();
+            ////createDropdownComponent(By.cssSelector(LIST_CURRENCIES_CSSSELECTOR));
+        }
     
-    public HomePage selectEurCurrency() {
-        clickCurrency();
-        //openCurrencyDropdown();
-        createCurrencyDropdown();
-        clickEurCurrency();
-        //new CurrencyDropdown(driver);
-        return new HomePage(driver);
-    }
-
+        //protected void clickCurrencyByPartialName(String currencyName) { // Code Smell
+        protected void clickCurrencyByPartialName (Currencies optionName){
+            openCurrencyDropdownComponent();
+            //clickDropdownComponentByPartialName(currencyName);
+            //clickDropdownComponentByPartialName(optionName.toString());
+        
+        }
+    
+        // myAccount
+        protected void openMyAccountDropdown () {
+            clickSearchTopField();
+            clickMyAccount();
+        }
+    
+        // searchTopField
+        private void fillSearchTopField (String searchText){
+            clickSearchTopField();
+            clearSearchTopField();
+            setSearchTopField(searchText);
+        }
+    
+        protected void scrollToElement (WebElement webElement){
+            //        Actions action = new Actions(driver);
+            //        action.moveToElement(webElement).perform();
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+        }
+    
+        // Business Logic
+    
+        public HomePage gotoHomePage () {
+            clickLogo();
+            return new HomePage(driver);
+        }
+    
+        // dropdownGuest
+        public LoginPage gotoLoginPage () {
+            openMyAccountDropdown();
+            createDropdownGuest();
+            clickDropdownGuestLogin();
+            return new LoginPage(driver);
+        }
+    
+        public RegisterPage gotoRegisterPage () {
+            openMyAccountDropdown();
+            createDropdownGuest();
+            clickDropdownGuestRegister();
+            return new RegisterPage(driver);
+        }
+    
+        public AccountLogoutPage logout () {
+            openMyAccountDropdown();
+            createDropdownLogged();
+            clickDropdownLoggedLogout();
+            return new AccountLogoutPage(driver);
+        }
+    
+        public HomePage selectEurCurrency () {
+            clickCurrency();
+            //openCurrencyDropdown();
+            createCurrencyDropdown();
+            clickEurCurrency();
+            //new CurrencyDropdown(driver);
+            return new HomePage(driver);
+        }
 }

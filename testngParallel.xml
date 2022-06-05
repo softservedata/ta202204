@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite12">
+<!--   <suite name="Suite12" parallel="methods" thread-count="2">-->
+
+<!--   <test name = "TestGroup11" parallel="methods">-->
+   <test name = "TestGroup11" parallel="tests">
+      <classes>
+         <class name="com.softserve.edu.opencart.tests.LoginTest" />
+      </classes>
+   </test>
+
+</suite>

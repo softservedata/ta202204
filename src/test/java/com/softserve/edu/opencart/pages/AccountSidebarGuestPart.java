@@ -22,4 +22,54 @@ public abstract class AccountSidebarGuestPart extends AccountSidebarPart {
         forgottenPasswordRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/forgotten')]"));
     }
 
+    // Page Object
+
+    // loginRight
+    public WebElement getLoginRight() {
+        return loginRight;
+    }
+
+    public String getLoginRightText() {
+        return getLoginRight().getText();
+    }
+
+    public void clickLoginRight() {
+        getLoginRight().click();
+    }
+
+    // registerRight
+    public WebElement getRegisterRight() {
+        return registerRight;
+    }
+
+    public String getRegisterRightText() {
+        return getRegisterRight().getText();
+    }
+
+    public void clickRegisterRight() {
+        getRegisterRight().click();
+    }
+
+    // forgottenPasswordRight
+    public WebElement getForgottenPasswordRight() {
+        return forgottenPasswordRight;
+    }
+
+    public String getForgottenPasswordRightText() {
+        return getForgottenPasswordRight().getText();
+    }
+
+    public void clickForgottenPasswordRight() {
+        getForgottenPasswordRight().click();
+    }
+
+    // Functional
+
+    // Business Logic
+
+    public LoginPage gotoLoginRight() {
+        clickLoginRight();
+        return new LoginPage(driver);
+    }
+
 }
