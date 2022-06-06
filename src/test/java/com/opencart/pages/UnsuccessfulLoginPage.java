@@ -27,4 +27,12 @@ public class UnsuccessfulLoginPage extends LoginPage {
         return alertWarning;
     }
 
+    public String getAlertWarningText() {
+        return getAlertWarning().getText();
+    }
+
+    // Functional
+
+    // Business Logic
+
 }
