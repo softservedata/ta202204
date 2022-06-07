@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public abstract class TopPart {
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
@@ -19,7 +21,9 @@ public abstract class TopPart {
 
     protected WebDriver driver;
     //
+    @FindBy(css = ".btn.btn-link.dropdown-toggle")
     private WebElement currency;
+
     private WebElement myAccount;
     private WebElement wishList;
     private WebElement shoppingCart;
@@ -32,16 +36,18 @@ public abstract class TopPart {
     //
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
+    private CurrencyDropdown dropdownCurrency;
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
         initElements();
         //checkElements();
+        PageFactory.initElements(driver, this);
     }
 
     private void initElements() {
         // init elements
-        currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
+        // currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
         myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
         wishList = driver.findElement(By.id("wishlist-total"));
         shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
@@ -53,6 +59,38 @@ public abstract class TopPart {
 
     // Page Object
 
+    protected CurrencyDropdown getDropdownCurrency() {
+        if (dropdownCurrency == null) {
+            throw new RuntimeException(OPTION_NULL_MESSAGE);
+        }
+        return dropdownCurrency;
+    }
+
+    public CurrencyDropdown createDropdownCurrency() {
+        dropdownCurrency = new CurrencyDropdown(driver);
+        return getDropdownCurrency();
+    }
+
+    public void clickDropdownCurrencyEuro() {
+        getDropdownCurrency().clickEuro();
+        dropdownGuest = null;
+    }
+
+    public void clickDropdownCurrencyPoundSterling() {
+        getDropdownCurrency().clickPoundSterling();
+        dropdownGuest = null;
+    }
+
+    public void clickDropdownCurrencyUsDollar() {
+        getDropdownCurrency().clickUsDollar();
+        dropdownGuest = null;
+    }
+
+    public void closeDropdownCurrency() {
+        clickSearchTopField();
+        dropdownCurrency = null;
+    }
+
     // currency
     public WebElement getCurrency() {
         //return driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
@@ -63,8 +101,9 @@ public abstract class TopPart {
         return getCurrency().getText();
     }
 
-    public void clickCurrency() {
+    public HomePage clickCurrency() {
         getCurrency().click();
+        return new HomePage(driver);
     }
 
     // myAccount
