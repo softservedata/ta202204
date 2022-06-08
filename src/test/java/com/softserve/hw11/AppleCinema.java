@@ -43,7 +43,7 @@ public class AppleCinema {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         (new WebDriverWait(driver, Duration.ofSeconds(10)))
-                .until(ExpectedConditions.invisibilityOfElementLocated(By.id("product")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#input-option218 input[value='5']")));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
 
         driver.findElement(By.cssSelector("#input-option218 input[value='5']")).click();
@@ -61,7 +61,6 @@ public class AppleCinema {
         driver.findElement(By.id("button-upload222")).click();
         try {
             Runtime.getRuntime().exec("C:\\Users\\oihna\\OneDrive - SoftServe, Inc\\Documents\\UploadFile.exe");
-            //Runtime.getRuntime().exec("./resources/UploadFile.exe");
         } catch (IOException e) {
             e.printStackTrace();
         }
