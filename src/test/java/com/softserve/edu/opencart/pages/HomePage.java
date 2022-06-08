@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.pages;
 
+import com.softserve.edu.opencart.data.Currencies;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,5 +50,14 @@ public class HomePage extends TopPart {
     // Functional
 
     // Business Logic
+
+    //public HomePage chooseCurrency(String currency) {
+    public HomePage chooseCurrency(Currencies currency) {
+        //logger.debug("start chooseCurrency() with currency = " + currency.toString());
+        clickCurrencyByPartialName(currency);
+        //logger.debug("end chooseCurrency() with currency = " + currency.toString());
+        return new HomePage(driver);
+        //return new HomePage();
+    }
 
 }
