@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -32,11 +33,12 @@ public class CityL {
         actions = new Actions(driver);
         driver.manage().window().maximize();
     }
+
     private void closePopup() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        List<WebElement> foooterButton = driver.findElements(By.xpath("//footer[contains(@class,'cookie')]//button"));
-        if (foooterButton.size() > 0) {
-            foooterButton.get(0).click();
+        List<WebElement> footerButton = driver.findElements(By.xpath("//footer[contains(@class,'cookie')]//button"));
+        if (footerButton.size() > 0) {
+            footerButton.get(0).click();
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
     }
@@ -55,14 +57,19 @@ public class CityL {
         filterCity.click();
         filterCity.sendKeys("L");
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        (new WebDriverWait(driver, Duration.ofSeconds(10)))
+                .until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//td[text()='Paris']")));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
+
         List<WebElement> tableFilteredL = driver.findElements(By.xpath("//tbody//tr//td"));
         List<String> cityL = new ArrayList<>();
-        for (WebElement allElements: tableFilteredL) {
+        for (WebElement allElements : tableFilteredL) {
             cityL.add(allElements.getText());
         }
 
-        Assertions.assertTrue(cityL.stream().anyMatch(allElements->allElements.contains("Las Vegas")));
-        Assertions.assertTrue(cityL.stream().anyMatch(allElements->allElements.contains("London")));
+        Assertions.assertTrue(cityL.stream().anyMatch(allElements -> allElements.contains("Las Vegas")));
+        Assertions.assertTrue(cityL.stream().anyMatch(allElements -> allElements.contains("London")));
     }
 
     @AfterEach
