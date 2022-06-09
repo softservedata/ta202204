@@ -60,7 +60,7 @@ public class AppleCinema {
 
         driver.findElement(By.id("button-upload222")).click();
         try {
-            Runtime.getRuntime().exec("C:\\Users\\oihna\\OneDrive - SoftServe, Inc\\Documents\\UploadFile.exe");
+            Runtime.getRuntime().exec("./src/test/resources/UploadFile.exe");
         } catch (IOException e) {
             e.printStackTrace();
         }
