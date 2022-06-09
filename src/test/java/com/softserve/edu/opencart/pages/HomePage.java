@@ -1,5 +1,7 @@
 package com.softserve.edu.opencart.pages;
 
+import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,8 @@ public class HomePage extends TopPart {
     public static final String EXPECTED_IPHONE_6 = "iPhone 6";
     //
     private WebElement slideshow0;
+    //
+    private ProductsContainer productsContainer;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -19,6 +23,9 @@ public class HomePage extends TopPart {
     private void initElements() {
         // init elements
         slideshow0 = driver.findElement(By.id("slideshow0"));
+        //
+        productsContainer = new ProductsContainer(driver);
+        //productsContainer = new ProductsContainer();
     }
 
     // Page Object
@@ -46,8 +53,31 @@ public class HomePage extends TopPart {
         return getSlideshow0FirstImageAttributeText(TAG_ATTRIBUTE_ALT);
     }
 
+    // productComponentsContainer
+    public ProductsContainer getProductComponentsContainer() {
+        return productsContainer;
+    }
+
     // Functional
 
     // Business Logic
 
+    //public HomePage chooseCurrency(String currency) {
+    public HomePage chooseCurrency(Currencies currency) {
+        //logger.debug("start chooseCurrency() with currency = " + currency.toString());
+        clickCurrencyByPartialName(currency);
+        //logger.debug("end chooseCurrency() with currency = " + currency.toString());
+        return new HomePage(driver);
+        //return new HomePage();
+    }
+
+    public HomePage scrollToProduct(Product product) {
+        WebElement webElement = getProductComponentsContainer()
+                .getProductComponentByName(product.getName())
+                .getName();
+        scrollToElement(webElement);
+        //return new HomePage(driver);
+        //return new HomePage();
+        return this;
+    }
 }
