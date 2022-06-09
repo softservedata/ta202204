@@ -280,7 +280,9 @@
                     	<!-- HW12 -->
                     	<!-- <suiteXmlFile>${testng.runners}testng-selectcurrency.xml</suiteXmlFile> -->
                     	<!-- HW13 -->
-                    	<suiteXmlFile>${testng.runners}testng-productpresence.xml</suiteXmlFile>
+                    	<!-- <suiteXmlFile>${testng.runners}testng-productpresence.xml</suiteXmlFile> -->
+                    	<!-- HW14 -->
+                    	<suiteXmlFile>${testng.runners}testng-register.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
