@@ -2,6 +2,7 @@ package com.softserve.edu.opencart.tests;
 
 import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.data.UserRepositorySingleton;
 import com.softserve.edu.opencart.pages.EditAccountPage;
 import com.softserve.edu.opencart.pages.HomePage;
 import com.softserve.edu.opencart.pages.UnsuccessfulLoginPage;
@@ -10,7 +11,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 //public class LoginTest extends TestRunnerFirst {
-public class LoginTest extends TestRunner {
+//public class LoginTest extends TestRunner {
+public class LoginTest extends TestRunnerStrategy {
 
     /*
     @DataProvider//(parallel = true)
@@ -22,6 +24,7 @@ public class LoginTest extends TestRunner {
     }
     */
 
+    /*
     @DataProvider(parallel = true)
     public Object[][] dataSuccessful() {
         return new Object[][] {
@@ -29,6 +32,16 @@ public class LoginTest extends TestRunner {
                 { UserRepository.getAwdrt() },
         };
     }
+    */
+
+    @DataProvider//(parallel = true)
+    public Object[][] dataSuccessful() {
+        return new Object[][]{
+                { UserRepositorySingleton.get().hahaha() },
+                //{ UserRepositorySingleton.get().awdrt() },
+        };
+    }
+
 
     @Test(dataProvider = "dataSuccessful")
     //public void checkSuccessful(String email, String password, String firstName) {

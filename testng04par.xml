@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite05">
+	<parameter name="url" value="http://10.26.34.177/opencart/upload/" />
+<!-- 	<parameter name="url" value="http://taqc-opencart.epizy.com" /> -->
+	<parameter name="browsername" value="chrome" />
+<!--	<parameter name="browsername" value="firefox" />-->
+
+	<test name="TestGroup05">
+		<parameter name="implicitWait" value="30" />
+		<parameter name="number" value="234" />
+		<classes>
+			<class name="com.softserve.edu.opencart.tests.ProductSearchTest" />
+		</classes>
+	</test> <!-- Test -->
+
+</suite> <!-- Suite -->

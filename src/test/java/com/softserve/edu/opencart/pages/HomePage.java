@@ -24,8 +24,8 @@ public class HomePage extends TopPart {
         // init elements
         slideshow0 = driver.findElement(By.id("slideshow0"));
         //
-        productsContainer = new ProductsContainer(driver);
-        //productsContainer = new ProductsContainer();
+        //productsContainer = new ProductsContainer(driver);
+        productsContainer = new ProductsContainer();
     }
 
     // Page Object

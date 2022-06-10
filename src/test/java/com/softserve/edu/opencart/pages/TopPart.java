@@ -170,8 +170,8 @@ public abstract class TopPart {
     }
 
     private DropdownComponent createDropdownComponent(By searchLocator) {
-        dropdownComponent = new DropdownComponent(driver, searchLocator);
-        //dropdownComponent = new DropdownComponent(searchLocator);
+        //dropdownComponent = new DropdownComponent(driver, searchLocator);
+        dropdownComponent = new DropdownComponent(searchLocator);
         return getDropdownComponent();
     }
 
@@ -203,7 +203,8 @@ public abstract class TopPart {
     }
 
     private GuestDropdown createDropdownGuest() {
-        dropdownGuest = new GuestDropdown(driver);
+        //dropdownGuest = new GuestDropdown(driver);
+        dropdownGuest = new GuestDropdown();
         return getDropdownGuest();
     }
 
@@ -232,7 +233,8 @@ public abstract class TopPart {
     }
 
     private LoggedDropdown createDropdownLogged() {
-        dropdownLogged = new LoggedDropdown(driver);
+        //dropdownLogged = new LoggedDropdown(driver);
+        dropdownLogged = new LoggedDropdown();
         return getDropdownLogged();
     }
 
