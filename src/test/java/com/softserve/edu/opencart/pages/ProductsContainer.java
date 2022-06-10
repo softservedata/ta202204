@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,21 +30,19 @@ public class ProductsContainer {
 
     public void setProductComponents() {
         productComponents = new ArrayList<>();
-        for (WebElement product : driver.findElements(By.xpath("//div[@class=\"product-thumb transition\"]"))) {
+        for (WebElement product : driver.findElements(By.cssSelector(PRODUCT_COMPONENT_CSSSELECTOR))) {
             productComponents.add(new ProductComponent(product));
         }
     }
     
     public boolean checkProductIsDisplayed(String productName) {
     boolean result = true;
-        for (int i = 0; i < productComponents.size(); i++) {
-            String tmp = productComponents.get(i).getName().getText();
-            if (productComponents.get(i).getName().getText().contains(productName)) {
+    for (ProductComponent product : productComponents) {
+        if (product.getName().getText().contains(productName)) {
                 result = true;
                 break;
             } else result = false;
         }
         return result;
     }
-    
 }

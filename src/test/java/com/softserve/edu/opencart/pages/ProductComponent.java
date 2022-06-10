@@ -23,9 +23,9 @@ public class ProductComponent {
     }
     
     public void initElements() {
-        name = productLayout.findElement(By.xpath("//h4/a"));
-        partialDescription = productLayout.findElement(By.xpath("//h4/following-sibling::p[1]"));
-        price = productLayout.findElement(By.xpath("//p[@class=\"price\"]"));
+        name = productLayout.findElement(By.cssSelector("h4 a"));
+        partialDescription = productLayout.findElement(By.cssSelector("h4 + p"));
+        price = productLayout.findElement(By.cssSelector(".price"));
     }
 
     public WebElement getName() {
