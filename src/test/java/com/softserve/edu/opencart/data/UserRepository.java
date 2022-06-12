@@ -3,8 +3,7 @@ package com.softserve.edu.opencart.data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UserRepository {
-	
+public final class UserRepository {
     private static final String TIME_TEMPLATE = "HH_mm_ss_S";
 
     private UserRepository() {
@@ -25,8 +24,8 @@ public class UserRepository {
                 .setPostcode("postcode")
                 .setCountry("country")
                 .setRegion("region")
-                .setPassword(System.getenv().get("MY_PASSWORD_HAHAHA"))
-                .setConfirmPassword(System.getenv().get("MY_PASSWORD_HAHAHA"))
+                .setPassword(System.getenv().get("PASSWORD"))
+                .setConfirmPassword(System.getenv().get("PASSWORD"))
                 .setSubscribe(true)
                 .setPrivacypolicy(true)
                 .setFax("fax")
@@ -123,15 +122,26 @@ public class UserRepository {
     public List<IUser> fromCsv(String filename) {
         return User.getByLists(new CSVReader(filename).getAllCells());
     }
+<<<<<<< HEAD
     public List<IUser> fromCsv() {
         return fromCsv("users.csv");
     }
     public List<IUser> fromExcel(String filename) {
         return User.getByLists(new ExcelReader(filename).getAllCells());
     }
+=======
+
+    public List<IUser> fromCsv() {
+        return fromCsv("users.csv");
+    }
+
+    public List<IUser> fromExcel(String filename) {
+        return User.getByLists(new ExcelReader(filename).getAllCells());
+    }
+
+>>>>>>> 2ce9ab663ae6bf58b027bad4932b9c95c95d2923
     public List<IUser> fromExcel() {
         return fromExcel("users.xlsx");
     }
     */
-
 }

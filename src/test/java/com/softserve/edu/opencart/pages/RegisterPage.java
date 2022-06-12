@@ -28,7 +28,6 @@ public class RegisterPage extends AccountSidebarGuestPart {
 	private WebElement continueButton;
 	
 	private Select s;
-	
     public RegisterPage(WebDriver driver) {
         super(driver);
         initElements();

@@ -1,7 +1,7 @@
 package com.softserve.edu.opencart.data;
 
 public interface IUser {
-	
+
     String getFirstname();
     String getLastname();
     String getEmail();
@@ -18,5 +18,4 @@ public interface IUser {
     String getConfirmPassword();
     boolean isSubscribe();
     boolean agreePrivacypolicy();
-    
 }

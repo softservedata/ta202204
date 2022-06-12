@@ -119,4 +119,5 @@ public class AppData {
         System.out.println("user.getEmail() = " + user.getEmail());
         System.out.println("user = " + user);
     }
+
 }

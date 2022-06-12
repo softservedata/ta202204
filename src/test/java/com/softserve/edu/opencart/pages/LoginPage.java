@@ -1,11 +1,9 @@
 package com.softserve.edu.opencart.pages;
 
+import com.softserve.edu.opencart.data.IUser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import com.softserve.edu.opencart.data.IUser;
-
 public class LoginPage extends AccountSidebarGuestPart {
 
     private WebElement email;

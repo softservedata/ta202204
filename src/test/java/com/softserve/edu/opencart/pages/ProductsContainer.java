@@ -2,13 +2,12 @@ package com.softserve.edu.opencart.pages;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.softserve.edu.opencart.data.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProductsContainer {
-	
     public final String PRODUCT_NOT_FOUND = "There is no product that matches the search criteria.";
     private final String PRODUCT_COMPONENT_CSSSELECTOR = ".product-layout";
     //
@@ -40,7 +39,7 @@ public class ProductsContainer {
     
     // Functional
 
-    private ProductComponent getProductComponentByName(String productName) {
+    protected ProductComponent getProductComponentByName(String productName) {
     	ProductComponent result = null;
     	for(ProductComponent component : getProductComponents()) {
     		if(component.getNameText().toLowerCase().equals(productName.toLowerCase())) {
@@ -90,5 +89,51 @@ public class ProductsContainer {
     public void clickProductComponentAddToCompareButtonByName(String productName) {
     	getProductComponentByName(productName).clickAddToCompareButton();
     }
+
+    // Functional
+
+    public int getProductComponentsCount()
+    {
+        return getProductComponents().size();
+    }
+
+    public List<String> getProductComponentNames()
+    {
+        List<String> productComponentNames = new ArrayList<>();
+        for (ProductComponent current : getProductComponents())
+        {
+            productComponentNames.add(current.getNameText());
+        }
+        return productComponentNames;
+    }
+
+    // TODO Move to Product
+    //public String getProductComponentPriceByName(String productName)
+    public String getProductComponentPriceByName(Product productName)
+    {
+        //return getProductComponentByName(productName).getPriceText();
+        return getProductComponentByName(productName.getName()).getPriceText();
+    }
+
+    /*-
+    public String getProductComponentPriceByProduct(Product product)
+    {
+        return getProductComponentPriceByName(product.getName());
+    }
+
+    public String getProductComponentDescriptionByProduct(Product product)
+    {
+        return getProductComponentDescriptionByName(product.getName());
+    }
+    */
+
+    // Business Logic
+
+    // /*-
+    public ProductComponent getProductComponentByName(Product product)
+    {
+        return getProductComponentByName(product.getName());
+    }
+    // */
 
 }

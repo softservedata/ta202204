@@ -4,8 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class ProductComponent {
-	
+
     private WebElement productLayout;
+    //
+    //protected Search search;
     //
     private WebElement name;
     private WebElement partialDescription;
@@ -30,7 +32,7 @@ public class ProductComponent {
     
     // Page Object
     // name
-    private WebElement getName() {
+    protected WebElement getName() {
     	return name;
     }
     
@@ -90,5 +92,9 @@ public class ProductComponent {
     protected void clickAddToCompareButton() {
     	getAddToCompareButton().click();
     }
+
+    // Functional
+
+    // Business Logic
 
 }

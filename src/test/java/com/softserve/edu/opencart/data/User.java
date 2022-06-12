@@ -62,7 +62,6 @@ interface IUserBuild {
     IUser build();
 }
 
-
 public class User implements IFirstname, ILastname, IEmail, ITelephone, IAddress1, ICity, IPostcode, ICountry, IRegion, IPassword, IConfirmPassword, ISubscribe, IPrivacypolicy, IUserBuild, IUser {
 
     private String firstname;
@@ -324,7 +323,7 @@ public class User implements IFirstname, ILastname, IEmail, ITelephone, IAddress
                 ", country='" + country + '\'' +
                 ", region='" + region + '\'' +
                 ", password='" + password + '\'' +
-                ", password='" + password + '\'' +
+                ", confirmpassword='" + password + '\'' +
                 ", subscribe=" + subscribe +
                 ", privacypolicy=" + privacypolicy +
                 '}';
