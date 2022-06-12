@@ -1,14 +1,16 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.homework15;
 
-import com.softserve.edu.opencart.data.Currencies;
-import com.softserve.edu.opencart.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class CurrencyTest extends TestRunner {
+import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.pages.HomePage;
+import com.softserve.edu.opencart.tests.TestRunner;
 
-    @DataProvider//(parallel = true)
+public class CurrencyTest extends TestRunner{
+
+    @DataProvider(parallel = true)
     public Object[][] searchCurrencies() {
         return new Object[][] { 
             { Currencies.EURO, Currencies.EURO.getExpectedEuroSymbol() },
@@ -33,4 +35,5 @@ public class CurrencyTest extends TestRunner {
         //
         presentationSleep(4);
     }
+	
 }
