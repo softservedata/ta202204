@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class UserRepository {
+    
     private static final String TIME_TEMPLATE = "HH_mm_ss_S";
 
     private UserRepository() {
@@ -64,7 +65,7 @@ public final class UserRepository {
                 .setCity("city3")
                 .setPostcode("postCode3")
                 .setCountry("Ukraine")
-                .setRegion("Kyiv")
+                .setRegion("Crimea")
                 .setPassword(System.getenv().get("MY_PASSWORD_AWDTR"))
                 //.setPassword("password3")
                 .setSubscribe(true)
