@@ -1,5 +1,7 @@
 package com.softserve.edu.opencart.pages;
 
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,24 +18,27 @@ public abstract class AccountSidebarPart extends TopPart {
     private WebElement returnsRight;
     private WebElement transactionsRight;
     private WebElement newsletterRight;
+    
+    protected Search search;
 
     public AccountSidebarPart(WebDriver driver) {
         super(driver);
         initElements();
+        search = SearchStrategy.getSearch();
     }
 
     private void initElements() {
         // init elements
-        myAccountRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/account')]"));
-        addressBookRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/address')]"));
-        wishListRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/wishlist')]"));
-        orderHistoryRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/order')]"));
-        downloadsRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/download')]"));
-        recurringpaymentsRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/recurring')]"));
-        rewardPointsRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/reward')]"));
-        returnsRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/return')]"));
-        transactionsRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/transaction')]"));
-        newsletterRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/newsletter')]"));
+        myAccountRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/account')]");
+        addressBookRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/address')]");
+        wishListRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/wishlist')]");
+        orderHistoryRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/order')]");
+        downloadsRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/download')]");
+        recurringpaymentsRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/recurring')]");
+        rewardPointsRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/reward')]");
+        returnsRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/return')]");
+        transactionsRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/transaction')]");
+        newsletterRight = search.xpath("//div[@class='list-group']/a[contains(@href, 'account/newsletter')]");
     }
 
     // Page Object

@@ -1,6 +1,8 @@
 package com.softserve.edu.opencart.pages;
 
 import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,16 +12,19 @@ public class LoginPage extends AccountSidebarGuestPart {
     private WebElement email;
     private WebElement password;
     private WebElement loginButton;
+    
+    protected Search search;
 
     public LoginPage(WebDriver driver) {
         super(driver);
         initElements();
+        search = SearchStrategy.getSearch();
     }
 
     private void initElements() {
-        email = driver.findElement(By.name("email"));
-        password = driver.findElement(By.name("password"));
-        loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        email = search.name("email");
+        password = search.name("password");
+        loginButton = search.cssSelector("input.btn.btn-primary");
     }
 
     // Page Object

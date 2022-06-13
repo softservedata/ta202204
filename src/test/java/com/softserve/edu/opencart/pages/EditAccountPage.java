@@ -1,5 +1,7 @@
 package com.softserve.edu.opencart.pages;
 
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,16 +10,19 @@ public class EditAccountPage extends AccountSidebarLoggedPart {
 
     private WebElement firstNameField;
     private WebElement continueButton;
+    
+    protected Search search;
 
     public EditAccountPage(WebDriver driver) {
         super(driver);
         initElements();
+        search = SearchStrategy.getSearch();
     }
 
     private void initElements() {
         // init elements
-        firstNameField = driver.findElement(By.name("firstname"));
-        continueButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+        firstNameField = search.name("firstname");
+        continueButton = search.cssSelector("input.btn.btn-primary");
     }
 
     // Page Object

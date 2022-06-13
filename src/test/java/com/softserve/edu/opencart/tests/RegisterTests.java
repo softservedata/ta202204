@@ -4,7 +4,7 @@ import com.softserve.edu.opencart.data.IUser;
 import com.softserve.edu.opencart.data.UserRepository;
 import org.testng.annotations.Test;
 
-public class RegisterTests extends TestRunnerFirst{
+public class RegisterTests extends TestRunnerStrategy{
 	
 	IUser user = UserRepository.getNewUser();
 	

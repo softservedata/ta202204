@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.softserve.edu</groupId>
-    <artifactId>ta202204page</artifactId>
+    <artifactId>ta2024strategy</artifactId>
     <version>1.0</version>
 
     <packaging>jar</packaging>
@@ -283,7 +283,8 @@
                         <!-- <suiteXmlFile>testng.xml</suiteXmlFile>-->
                         <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                         <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
-                        <suiteXmlFile>testng03par.xml</suiteXmlFile>
+                        <!-- <suiteXmlFile>testng03par.xml</suiteXmlFile>-->
+                        <suiteXmlFile>testng04par.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!--
                     <argLine>

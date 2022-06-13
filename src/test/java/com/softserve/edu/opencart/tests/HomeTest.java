@@ -2,11 +2,10 @@ package com.softserve.edu.opencart.tests;
 
 import com.softserve.edu.opencart.pages.CurrencyDropdown;
 import com.softserve.edu.opencart.pages.HomePage;
-import com.softserve.edu.opencart.pages.ProductsContainer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HomeTest extends TestRunnerFirst {
+public class HomeTest extends TestRunnerStrategy {
 
     @Test
     public void checkHome() {

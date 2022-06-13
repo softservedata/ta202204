@@ -1,5 +1,6 @@
 package com.softserve.edu.opencart.tests;
 
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -8,7 +9,8 @@ import com.softserve.edu.opencart.data.SearchProduct;
 import com.softserve.edu.opencart.data.SearchProductRepository;
 import com.softserve.edu.opencart.pages.HomePage;
 
-public class ProductSearchTest extends TestRunner {
+//public class ProductSearchTest extends TestRunner {
+public class ProductSearchTest extends TestRunnerStrategy {
 
     @DataProvider//(parallel = true)
     public Object[][] searchProducts() {
@@ -30,6 +32,7 @@ public class ProductSearchTest extends TestRunner {
                 .scrollToProduct(searchProduct.getProduct());
         presentationSleep();
         //
+        //SearchStrategy.setExplicitStrategy();
         // Check
         Assert.assertTrue(homePage
                 .getProductComponentsContainer()
