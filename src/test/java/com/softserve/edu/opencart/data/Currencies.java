@@ -2,20 +2,18 @@ package com.softserve.edu.opencart.data;
 
 
 public enum Currencies {
-	DEFAULT_CURRENCY("US Dollar", "h"),
+	DEFAULT_CURRENCY("US Dollar", "$"),
 	EURO("Euro", "€"),
-	POUND_STERLING("Pound Sterling", "3"),
-	US_DOLLAR("US Dollar", "u");
+	POUND_STERLING("Pound Sterling", "£"),
+	US_DOLLAR("US Dollar", "$");
 	//
-	private String name;
-	private String expectedResult;
+	private final String name;
+	private final String expectedResult;
 
 	Currencies(String name, String expectedResult) {
 		this.name = name;
 		this.expectedResult = expectedResult;
 	}
-	
-	//private Currencies(String expectedResult) {this.expectedResult = expectedResult; }
 
 	@Override
 	public String toString() {
