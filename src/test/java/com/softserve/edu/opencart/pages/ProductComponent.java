@@ -34,13 +34,6 @@ public class ProductComponent {
         addToCartButton = productLayout.findElement(By.cssSelector(".fa.fa-shopping-cart"));
         addToWishButton = productLayout.findElement(By.cssSelector(".fa.fa-heart"));
         addToCompareButton = productLayout.findElement(By.cssSelector(".fa.fa-exchange"));
-        //
-//        name = search.cssSelector("h4 a", productLayout);
-//        partialDescription = search.cssSelector("h4 + p", productLayout);
-//        price = search.cssSelector(".price", productLayout);
-//        addToCartButton = search.cssSelector(".fa.fa-shopping-cart", productLayout);
-//        addToWishButton = search.cssSelector(".fa.fa-heart", productLayout);
-//        addToCompareButton = search.cssSelector(".fa.fa-exchange", productLayout);
     }
 
     // Page Object

@@ -65,7 +65,7 @@ public final class UserRepository {
                 .setCity("city3")
                 .setPostcode("postCode3")
                 .setCountry("Ukraine")
-                .setRegion("Crimea")
+                .setRegion("Kyiv")
                 .setPassword(System.getenv().get("MY_PASSWORD_AWDTR"))
                 //.setPassword("password3")
                 .setSubscribe(true)

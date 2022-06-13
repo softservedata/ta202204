@@ -185,10 +185,6 @@ public class RegisterPage extends AccountSidebarGuestPart {
     }
     
     public void selectState(String state) {
-/*        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2000) );
-        //wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeSelected(getState())));
-        //getState().click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#input-zone option")));*/
         for ( WebElement element : getStates() ) {
             if (element.getText().contains(state)) {
                 element.click();
@@ -206,15 +202,12 @@ public class RegisterPage extends AccountSidebarGuestPart {
     }
     
     public void clickOnStateList() {
-        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2000) );
-        //wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeSelected(getState())));
         getState().click();
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#input-zone option")));
     }
 
     // Business Logic
