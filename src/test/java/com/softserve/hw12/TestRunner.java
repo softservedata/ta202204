@@ -18,10 +18,6 @@ public abstract class TestRunner {
     private WebDriver driver;
     private WebDriverWait webDriverWait;
 
-    protected HomePage loadApplication() {
-        return new HomePage(driver);
-    }
-
     @BeforeAll
     public static void beforeAll() {
         WebDriverManager.chromedriver().setup();
@@ -47,4 +43,7 @@ public abstract class TestRunner {
         System.out.println("Test ended");
     }
 
+    protected HomePage loadApplication() {
+        return new HomePage(driver);
+    }
 }

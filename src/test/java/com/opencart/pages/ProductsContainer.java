@@ -1,6 +1,8 @@
 package com.opencart.pages;
 
 import com.opencart.data.Product;
+import com.opencart.tools.search.Search;
+import com.opencart.tools.search.SearchStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,27 +15,47 @@ public class ProductsContainer {
     public final String PRODUCT_NOT_FOUND = "There is no product that matches the search criteria.";
     private final String PRODUCT_COMPONENT_CSSSELECTOR = ".product-layout";
     //
-    protected WebDriver driver;
-    //protected Search search;
+    //protected WebDriver driver;
+    protected Search search;
     //
     private List<ProductComponent> productComponents;
 
-    public ProductsContainer(WebDriver driver) {
-        //public ProductsContainer() {
-        this.driver = driver;
-        //search = SearchStrategy.getSearch();
+    //public ProductsContainer(WebDriver driver) {
+        public ProductsContainer() {
+        //this.driver = driver;
+        search = SearchStrategy.getSearch();
         initElements();
     }
 
-    private void initElements() {
-        // init elements
+//    private void initElements() {
+//        // init elements
+//        productComponents = new ArrayList<>();
+//        for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_COMPONENT_CSSSELECTOR))) {
+//            //for (WebElement current : search.cssSelectors(PRODUCT_COMPONENT_CSSSELECTOR)) {
+//            productComponents.add(new ProductComponent(current));
+//        }
+//    }
+public void initElements() {
+    setProductComponents();
+}
+
+    public void setProductComponents() {
         productComponents = new ArrayList<>();
-        for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_COMPONENT_CSSSELECTOR))) {
-            //for (WebElement current : search.cssSelectors(PRODUCT_COMPONENT_CSSSELECTOR)) {
+        //for (WebElement current : driver.findElements(By.cssSelector(PRODUCT_COMPONENT_CSSSELECTOR))) {
+        for (WebElement current : search.cssSelectors(PRODUCT_COMPONENT_CSSSELECTOR)) {
             productComponents.add(new ProductComponent(current));
         }
     }
-
+    public boolean checkProductPresence(String productName) {
+        boolean result = true;
+        for (ProductComponent product : productComponents) {
+            if (product.getName().getText().contains(productName)) {
+                result = true;
+                break;
+            } else result = false;
+        }
+        return result;
+    }
     // Page Object
 
     // productComponents
