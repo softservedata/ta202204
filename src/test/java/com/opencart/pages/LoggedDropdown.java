@@ -27,4 +27,75 @@ public class LoggedDropdown {
         logout = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[contains(@href,'account/logout')]"));
     }
 
+    // Page Object
+
+    // myAccount
+    public WebElement getMyAccount() {
+        return myAccount;
+    }
+
+    public String getMyAccountText() {
+        return getMyAccount().getText();
+    }
+
+    public void clickMyAccount() {
+        getMyAccount().click();
+    }
+
+    // orderHistory
+    public WebElement getOrderHistory() {
+        return orderHistory;
+    }
+
+    public String getOrderHistoryText() {
+        return getOrderHistory().getText();
+    }
+
+    public void clickOrderHistory() {
+        getOrderHistory().click();
+    }
+
+    // transactions
+    public WebElement getTransactions() {
+        return transactions;
+    }
+
+    public String getTransactionsText() {
+        return getTransactions().getText();
+    }
+
+    public void clickTransactions() {
+        getTransactions().click();
+    }
+
+    // downloads
+    public WebElement getDownloads() {
+        return downloads;
+    }
+
+    public String getDownloadsText() {
+        return getDownloads().getText();
+    }
+
+    public void clickDownloads() {
+        getDownloads().click();
+    }
+
+    // logout
+    public WebElement getLogout() {
+        return logout;
+    }
+
+    public String getLogoutText() {
+        return getLogout().getText();
+    }
+
+    public void clickLogout() {
+        getLogout().click();
+    }
+
+    // Functional
+
+    // Business Logic
+
 }
