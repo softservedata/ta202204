@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class GuestDropdown {
-
     private WebDriver driver;
     //
     private WebElement register;
@@ -20,5 +19,4 @@ public class GuestDropdown {
         register = driver.findElement(By.xpath("//div[@id='top-links']//a[contains(@href,'account/register')]"));
         login = driver.findElement(By.xpath("//div[@id='top-links']//a[contains(@href,'account/login')]"));
     }
-
 }

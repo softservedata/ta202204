@@ -32,6 +32,7 @@ public abstract class TopPart {
     //
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
+    private CurrencyDropdown dropdownCurrency;
 
     public TopPart(WebDriver driver) {
         this.driver = driver;
@@ -66,6 +67,36 @@ public abstract class TopPart {
     public void clickCurrency() {
         getCurrency().click();
     }
+
+    protected CurrencyDropdown getDropdownCurrency() {
+        return dropdownCurrency;
+    }
+
+    private CurrencyDropdown createDropdownCurrency() {
+        dropdownCurrency = new CurrencyDropdown(driver);
+        return getDropdownCurrency();
+    }
+
+    private void clickDropdownCurrencyEuro() {
+        getDropdownCurrency().clickEuro();
+        dropdownCurrency = null;
+    }
+
+    private void clickDropdownCurrencyPoundSterling() {
+        getDropdownCurrency().clickPoundSterling();
+        dropdownCurrency = null;
+    }
+
+    private void clickDropdownCurrencyUSDollar() {
+        getDropdownCurrency().clickUSDollar();
+        dropdownCurrency = null;
+    }
+
+    private void closeDropdownCurrency() {
+        clickSearchTopField();
+        dropdownCurrency = null;
+    }
+
 
     // myAccount
     public WebElement getMyAccount() {
@@ -173,12 +204,12 @@ public abstract class TopPart {
     }
 
     private void clickDropdownGuestRegister() {
-        getDropdownGuest().clickRegister();
+       //getDropdownGuest().clickRegister();
         dropdownGuest = null;
     }
 
     private void clickDropdownGuestLogin() {
-        getDropdownGuest().clickLogin();
+        //getDropdownGuest().clickLogin();
         dropdownGuest = null;
     }
 
@@ -202,27 +233,27 @@ public abstract class TopPart {
     }
 
     private void clickDropdownLoggedMyAccount() {
-        getDropdownLogged().clickMyAccount();
+       // getDropdownLogged().clickMyAccount();
         dropdownLogged = null;
     }
 
     private void clickDropdownLoggedOrderHistory() {
-        getDropdownLogged().clickOrderHistory();
+        //getDropdownLogged().clickOrderHistory();
         dropdownLogged = null;
     }
 
     private void clickDropdownLoggedTransactions() {
-        getDropdownLogged().clickTransactions();
+       // getDropdownLogged().clickTransactions();
         dropdownLogged = null;
     }
 
     private void clickDropdownLoggedDownloads() {
-        getDropdownLogged().clickDownloads();
+       // getDropdownLogged().clickDownloads();
         dropdownLogged = null;
     }
 
     private void clickDropdownLoggedLogout() {
-        getDropdownLogged().clickLogout();
+       // getDropdownLogged().clickLogout();
         dropdownLogged = null;
     }
 
@@ -297,5 +328,10 @@ public abstract class TopPart {
         clickDropdownLoggedLogout();
         return new AccountLogoutPage(driver);
     }
-
+    public HomePage selectCurrencyPoundSterling() {
+        clickCurrency();
+        createDropdownCurrency();
+        clickDropdownCurrencyPoundSterling();
+        return new HomePage(driver);
+    }
 }
