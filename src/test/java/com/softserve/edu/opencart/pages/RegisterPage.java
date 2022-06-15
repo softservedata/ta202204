@@ -1,15 +1,17 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public class RegisterPage extends AccountSidebarGuestPart {
 
-    private WebElement firstname;
+	protected Search search;
+	
+	private WebElement firstname;
     private WebElement lastname;
     private WebElement email;
     private WebElement telephone;
@@ -28,30 +30,51 @@ public class RegisterPage extends AccountSidebarGuestPart {
 	private WebElement continueButton;
 	
 	private Select s;
-    public RegisterPage(WebDriver driver) {
-        super(driver);
+	
+    // public RegisterPage(WebDriver driver) {
+	public RegisterPage() {
+        // super(driver);
+		super();
+		search = SearchStrategy.getSearch();
         initElements();
     }
 
     private void initElements() {
         // init elements
-    	firstname = driver.findElement(By.id("input-firstname"));
-        lastname = driver.findElement(By.id("input-lastname"));
-        email = driver.findElement(By.id("input-email"));
-        telephone = driver.findElement(By.id("input-telephone"));
-        fax = driver.findElement(By.id("input-fax"));     // not required
-        company = driver.findElement(By.id("input-company")); // not required
-        address1 = driver.findElement(By.id("input-address-1"));
-        address2 = driver.findElement(By.id("input-address-2")); // not required
-        city = driver.findElement(By.id("input-city"));
-        postcode = driver.findElement(By.id("input-postcode"));
-        country = driver.findElement(By.id("input-country"));
-        region = driver.findElement(By.id("input-zone"));
-        password = driver.findElement(By.id("input-password"));
-        confirmpassword = driver.findElement(By.id("input-confirm"));
-        subscribe = driver.findElement(By.cssSelector("input[name='newsletter'][value='1']"));
-        privacypolicy = driver.findElement(By.name("agree"));
-    	continueButton = driver.findElement(By.cssSelector(".btn.btn-primary"));
+//    	  firstname = driver.findElement(By.id("input-firstname"));
+//        lastname = driver.findElement(By.id("input-lastname"));
+//        email = driver.findElement(By.id("input-email"));
+//        telephone = driver.findElement(By.id("input-telephone"));
+//        fax = driver.findElement(By.id("input-fax"));     // not required
+//        company = driver.findElement(By.id("input-company")); // not required
+//        address1 = driver.findElement(By.id("input-address-1"));
+//        address2 = driver.findElement(By.id("input-address-2")); // not required
+//        city = driver.findElement(By.id("input-city"));
+//        postcode = driver.findElement(By.id("input-postcode"));
+//        country = driver.findElement(By.id("input-country"));
+//        region = driver.findElement(By.id("input-zone"));
+//        password = driver.findElement(By.id("input-password"));
+//        confirmpassword = driver.findElement(By.id("input-confirm"));
+//        subscribe = driver.findElement(By.cssSelector("input[name='newsletter'][value='1']"));
+//        privacypolicy = driver.findElement(By.name("agree"));
+//    	  continueButton = driver.findElement(By.cssSelector(".btn.btn-primary"));
+    	firstname = search.id("input-firstname");
+        lastname = search.id("input-lastname");
+        email = search.id("input-email");
+        telephone = search.id("input-telephone");
+        fax = search.id("input-fax");     // not required
+        company = search.id("input-company"); // not required
+        address1 = search.id("input-address-1");
+        address2 = search.id("input-address-2"); // not required
+        city = search.id("input-city");
+        postcode = search.id("input-postcode");
+        country = search.id("input-country");
+        region = search.id("input-zone");
+        password = search.id("input-password");
+        confirmpassword = search.id("input-confirm");
+        subscribe = search.cssSelector("input[name='newsletter'][value='1']");
+        privacypolicy = search.name("agree");
+    	continueButton = search.cssSelector(".btn.btn-primary");
     }
 
     // Page Object
@@ -61,7 +84,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return firstname;
     }
 
-    private String getFirstnameText() {
+    protected String getFirstnameText() {
         return getFirstname().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -82,7 +105,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return lastname;
     }
 
-    private String getLastnameText() {
+    protected String getLastnameText() {
         return getLastname().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -103,7 +126,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return email;
     }
 
-    private String getEmailText() {
+    protected String getEmailText() {
         return getEmail().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -124,7 +147,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return telephone;
     }
 
-    private String getTelephoneText() {
+    protected String getTelephoneText() {
         return getTelephone().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -145,7 +168,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return fax;
     }
 
-    private String getFaxText() {
+    protected String getFaxText() {
         return getFax().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -166,7 +189,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return company;
     }
 
-    private String getCompanyText() {
+    protected String getCompanyText() {
         return getCompany().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -187,7 +210,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return address1;
     }
 
-    private String getAddress1Text() {
+    protected String getAddress1Text() {
         return getAddress1().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -208,7 +231,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return address2;
     }
 
-    private String getAddress2Text() {
+    protected String getAddress2Text() {
         return getAddress2().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -229,7 +252,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return city;
     }
 
-    private String getCityText() {
+    protected String getCityText() {
         return getCity().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -250,7 +273,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return postcode;
     }
 
-    private String getPostcodeText() {
+    protected String getPostcodeText() {
         return getPostcode().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -271,7 +294,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return country;
     }
 
-    private String getCountryText() {
+    protected String getCountryText() {
         return getCountry().getText();
     }
 
@@ -289,7 +312,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return region;
     }
 
-    private String getRegionText() {
+    protected String getRegionText() {
         return getRegion().getText();
     }
 
@@ -307,7 +330,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return password;
     }
 
-    private String getPasswordText() {
+    protected String getPasswordText() {
         return getPassword().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -328,7 +351,7 @@ public class RegisterPage extends AccountSidebarGuestPart {
         return confirmpassword;
     }
 
-    private String getConfirmpasswordText() {
+    protected String getConfirmpasswordText() {
         return getConfirmpassword().getAttribute(TAG_ATTRIBUTE_VALUE);
     }
 
@@ -481,7 +504,8 @@ public class RegisterPage extends AccountSidebarGuestPart {
     
     public SuccessfulRegistrationPage successfulRegister(IUser newValidUser) {
     	fillRegister(newValidUser);
-    	return new SuccessfulRegistrationPage(driver);
+    	// return new SuccessfulRegistrationPage(driver);
+    	return new SuccessfulRegistrationPage();
     }
     
 	public UnsuccessfulRegisterPage unsuccessfulRegisterPage(IUser invalidUser) {
@@ -489,7 +513,8 @@ public class RegisterPage extends AccountSidebarGuestPart {
 		// password) {
 		fillRegister(invalidUser);
 		// fillLogin(email, password);
-		return new UnsuccessfulRegisterPage(driver);
+		// return new UnsuccessfulRegisterPage(driver);
+		return new UnsuccessfulRegisterPage();
 	}
 
 }

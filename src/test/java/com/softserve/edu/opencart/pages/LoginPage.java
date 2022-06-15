@@ -1,24 +1,34 @@
 package com.softserve.edu.opencart.pages;
 
 import com.softserve.edu.opencart.data.IUser;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
+
 import org.openqa.selenium.WebElement;
+
 public class LoginPage extends AccountSidebarGuestPart {
 
-    private WebElement email;
+	protected Search search;
+	
+	private WebElement email;
     private WebElement password;
     private WebElement loginButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    // public LoginPage(WebDriver driver) {
+    public LoginPage() {
+        // super(driver);
+    	super();
+    	search = SearchStrategy.getSearch();
         initElements();
     }
 
     private void initElements() {
-        email = driver.findElement(By.name("email"));
-        password = driver.findElement(By.name("password"));
-        loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+//        email = driver.findElement(By.name("email"));
+//        password = driver.findElement(By.name("password"));
+//        loginButton = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+    	email = search.name("email");
+        password = search.name("password");
+        loginButton = search.cssSelector("input.btn.btn-primary");
     }
 
     // Page Object
@@ -107,14 +117,16 @@ public class LoginPage extends AccountSidebarGuestPart {
     //public MyAccountPage successfulLogin(String email, String password) {
         fillLogin(validUser);
         //fillLogin(email, password);
-        return new MyAccountPage(driver);
+        // return new MyAccountPage(driver);
+        return new MyAccountPage();
     }
 
     public UnsuccessfulLoginPage unsuccessfulLoginPage(IUser invalidUser) {
     //public UnsuccessfulLoginPage unsuccessfulLoginPage(String email, String password) {
         fillLogin(invalidUser);
         //fillLogin(email, password);
-        return new UnsuccessfulLoginPage(driver);
+        // return new UnsuccessfulLoginPage(driver);
+        return new UnsuccessfulLoginPage();
     }
 
 }

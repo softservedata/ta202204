@@ -4,7 +4,8 @@ import com.softserve.edu.opencart.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class HomeTest extends TestRunnerFirst {
+// public class HomeTest extends TestRunnerFirst {
+public class HomeTest extends TestRunnerStrategy {
 
     @Test
     public void checkHome() {

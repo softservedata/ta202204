@@ -1,9 +1,12 @@
 package com.softserve.edu.opencart.pages;
 
 import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.tools.browser.DriverWrapper;
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class TopPart {
@@ -17,7 +20,8 @@ public abstract class TopPart {
     //
     protected final String LIST_CURRENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
 
-    protected WebDriver driver;
+    // protected WebDriver driver;
+    protected Search search;
     //
     private WebElement currency;
     private WebElement myAccount;
@@ -35,22 +39,33 @@ public abstract class TopPart {
     private CurrencyDropdown dropdownCurrency;
     private DropdownComponent dropdownComponent;
 
-    public TopPart(WebDriver driver) {
-        this.driver = driver;
+    // public TopPart(WebDriver driver) {
+    public TopPart() {
+        // this.driver = driver;
+    	search = SearchStrategy.getSearch();
         initElements();
         //checkElements();
     }
 
     private void initElements() {
         // init elements
-        currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
-        myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
-        wishList = driver.findElement(By.id("wishlist-total"));
-        shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
-        logo = driver.findElement(By.cssSelector("#logo a"));
-        searchTopField = driver.findElement(By.name("search"));
-        searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
-        cartButton = driver.findElement(By.cssSelector("#cart > button"));
+//        currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
+//        myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
+//        wishList = driver.findElement(By.id("wishlist-total"));
+//        shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
+//        logo = driver.findElement(By.cssSelector("#logo a"));
+//        searchTopField = driver.findElement(By.name("search"));
+//        searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
+//        cartButton = driver.findElement(By.cssSelector("#cart > button"));
+    	
+    	currency = search.cssSelector(".btn.btn-link.dropdown-toggle");
+        myAccount = search.cssSelector(".list-inline > li > a.dropdown-toggle");
+        wishList = search.id("wishlist-total");
+        shoppingCart = search.cssSelector("a[title='Shopping Cart']");
+        logo = search.cssSelector("#logo a");
+        searchTopField = search.name("search");
+        searchTopButton = search.cssSelector("button.btn.btn-default");
+        cartButton = search.cssSelector("#cart > button");
     }
 
     // Page Object
@@ -171,8 +186,8 @@ public abstract class TopPart {
     }
 
     private DropdownComponent createDropdownComponent(By searchLocator) {
-        dropdownComponent = new DropdownComponent(driver, searchLocator);
-        //dropdownComponent = new DropdownComponent(searchLocator);
+        // dropdownComponent = new DropdownComponent(driver, searchLocator);
+        dropdownComponent = new DropdownComponent(searchLocator);
         return getDropdownComponent();
     }
 
@@ -189,7 +204,7 @@ public abstract class TopPart {
         //closeDropdownComponent();
     }
 
-    private void closeDropdownComponent() {
+    protected void closeDropdownComponent() {
         clickSearchTopField();
         dropdownComponent = null;
     }
@@ -204,7 +219,8 @@ public abstract class TopPart {
     }
 
     private GuestDropdown createDropdownGuest() {
-        dropdownGuest = new GuestDropdown(driver);
+        // dropdownGuest = new GuestDropdown(driver);
+    	dropdownGuest = new GuestDropdown();
         return getDropdownGuest();
     }
 
@@ -218,7 +234,7 @@ public abstract class TopPart {
         dropdownGuest = null;
     }
 
-    private void closeDropdownGuest() {
+    protected void closeDropdownGuest() {
         clickSearchTopField();
         dropdownGuest = null;
     }
@@ -234,7 +250,8 @@ public abstract class TopPart {
     }
 
     private CurrencyDropdown createDropdownCurrency(String currency) {
-    	dropdownCurrency = new CurrencyDropdown(driver, currency);
+    	// dropdownCurrency = new CurrencyDropdown(driver, currency);
+    	dropdownCurrency = new CurrencyDropdown(currency);
     	return getDropdownCurrency(currency);
     }
 
@@ -243,7 +260,7 @@ public abstract class TopPart {
     	dropdownCurrency = null;
     }
 
-    private void closeDropdownCurrency() {
+    protected void closeDropdownCurrency() {
     	clickSearchTopField();
     	dropdownCurrency = null;
     }
@@ -260,26 +277,27 @@ public abstract class TopPart {
     }
 
     private LoggedDropdown createDropdownLogged() {
-        dropdownLogged = new LoggedDropdown(driver);
+        // dropdownLogged = new LoggedDropdown(driver);
+    	dropdownLogged = new LoggedDropdown();
         return getDropdownLogged();
     }
 
-    private void clickDropdownLoggedMyAccount() {
+    protected void clickDropdownLoggedMyAccount() {
         getDropdownLogged().clickMyAccount();
         dropdownLogged = null;
     }
 
-    private void clickDropdownLoggedOrderHistory() {
+    protected void clickDropdownLoggedOrderHistory() {
         getDropdownLogged().clickOrderHistory();
         dropdownLogged = null;
     }
 
-    private void clickDropdownLoggedTransactions() {
+    protected void clickDropdownLoggedTransactions() {
         getDropdownLogged().clickTransactions();
         dropdownLogged = null;
     }
 
-    private void clickDropdownLoggedDownloads() {
+    protected void clickDropdownLoggedDownloads() {
         getDropdownLogged().clickDownloads();
         dropdownLogged = null;
     }
@@ -289,7 +307,7 @@ public abstract class TopPart {
         dropdownLogged = null;
     }
 
-    private void closeDropdownLogged() {
+    protected void closeDropdownLogged() {
         clickSearchTopField();
         dropdownLogged = null;
     }
@@ -320,7 +338,7 @@ public abstract class TopPart {
     }
 
     // searchTopField
-    private void fillSearchTopField(String searchText) {
+    protected void fillSearchTopField(String searchText) {
         clickSearchTopField();
         clearSearchTopField();
         setSearchTopField(searchText);
@@ -329,14 +347,16 @@ public abstract class TopPart {
     protected void scrollToElement(WebElement webElement) {
         //        Actions action = new Actions(driver);
         //        action.moveToElement(webElement).perform();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+    	((JavascriptExecutor) DriverWrapper.getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
 
     // Business Logic
 
     public HomePage gotoHomePage() {
         clickLogo();
-        return new HomePage(driver);
+        // return new HomePage(driver);
+        return new HomePage();
     }
 
     // dropdownGuest
@@ -344,28 +364,32 @@ public abstract class TopPart {
         openMyAccountDropdown();
         createDropdownGuest();
         clickDropdownGuestLogin();
-        return new LoginPage(driver);
+        // return new LoginPage(driver);
+        return new LoginPage();
     }
 
     public RegisterPage gotoRegisterPage() {
         openMyAccountDropdown();
         createDropdownGuest();
         clickDropdownGuestRegister();
-        return new RegisterPage(driver);
+        // return new RegisterPage(driver);
+        return new RegisterPage();
     }
 
     public AccountLogoutPage logout() {
         openMyAccountDropdown();
         createDropdownLogged();
         clickDropdownLoggedLogout();
-        return new AccountLogoutPage(driver);
+        // return new AccountLogoutPage(driver);
+        return new AccountLogoutPage();
     }
     
     public HomePage selectCurrency(String currency) {
     	clickCurrency();
     	createDropdownCurrency(currency);
     	clickDropdownCurrencySelect(currency);
-    	return new HomePage(driver);
+    	// return new HomePage(driver);
+    	return new HomePage();
     }
 
 }

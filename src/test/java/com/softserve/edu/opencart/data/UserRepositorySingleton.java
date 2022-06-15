@@ -3,17 +3,30 @@ package com.softserve.edu.opencart.data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public final class UserRepository {
-    private static final String TIME_TEMPLATE = "HH_mm_ss_S";
+public final class UserRepositorySingleton {
+    private static volatile UserRepositorySingleton instance = null;
+    //
+    private final String TIME_TEMPLATE = "HH_mm_ss_S";
 
-    private UserRepository() {
+    private UserRepositorySingleton() {
     }
 
-    public static IUser getDefault() {
-        return getHahaha();
+    public static UserRepositorySingleton get() {
+        if (instance == null) {
+            synchronized (UserRepositorySingleton.class) {
+                if (instance == null) {
+                    instance = new UserRepositorySingleton();
+                }
+            }
+        }
+        return instance;
     }
 
-    public static IUser getHahaha() {
+    public IUser getDefault() {
+        return hahaha();
+    }
+
+    public IUser hahaha() {
         return User.get()
                 .setFirstname("hahaha")
                 .setLastname("hahaha")
@@ -25,7 +38,7 @@ public final class UserRepository {
                 .setCountry("country")
                 .setRegion("region")
                 .setPassword(System.getenv().get("PASSWORD"))
-                .setConfirmPassword(System.getenv().get("PASSWORD"))
+                .setConfirmPassword("PASSWORD")
                 .setSubscribe(true)
                 .setPrivacypolicy(true)
                 .setFax("fax")
@@ -34,7 +47,7 @@ public final class UserRepository {
                 .build();
     }
 
-    public static IUser getAwdrt() {
+    public IUser awdrt() {
         return User.get()
                 .setFirstname("my")
                 .setLastname("hahaha")
@@ -46,7 +59,7 @@ public final class UserRepository {
                 .setCountry("country")
                 .setRegion("region")
                 .setPassword(System.getenv().get("PASSWORD"))// MY_PASSWORD_AWDTR
-                .setConfirmPassword(System.getenv().get("PASSWORD"))
+                .setConfirmPassword("PASSWORD")
                 .setSubscribe(true)
                 .setPrivacypolicy(true)
                 .setFax("fax")
@@ -55,7 +68,7 @@ public final class UserRepository {
                 .build();
     }
 
-    public static IUser getNewUser() {
+    public IUser newUser() {
         String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
         String newEmail = "temp" + currentTime + "@gmail.com";
         System.out.println("newEmail = " + newEmail); // TODO Log
@@ -67,53 +80,32 @@ public final class UserRepository {
                 .setAddress1("address13")
                 .setCity("city3")
                 .setPostcode("postCode3")
-                .setCountry("United States")
-                .setRegion("New York")
+                .setCountry("Ukraine")
+                .setRegion("Kyiv")
                 .setPassword(System.getenv().get("PASSWORD"))
-                .setConfirmPassword(System.getenv().get("PASSWORD"))
                 //.setPassword("password3")
+                .setConfirmPassword("PASSWORD")
                 .setSubscribe(true)
                 .setPrivacypolicy(true)
                 .setFax("fax3")
                 .build();
     }
-    
-    public static IUser getEmptyNewUser() {
-        return User.get()
-                .setFirstname("")
-                .setLastname("")
-                .setEmail("")
-                .setTelephone("")
-                .setAddress1("")
-                .setCity("")
-                .setPostcode("")
-                .setCountry("United Kingdom")
-                .setRegion("Cardiff")
-                .setPassword("")
-                .setConfirmPassword("")
-                .setSubscribe(false)
-                .setPrivacypolicy(false)
-                .setFax("")
-                .setCompany("")
-                .setAddress2("")
-                .build();
-    }
 
-    public static IUser getInvalidUser() {
+    public IUser invalidUser() {
         return User.get()
                 .setFirstname("firstName4")
                 .setLastname("lastName4")
-                .setEmail("newEmail@gmail.com")
+                .setEmail("newEmail@a.aa")
                 .setTelephone("telephone4")
                 .setAddress1("address14")
                 .setCity("city34")
                 .setPostcode("postCode4")
-                .setCountry("United Kingdom")
-                .setRegion("Cardiff")
+                .setCountry("Ukraine4")
+                .setRegion("Kyiv4")
                 .setPassword("hahaha")
                 .setConfirmPassword("hahaha")
-                .setSubscribe(false)
-                .setPrivacypolicy(false)
+                .setSubscribe(true)
+                .setPrivacypolicy(true)
                 .setFax("fax4")
                 .build();
     }
@@ -122,11 +114,17 @@ public final class UserRepository {
     public List<IUser> fromCsv(String filename) {
         return User.getByLists(new CSVReader(filename).getAllCells());
     }
+
     public List<IUser> fromCsv() {
         return fromCsv("users.csv");
     }
+
     public List<IUser> fromExcel(String filename) {
         return User.getByLists(new ExcelReader(filename).getAllCells());
+    }
+
+    public List<IUser> fromExcel() {
+        return fromExcel("users.xlsx");
     }
     */
 }

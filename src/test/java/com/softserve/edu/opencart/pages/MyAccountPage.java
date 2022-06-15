@@ -1,11 +1,17 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.WebDriver;
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public class MyAccountPage extends AccountSidebarLoggedPart {
 
-    public MyAccountPage(WebDriver driver) {
-        super(driver);
+	protected Search search;
+	
+    // public MyAccountPage(WebDriver driver) {
+	public MyAccountPage() {
+        // super(driver);
+		super();
+		search = SearchStrategy.getSearch();
         initElements();
     }
 

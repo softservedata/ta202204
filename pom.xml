@@ -21,7 +21,7 @@
         <!-- - - - - - Reports - - - - - -->
         <testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
         <!-- - - - - - Resources - - - - -->
-        <testng.runners>./resources/runner/</testng.runners>
+        <testng.runners>./src/test/resources/runner/</testng.runners>
         <!-- - - - - - Password - - - - - -->
         <!-- <application.password>null123</application.password> -->
     </properties>
@@ -284,7 +284,9 @@
                     	<!-- HW14 -->
                     	<!-- <suiteXmlFile>${testng.runners}testng-register.xml</suiteXmlFile> -->
                     	<!-- HW15 -->
-                    	<suiteXmlFile>${testng.runners}testng-currency.xml</suiteXmlFile>
+                    	<!-- <suiteXmlFile>${testng.runners}testng-currency.xml</suiteXmlFile> -->
+                    	<!-- HW16 -->
+                    	<suiteXmlFile>${testng.runners}testng-login.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- <suiteXmlFile>testng2.xml</suiteXmlFile> -->
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->

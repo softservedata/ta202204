@@ -8,7 +8,8 @@ import com.softserve.edu.opencart.data.SearchProduct;
 import com.softserve.edu.opencart.data.SearchProductRepository;
 import com.softserve.edu.opencart.pages.HomePage;
 
-public class ProductSearchTest extends TestRunner {
+// public class ProductSearchTest extends TestRunner {
+public class ProductSearchTest extends TestRunnerStrategy {
 
     @DataProvider//(parallel = true)
     public Object[][] searchProducts() {

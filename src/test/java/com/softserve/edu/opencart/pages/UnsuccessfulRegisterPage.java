@@ -1,22 +1,30 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public class UnsuccessfulRegisterPage extends RegisterPage{
 	
 	public /*static*/ final String EXPECTED_REGISTER_MESSAGE = "Warning: You must agree to the Privacy Policy!";
     //
+	
+	protected Search search;
+	
     private WebElement alertWarning;
 
-    public UnsuccessfulRegisterPage(WebDriver driver) {
-        super(driver);
+    // public UnsuccessfulRegisterPage(WebDriver driver) {
+    public UnsuccessfulRegisterPage() {
+        // super(driver);
+    	super();
+    	search = SearchStrategy.getSearch();
         initElements();
     }
 
     private void initElements() {
-        alertWarning = driver.findElement(By.cssSelector(".alert.alert-danger"));
+        // alertWarning = driver.findElement(By.cssSelector(".alert.alert-danger"));
+    	alertWarning = search.cssSelector(".alert.alert-danger");
     }
 
     // Page Object

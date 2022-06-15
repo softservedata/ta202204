@@ -78,7 +78,8 @@ public abstract class TestRunnerFirst {
 
     protected HomePage loadApplication() {
         //driver.get(BASE_URL);
-        return new HomePage(driver);
-        //return new HomePage(getDriver());
+        // return new HomePage(driver);
+        // return new HomePage(getDriver());
+    	return new HomePage();
     }
 }

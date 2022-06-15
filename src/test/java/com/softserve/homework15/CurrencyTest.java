@@ -6,9 +6,10 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.HomePage;
-import com.softserve.edu.opencart.tests.TestRunner;
+import com.softserve.edu.opencart.tests.TestRunnerStrategy;
 
-public class CurrencyTest extends TestRunner{
+// public class CurrencyTest extends TestRunner{
+public class CurrencyTest extends TestRunnerStrategy {
 
     @DataProvider(parallel = true)
     public Object[][] searchCurrencies() {

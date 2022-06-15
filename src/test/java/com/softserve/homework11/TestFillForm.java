@@ -34,7 +34,7 @@ public class TestFillForm {
 	private static final Logger log = LogManager.getLogger(FormFillOut.class.getName());
 	private final Long implicitlyWaitSeconds = 5L;
 	//private String SUCCESS_MESSAGE = "Success: You have added Apple Cinema 30\" to your shopping cart!\n×";
-	String filePath = "./resources/scripts/fileupload.exe";
+	String filePath = "./src/test/resources/scripts/fileupload.exe";
 
 	@BeforeSuite
 	public void beforeSuite() {

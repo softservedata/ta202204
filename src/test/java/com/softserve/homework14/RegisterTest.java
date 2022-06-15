@@ -9,9 +9,10 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.HomePage;
 import com.softserve.edu.opencart.pages.SuccessfulRegistrationPage;
 import com.softserve.edu.opencart.pages.UnsuccessfulRegisterPage;
-import com.softserve.edu.opencart.tests.TestRunner;
+import com.softserve.edu.opencart.tests.TestRunnerStrategy;
 
-public class RegisterTest extends TestRunner{
+//public class RegisterTest extends TestRunner{
+public class RegisterTest extends TestRunnerStrategy{
 
     @DataProvider
     public Object[][] dataSuccessful() {
@@ -31,7 +32,7 @@ public class RegisterTest extends TestRunner{
     	presentationSleep();
     	
     	// Check
-    	Assert.assertEquals(successfulRegisterPage.getSuccessMessageText(), successfulRegisterPage.EXPECTED_REGISTRATION_MESSAGE); // static, correctness
+    	Assert.assertEquals(successfulRegisterPage.getSuccessMessageText(), SuccessfulRegistrationPage.EXPECTED_REGISTRATION_MESSAGE); // static, correctness
     	Assert.assertTrue(successfulRegisterPage.getSuccessMessageText().contains(SuccessfulRegistrationPage.EXPECTED_REGISTRATION_MESSAGE));
     	
     	// Return to Previous State

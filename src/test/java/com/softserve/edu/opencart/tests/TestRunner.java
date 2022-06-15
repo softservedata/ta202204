@@ -145,6 +145,7 @@ public abstract class TestRunner {
 
 	protected HomePage loadApplication() {
 		// return new HomePage(driver);
-		return new HomePage(getDriver());
+		// return new HomePage(getDriver());
+		return new HomePage();
 	}
 }

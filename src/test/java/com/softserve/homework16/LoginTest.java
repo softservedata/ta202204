@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.tests;
+package com.softserve.homework16;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -9,6 +9,7 @@ import com.softserve.edu.opencart.data.UserRepository;
 import com.softserve.edu.opencart.pages.EditAccountPage;
 import com.softserve.edu.opencart.pages.HomePage;
 import com.softserve.edu.opencart.pages.UnsuccessfulLoginPage;
+import com.softserve.edu.opencart.tests.TestRunnerStrategy;
 
 // public class LoginTest extends TestRunner{
 public class LoginTest extends TestRunnerStrategy{

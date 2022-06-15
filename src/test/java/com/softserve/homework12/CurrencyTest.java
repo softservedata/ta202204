@@ -4,9 +4,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.softserve.edu.opencart.pages.HomePage;
-import com.softserve.edu.opencart.tests.TestRunnerFirst;
+import com.softserve.edu.opencart.tests.TestRunnerStrategy;
 
-public class CurrencyTest extends TestRunnerFirst{
+// public class CurrencyTest extends TestRunnerFirst{
+public class CurrencyTest extends TestRunnerStrategy {
 
 	@Test
 	public void checkCurrency() {

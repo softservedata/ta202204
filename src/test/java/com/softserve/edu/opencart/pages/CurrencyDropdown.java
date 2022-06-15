@@ -1,22 +1,26 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
 public class CurrencyDropdown {
 
-	private WebDriver driver;
+	//private WebDriver driver;
+	protected Search search;
     //
     private WebElement selectCurrency;
 
-    public CurrencyDropdown(WebDriver driver, String currency) {
-        this.driver = driver;
+    //public CurrencyDropdown(WebDriver driver, String currency) {
+    public CurrencyDropdown(String currency) {
+        //this.driver = driver;
+    	search = SearchStrategy.getSearch();
         initElements(currency);
     }
 
     private void initElements(String currency) {
-    	selectCurrency = driver.findElement(By.name(currency));
+    	selectCurrency = search.name(currency);
     }
 
     // Page Object
