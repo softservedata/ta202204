@@ -23,7 +23,7 @@ public class ProductSearchTest extends TestRunnerStrategy {
 
     @Test(dataProvider = "searchProducts")
     public void checkFirst(SearchProduct searchProduct) {
-        //logger.info("start checkFirst() with searchProduct = " + searchProduct.toString());
+        logger.info("start checkFirst() with searchProduct = " + searchProduct.toString());
         //
         // Steps
         HomePage homePage = loadApplication()
@@ -41,6 +41,7 @@ public class ProductSearchTest extends TestRunnerStrategy {
                 //.contains("$602.00"));
                 .contains(searchProduct.getPrice()));
         //
+        //Assert.assertTrue(false);
         presentationSleep(2);
     }
 }

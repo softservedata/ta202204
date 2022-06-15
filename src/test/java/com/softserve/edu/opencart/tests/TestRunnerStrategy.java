@@ -11,6 +11,8 @@ import java.util.Map;
 //import org.openqa.selenium.TakesScreenshot;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -31,7 +33,7 @@ public abstract class TestRunnerStrategy {
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
     private Browsers browser = Browsers.CHROME_TEMPORARY;
     //private WebDriver driver;
-    //protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     protected void presentationSleep() {
         presentationSleep(1);
@@ -128,7 +130,7 @@ public abstract class TestRunnerStrategy {
         if (!result.isSuccess()) {
             String testName = result.getName();
             System.out.println("***TC error, name = " + testName + " ERROR");
-            //logger.error("Test " + result.getName() + " ERROR");
+            logger.error("Test " + result.getName() + " ERROR");
             // Take Screenshot, Save sourceCode, Save to log, Prepare report, Return to previous state, logout, etc.
             // driver.manage().deleteAllCookies();
             // clear cache; delete cookie; delete session;
