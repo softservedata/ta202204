@@ -24,12 +24,25 @@ public abstract class TopPart {
     @FindBy(css = ".btn.btn-link.dropdown-toggle")
     private WebElement currency;
 
+    @FindBy(css = ".list-inline > li > a.dropdown-toggle")
     private WebElement myAccount;
+
+    @FindBy(id = "wishlist-total")
     private WebElement wishList;
+
+    @FindBy(css = "a[title='Shopping Cart']")
     private WebElement shoppingCart;
+
+    @FindBy(css = "#logo a")
     private WebElement logo;
+
+    @FindBy(name = "search")
     private WebElement searchTopField;
+
+    @FindBy(css = "button.btn.btn-default")
     private WebElement searchTopButton;
+
+    @FindBy(css = "#cart > button")
     private WebElement cartButton;
 
     // List<MenuComponent> menu;
@@ -49,6 +62,7 @@ public abstract class TopPart {
     private void initElements() {
         // init elements
         // currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
+        /*
         myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
         wishList = driver.findElement(By.id("wishlist-total"));
         shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
@@ -56,6 +70,7 @@ public abstract class TopPart {
         searchTopField = driver.findElement(By.name("search"));
         searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
         cartButton = driver.findElement(By.cssSelector("#cart > button"));
+        */
     }
 
     // Page Object

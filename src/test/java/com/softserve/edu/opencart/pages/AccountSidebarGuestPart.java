@@ -1,25 +1,32 @@
 package com.softserve.edu.opencart.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public abstract class AccountSidebarGuestPart extends AccountSidebarPart {
 
+    @FindBy(xpath = "//div[@class='list-group']/a[contains(@href, 'account/login')]")
     private WebElement loginRight;
+    @FindBy(xpath = "//div[@class='list-group']/a[contains(@href, 'account/register')]")
     private WebElement registerRight;
+    @FindBy(xpath = "//div[@class='list-group']/a[contains(@href, 'account/forgotten')]")
     private WebElement forgottenPasswordRight;
 
     public AccountSidebarGuestPart(WebDriver driver) {
         super(driver);
         initElements();
+        PageFactory.initElements(driver, this);
     }
 
     private void initElements() {
         // init elements
+        /*
         loginRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/login')]"));
         registerRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/register')]"));
         forgottenPasswordRight = driver.findElement(By.xpath("//div[@class='list-group']/a[contains(@href, 'account/forgotten')]"));
+        */
     }
 
     // Page Object
