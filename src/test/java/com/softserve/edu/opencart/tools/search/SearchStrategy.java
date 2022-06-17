@@ -7,10 +7,12 @@ public final class SearchStrategy {
     }
 
     public static Search setImplicitStrategy() {
+        System.out.println("\t*** setImplicitStrategy()");
         return setStrategy(Strategies.IMPLICIT_STRATEGY);
     }
     
     public static Search setExplicitStrategy() {
+        System.out.println("\t*** setExplicitStrategy()");
         return setStrategy(Strategies.EXPLICIT_STRATEGY_VISIBLE);
     }
     

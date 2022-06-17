@@ -11,7 +11,8 @@
 		<parameter name="implicitWait" value="30" />
 		<parameter name="number" value="234" />
 		<classes>
-			<class name="com.softserve.edu.opencart.tests.ProductSearchTest" />
+<!--			<class name="com.softserve.edu.opencart.tests.ProductSearchTest" />-->
+			<class name="com.softserve.edu.opencart.tests.LoginTest" />
 		</classes>
 	</test> <!-- Test -->
 

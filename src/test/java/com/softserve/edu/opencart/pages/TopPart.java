@@ -1,6 +1,11 @@
 package com.softserve.edu.opencart.pages;
 
 import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.tools.browser.Browsers;
+import com.softserve.edu.opencart.tools.browser.DriverWrapper;
+import com.softserve.edu.opencart.tools.search.Search;
+import com.softserve.edu.opencart.tools.search.SearchStrategy;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +25,8 @@ public abstract class TopPart {
     protected final String LIST_CURRENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-    protected WebDriver driver;
+    //protected WebDriver driver;
+    protected Search search;
     //
     private WebElement currency;
     private WebElement myAccount;
@@ -37,22 +43,33 @@ public abstract class TopPart {
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
 
-    public TopPart(WebDriver driver) {
-        this.driver = driver;
+    //public TopPart(WebDriver driver) {
+    public TopPart() {
+        //this.driver = driver;
+        search = SearchStrategy.getSearch();
         initElements();
         //checkElements();
     }
 
     private void initElements() {
         // init elements
-        currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
-        myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
-        wishList = driver.findElement(By.id("wishlist-total"));
-        shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
-        logo = driver.findElement(By.cssSelector("#logo a"));
-        searchTopField = driver.findElement(By.name("search"));
-        searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
-        cartButton = driver.findElement(By.cssSelector("#cart > button"));
+//        currency = driver.findElement(By.cssSelector(".btn.btn-link.dropdown-toggle"));
+//        myAccount = driver.findElement(By.cssSelector(".list-inline > li > a.dropdown-toggle"));
+//        wishList = driver.findElement(By.id("wishlist-total"));
+//        shoppingCart = driver.findElement(By.cssSelector("a[title='Shopping Cart']"));
+//        logo = driver.findElement(By.cssSelector("#logo a"));
+//        searchTopField = driver.findElement(By.name("search"));
+//        searchTopButton = driver.findElement(By.cssSelector("button.btn.btn-default"));
+//        cartButton = driver.findElement(By.cssSelector("#cart > button"));
+        //
+        currency = search.cssSelector(".btn.btn-link.dropdown-toggle");
+        myAccount = search.cssSelector(".list-inline > li > a.dropdown-toggle");
+        wishList = search.id("wishlist-total");
+        shoppingCart = search.cssSelector("a[title='Shopping Cart']");
+        logo = search.cssSelector("#logo a");
+        searchTopField = search.name("search");
+        searchTopButton = search.cssSelector("button.btn.btn-default");
+        cartButton = search.cssSelector("#cart > button");
     }
 
     // Page Object
@@ -306,36 +323,42 @@ public abstract class TopPart {
     protected void scrollToElement(WebElement webElement) {
         //        Actions action = new Actions(driver);
         //        action.moveToElement(webElement).perform();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+        ((JavascriptExecutor) DriverWrapper.getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
 
     // Business Logic
 
     public HomePage gotoHomePage() {
         clickLogo();
-        return new HomePage(driver);
+        //return new HomePage(driver);
+        return new HomePage();
     }
 
     // dropdownGuest
+    @Step("STEP GOTO LOGIN PAGE")
     public LoginPage gotoLoginPage() {
         openMyAccountDropdown();
         createDropdownGuest();
         clickDropdownGuestLogin();
-        return new LoginPage(driver);
+        //return new LoginPage(driver);
+        return new LoginPage();
     }
 
     public RegisterPage gotoRegisterPage() {
         openMyAccountDropdown();
         createDropdownGuest();
         clickDropdownGuestRegister();
-        return new RegisterPage(driver);
+        //return new RegisterPage(driver);
+        return new RegisterPage();
     }
 
     public AccountLogoutPage logout() {
         openMyAccountDropdown();
         createDropdownLogged();
         clickDropdownLoggedLogout();
-        return new AccountLogoutPage(driver);
+        //return new AccountLogoutPage(driver);
+        return new AccountLogoutPage();
     }
 
 }

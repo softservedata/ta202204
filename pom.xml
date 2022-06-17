@@ -20,6 +20,7 @@
         <java.version>1.8</java.version>
         <!-- - - - - - Reports - - - - - -->
         <testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
+        <aspectj.version>1.9.9.1</aspectj.version>
         <!-- - - - - - Password - - - - - -->
         <application.password>null123</application.password>
     </properties>
@@ -209,6 +210,13 @@
             <version>2.11.0</version>
         </dependency>
 
+        <!-- - - - Rest - - - -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+
         <!-- - - - Logger - - - -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -234,7 +242,8 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.9.1</version>
+            <!-- <version>1.9.9.1</version>-->
+            <version>${aspectj.version}</version>
             <!-- <scope>test</scope> -->
         </dependency>
 
@@ -286,11 +295,9 @@
                         <!-- <suiteXmlFile>testng03par.xml</suiteXmlFile>-->
                         <suiteXmlFile>testng04par.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <!--
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    -->
                 </configuration>
             </plugin>
 

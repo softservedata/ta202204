@@ -15,14 +15,17 @@ public class HomePage extends TopPart {
     //
     private ProductsContainer productsContainer;
 
-    public HomePage(WebDriver driver) {
-        super(driver);
+    //public HomePage(WebDriver driver) {
+    public HomePage() {
+        //super(driver);
         initElements();
     }
 
     private void initElements() {
         // init elements
-        slideshow0 = driver.findElement(By.id("slideshow0"));
+//        slideshow0 = driver.findElement(By.id("slideshow0"));
+        //
+        slideshow0 = search.id("slideshow0");
         //
         //productsContainer = new ProductsContainer(driver);
         productsContainer = new ProductsContainer();
@@ -67,8 +70,8 @@ public class HomePage extends TopPart {
         logger.debug("start chooseCurrency() with currency = " + currency.toString());
         clickCurrencyByPartialName(currency);
         logger.debug("end chooseCurrency() with currency = " + currency.toString());
-        return new HomePage(driver);
-        //return new HomePage();
+        //return new HomePage(driver);
+        return new HomePage();
     }
 
     public HomePage scrollToProduct(Product product) {

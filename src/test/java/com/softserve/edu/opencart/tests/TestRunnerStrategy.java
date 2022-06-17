@@ -4,6 +4,10 @@ package com.softserve.edu.opencart.tests;
 //import java.io.IOException;
 //import java.nio.file.Files;
 //import java.nio.file.Paths;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Map;
 
 //import org.apache.commons.io.FileUtils;
@@ -11,6 +15,10 @@ import java.util.Map;
 //import org.openqa.selenium.TakesScreenshot;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
+import io.qameta.allure.Attachment;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
@@ -74,6 +82,43 @@ public abstract class TestRunnerStrategy {
     }
     */
 
+    @Attachment(value = "{0}", type = "image/png")
+    public byte[] saveImageAttach(String attachName) {
+        byte[] result = null;
+        File scrFile = ((TakesScreenshot) DriverWrapper.getDriver()).getScreenshotAs(OutputType.FILE);
+        try {
+            result = Files.readAllBytes(scrFile.toPath());
+            FileUtils.copyFile(scrFile, new File(System.getenv().get("USERPROFILE") + "\\Downloads\\screenshot.png"));
+        } catch (IOException e) {
+            // TODO Create Custom Exception
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Attachment(value = "{0}", type = "text/plain")
+    public byte[] saveHtmlAttach(String attachName) {
+        return DriverWrapper.getDriver().getPageSource().getBytes();
+    }
+
+
+    @Attachment(value = "{0}", type = "text/plain")
+    public byte[] saveTextAttach(String attachName, String fileName) {
+        logger.info("attachName = " + attachName + "  fileName = " + fileName);
+        //String path = this.getClass().getResource("/").getPath();
+        //String path = path.replace("d:/", fileName);
+        //path = path.substring(1);
+        String path = "C:/Tools/ideaProjects/ta202204strategy/" + fileName;
+        byte[] result = null;
+        try {
+            result = Files.readAllBytes(Paths.get(path));
+        } catch (IOException e) {
+            // TODO Create Custom Exception
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /*
     @BeforeSuite
     public void beforeSuite() {
@@ -102,7 +147,7 @@ public abstract class TestRunnerStrategy {
                 }
             }
         }
-        //DriverWrapper.setDriver(browser);
+        DriverWrapper.setDriver(browser);
     }
 
     @AfterClass(alwaysRun = true)
@@ -115,7 +160,7 @@ public abstract class TestRunnerStrategy {
 
     @BeforeMethod
     public void beforeMethod() {
-        DriverWrapper.setDriver(browser);
+        //DriverWrapper.setDriver(browser);
         SearchStrategy.setImplicitStrategy();
         //driver.get(BASE_URL);
         // TODO
@@ -137,10 +182,14 @@ public abstract class TestRunnerStrategy {
             //takeScreenShot(testName);
             //takePageSource(testName);
             //saveTextAttach("Attach file: testng.xml = ", "testng.xml");
+            saveImageAttach("PICTURE Test name = " + result.getName());
+            saveHtmlAttach("HTML User is "+ result.getName());
+            saveTextAttach("Attach file: testng.xml = ", "testng04par.xml");
             DriverWrapper.deleteCookies();
             // driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
             // session;
         }
+        saveTextAttach("Attach file: testng.xml = ", "testng04par.xml");
         //driver.findElement(By.cssSelector("#logo .img-responsive")).click();
         //driver.findElement(By.cssSelector("#logo > a")).click();
         //driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]/..")).click();
@@ -150,8 +199,8 @@ public abstract class TestRunnerStrategy {
     protected HomePage loadApplication() {
         DriverWrapper.getUrl(BASE_URL);
         //return new HomePage(driver);
-        return new HomePage(DriverWrapper.getDriver());
-        //return new HomePage();
+        //return new HomePage(DriverWrapper.getDriver());
+        return new HomePage();
     }
 
 }
