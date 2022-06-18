@@ -36,11 +36,11 @@ public class LoginTest extends TestRunnerStrategy {
     }
     */
 
-    @DataProvider//(parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] dataSuccessful() {
         return new Object[][]{
                 { UserRepositorySingleton.get().hahaha() },
-                //{ UserRepositorySingleton.get().awdrt() },
+                { UserRepositorySingleton.get().awdrt() },
         };
     }
 
