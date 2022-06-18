@@ -31,6 +31,7 @@ public abstract class TopPart {
     // List<MenuComponent> menu;
     //
     private DropdownComponent dropdownComponent;
+    private CurrencyDropdown currencyDropdown;  //my hw12
     private GuestDropdown dropdownGuest;
     private LoggedDropdown dropdownLogged;
 
@@ -169,6 +170,14 @@ public abstract class TopPart {
         return dropdownComponent;
     }
 
+    // homework12
+    protected CurrencyDropdown getCurrencyDropdown() {
+        if (currencyDropdown == null) {
+            throw  new RuntimeException(OPTION_NULL_MESSAGE);
+        }
+        return  currencyDropdown;
+    }
+// use CurrencyDropdown instead of DropdownComponent  for homework12
     private DropdownComponent createDropdownComponent(By searchLocator) {
         dropdownComponent = new DropdownComponent(driver, searchLocator);
         //dropdownComponent = new DropdownComponent(searchLocator);
@@ -187,10 +196,29 @@ public abstract class TopPart {
         dropdownComponent = null;
         //closeDropdownComponent();
     }
-
+    // homework12
+    private CurrencyDropdown createCurrencyDropdown(By currencyLocator) {
+        currencyDropdown = new CurrencyDropdown(driver, currencyLocator);
+        return getCurrencyDropdown();
+    }
+    private void clickCurrencyDropdownByName (String currencyName) {
+        if (!getCurrencyDropdown().isExistCurrencyOptionByName(currencyName)) {
+            throw new RuntimeException(String.format(OPTION_NOT_FOUND_MESSAGE, currencyName,
+                    getCurrencyDropdown().getCurrencyOptionsText().toString()));
+        }
+        getCurrencyDropdown().clickCurrencyOptionByName(currencyName);
+        currencyDropdown = null;
+    }
+    ///*
     private void closeDropdownComponent() {
         clickSearchTopField();
         dropdownComponent = null;
+    }
+
+    // homework12
+    private void closeCurrencyDropdown(){
+        clickSearchTopField();
+        currencyDropdown = null;
     }
 
     // dropdownGuest
@@ -284,7 +312,17 @@ public abstract class TopPart {
         //clickDropdownComponentByPartialName(currencyName);
         clickDropdownComponentByPartialName(optionName.toString());
     }
-
+    // homework12 **********
+    private void openCurrencyDropdown(){
+        clickSearchTopField();
+        clickCurrency();
+        createCurrencyDropdown(By.cssSelector(LIST_CURRENCIES_CSSSELECTOR));
+    }
+    protected void clickCurrencyByName(Currencies currencyName) {
+        openCurrencyDropdown();
+        clickCurrencyDropdownByName(currencyName.toString());
+    }
+    // **********
     // myAccount
     protected void openMyAccountDropdown() {
         clickSearchTopField();

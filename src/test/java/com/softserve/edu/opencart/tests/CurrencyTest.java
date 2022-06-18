@@ -26,6 +26,7 @@ public class CurrencyTest extends TestRunner {
                 //.scrollToProduct(searchProduct.getProduct());
         presentationSleep();
         //
+        System.out.println(Currencies.EURO.toString());
         // Check
         Assert.assertTrue(homePage.getCurrencyText().contains("€"));
         //
