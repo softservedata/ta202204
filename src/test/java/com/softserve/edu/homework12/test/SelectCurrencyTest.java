@@ -1,7 +1,8 @@
 package com.softserve.edu.homework12.test;
 
-import com.softserve.edu.homework12.data.Currencies;
-import com.softserve.edu.homework12.pages.HomePage;
+import com.softserve.edu.data.Currencies;
+import com.softserve.edu.pages.HomePage;
+import com.softserve.edu.test.TestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
