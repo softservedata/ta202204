@@ -15,4 +15,5 @@ public interface IUser {
     String getRegion();
     String getPassword();
     boolean isSubscribe();
+    boolean agreePrivacyPolicy();
 }

@@ -71,6 +71,7 @@ public class User implements IFirstname, ILastname, IEmail, ITelephone, IAddress
     private String region;
     private String password;
     private boolean subscribe;
+    private boolean agreePrivacyPolicy;
 
     // 1. Use Classic Constructor
     /*
@@ -214,6 +215,10 @@ public class User implements IFirstname, ILastname, IEmail, ITelephone, IAddress
         this.subscribe = subscribe;
         return this;
     }
+    public IUserBuild setAgreePrivacyPolicy (boolean agreePrivacyPolicy) {
+        this.agreePrivacyPolicy = agreePrivacyPolicy;
+        return this;
+    }
 
     // 5. Add Builder
     //public User build() {
@@ -278,6 +283,10 @@ public class User implements IFirstname, ILastname, IEmail, ITelephone, IAddress
 
     public boolean isSubscribe() {
         return subscribe;
+    }
+
+    public boolean agreePrivacyPolicy() {
+        return agreePrivacyPolicy;
     }
 
     @Override
