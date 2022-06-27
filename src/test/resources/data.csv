@@ -1,0 +1,5 @@
+Brackets,Count brackets
+()(),4
+)(,2
+((),3
+(())(),6
