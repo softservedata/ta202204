@@ -8,6 +8,8 @@ import com.softserve.edu.opencart.tools.search.SearchStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class TopPart {
     protected final String OPTION_NULL_MESSAGE = "DropdownComponent is null";
@@ -19,6 +21,7 @@ public abstract class TopPart {
     protected final String TAG_ATTRIBUTE_ALT = "alt";
     //
     protected final String LIST_CURRENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // protected WebDriver driver;
     protected Search search;

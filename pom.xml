@@ -22,6 +22,7 @@
         <testng.reports.directory>./target/surefire-reports/test-output</testng.reports.directory>
         <!-- - - - - - Resources - - - - -->
         <testng.runners>./src/test/resources/runner/</testng.runners>
+        <aspectj.version>1.9.9.1</aspectj.version>
         <!-- - - - - - Password - - - - - -->
         <!-- <application.password>null123</application.password> -->
     </properties>
@@ -201,7 +202,8 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.9.1</version>
+            <version>${aspectj.version}</version>
+            <!-- <version>1.9.9.1</version> -->
             <!-- <scope>test</scope> -->
         </dependency>
         
@@ -292,11 +294,9 @@
                     <!-- <suiteXmlFile>testng.xml</suiteXmlFile> -->
                     <!-- 						<suiteXmlFile>testng3par.xml</suiteXmlFile> -->
                     <!-- </suiteXmlFiles> -->
-                    <!--
-                                        <argLine>
-                                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                                        </argLine>
-                    -->
+                    <argLine>
+                    	-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>

@@ -6,6 +6,8 @@ package com.softserve.edu.opencart.tests;
 //import java.nio.file.Paths;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 //import org.apache.commons.io.FileUtils;
 //import org.openqa.selenium.OutputType;
 //import org.openqa.selenium.TakesScreenshot;
@@ -33,7 +35,7 @@ public abstract class TestRunnerStrategy {
     //private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
     private Browsers browser = Browsers.CHROME_TEMPORARY;
     //private WebDriver driver;
-    //protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     protected void presentationSleep() {
         presentationSleep(1);
