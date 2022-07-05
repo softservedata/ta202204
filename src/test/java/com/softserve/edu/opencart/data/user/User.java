@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.opencart.data.user;
 
 interface IFirstname {
     ILastname setFirstname(String firstname);
@@ -324,8 +324,8 @@ public class User implements IFirstname, ILastname, IEmail, ITelephone, IAddress
                 ", region='" + region + '\'' +
                 ", password='" + password + '\'' +
                 ", confirmpassword='" + password + '\'' +
-                ", subscribe=" + subscribe +
-                ", privacypolicy=" + privacypolicy +
+                ", subscribe=" + subscribe + '\'' +
+                ", privacypolicy=" + privacypolicy + '\'' +
                 '}';
     }
 }

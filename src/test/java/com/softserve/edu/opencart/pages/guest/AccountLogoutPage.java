@@ -1,7 +1,8 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.guest;
 
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.pages.HomePage;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
@@ -14,7 +15,6 @@ public class AccountLogoutPage extends AccountSidebarGuestPart {
     // public AccountLogoutPage(WebDriver driver) {
     public AccountLogoutPage() {
         // super(driver);
-    	super();
         search = SearchStrategy.getSearch();
         initElements();
         //ApplicationStatus.get().setLogged(false);

@@ -1,9 +1,10 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.guest;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.user.IUser;
+import com.softserve.edu.opencart.pages.logged.SuccessfulRegistrationPage;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
@@ -34,7 +35,6 @@ public class RegisterPage extends AccountSidebarGuestPart {
     // public RegisterPage(WebDriver driver) {
 	public RegisterPage() {
         // super(driver);
-		super();
 		search = SearchStrategy.getSearch();
         initElements();
     }

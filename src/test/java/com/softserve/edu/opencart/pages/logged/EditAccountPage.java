@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.logged;
 
 import org.openqa.selenium.WebElement;
 
@@ -15,7 +15,6 @@ public class EditAccountPage extends AccountSidebarLoggedPart {
     //public EditAccountPage(WebDriver driver) {
     public EditAccountPage() {
         //super(driver);
-    	super();
     	search = SearchStrategy.getSearch();
         initElements();
     }

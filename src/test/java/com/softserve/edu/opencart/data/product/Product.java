@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.opencart.data.product;
 
 import java.util.HashMap;
 import java.util.Map;

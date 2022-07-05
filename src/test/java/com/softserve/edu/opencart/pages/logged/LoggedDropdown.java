@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.logged;
 
 import org.openqa.selenium.WebElement;
 
@@ -17,7 +17,7 @@ public class LoggedDropdown {
     private WebElement logout;
 
     // protected LoggedDropdown(WebDriver driver) {
-    protected LoggedDropdown() {
+    public LoggedDropdown() {
         // this.driver = driver;
     	search = SearchStrategy.getSearch();
         initElements();

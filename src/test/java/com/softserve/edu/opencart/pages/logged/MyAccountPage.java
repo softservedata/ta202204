@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.logged;
 
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
@@ -10,7 +10,6 @@ public class MyAccountPage extends AccountSidebarLoggedPart {
     // public MyAccountPage(WebDriver driver) {
 	public MyAccountPage() {
         // super(driver);
-		super();
 		search = SearchStrategy.getSearch();
         initElements();
     }

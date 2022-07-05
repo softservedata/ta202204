@@ -2,7 +2,8 @@ package com.softserve.edu.opencart.pages;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.softserve.edu.opencart.data.Product;
+
+import com.softserve.edu.opencart.data.product.Product;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 

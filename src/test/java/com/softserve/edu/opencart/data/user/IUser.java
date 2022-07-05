@@ -1,4 +1,4 @@
-package com.softserve.edu.opencart.data;
+package com.softserve.edu.opencart.data.user;
 
 public interface IUser {
 

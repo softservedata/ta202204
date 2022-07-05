@@ -1,13 +1,14 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.footer.customerservice;
 
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.pages.HomePage;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
-public class SuccessfulRegistrationPage extends AccountSidebarLoggedPart {
+public class SuccessfulEnquiryPage {
 	
-    public static final String EXPECTED_REGISTRATION_MESSAGE = "Your Account Has Been Created!";
+	public static final String EXPECTED_MESSAGE = "Your enquiry has been successfully sent to the store owner!";
     
     protected Search search;
     //
@@ -15,9 +16,8 @@ public class SuccessfulRegistrationPage extends AccountSidebarLoggedPart {
     private WebElement continueButton;
 
     // public SuccessfulRegistrationPage(WebDriver driver) {
-    public SuccessfulRegistrationPage() {
+    public SuccessfulEnquiryPage() {
         // super(driver);
-    	super();
     	search = SearchStrategy.getSearch();
         initElements();
     }
@@ -26,14 +26,14 @@ public class SuccessfulRegistrationPage extends AccountSidebarLoggedPart {
 //    	successMessage = driver.findElement(By.cssSelector("#content>h1"));
 //    	continueButton = driver.findElement(By.cssSelector(".btn.btn-primary"));
     	
-    	successMessage = search.cssSelector("#content>h1");
+    	successMessage = search.cssSelector("#content>p");
     	continueButton = search.cssSelector(".btn.btn-primary");
     }
 
     // Page Object
 
     // alert
-    public WebElement getSuccessMessage() {
+    protected WebElement getSuccessMessage() {
         return successMessage;
     }
 
@@ -41,6 +41,7 @@ public class SuccessfulRegistrationPage extends AccountSidebarLoggedPart {
         return getSuccessMessage().getText();
     }
     
+    // continueButton
     private WebElement getContinueButton() {
     	return continueButton;
     }
@@ -53,13 +54,9 @@ public class SuccessfulRegistrationPage extends AccountSidebarLoggedPart {
 
     // Business Logic
     
-	public MyAccountPage gotoContinue() {
+	public HomePage gotoContinue() {
 		clickContinueButton();
-		// fillLogin(email, password);
-		// return new MyAccountPage(driver);
-		return new MyAccountPage();
+		return new HomePage();
 	}
-    
-
 
 }

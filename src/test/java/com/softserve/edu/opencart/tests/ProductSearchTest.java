@@ -4,8 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.opencart.data.SearchProduct;
-import com.softserve.edu.opencart.data.SearchProductRepository;
+import com.softserve.edu.opencart.data.product.SearchProduct;
+import com.softserve.edu.opencart.data.product.SearchProductRepository;
 import com.softserve.edu.opencart.pages.HomePage;
 
 // public class ProductSearchTest extends TestRunner {

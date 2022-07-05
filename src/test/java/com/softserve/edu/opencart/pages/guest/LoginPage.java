@@ -1,6 +1,7 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.guest;
 
-import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.data.user.IUser;
+import com.softserve.edu.opencart.pages.logged.MyAccountPage;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
@@ -17,7 +18,6 @@ public class LoginPage extends AccountSidebarGuestPart {
     // public LoginPage(WebDriver driver) {
     public LoginPage() {
         // super(driver);
-    	super();
     	search = SearchStrategy.getSearch();
         initElements();
     }

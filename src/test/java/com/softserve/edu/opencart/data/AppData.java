@@ -1,5 +1,8 @@
 package com.softserve.edu.opencart.data;
 
+import com.softserve.edu.opencart.data.user.IUser;
+import com.softserve.edu.opencart.data.user.UserRepository;
+
 public class AppData {
 
     public static void main(String[] args) {

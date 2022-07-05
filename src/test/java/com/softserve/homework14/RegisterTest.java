@@ -4,11 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.opencart.data.IUser;
-import com.softserve.edu.opencart.data.UserRepository;
+import com.softserve.edu.opencart.data.user.IUser;
+import com.softserve.edu.opencart.data.user.UserRepository;
 import com.softserve.edu.opencart.pages.HomePage;
-import com.softserve.edu.opencart.pages.SuccessfulRegistrationPage;
-import com.softserve.edu.opencart.pages.UnsuccessfulRegisterPage;
+import com.softserve.edu.opencart.pages.guest.UnsuccessfulRegisterPage;
+import com.softserve.edu.opencart.pages.logged.SuccessfulRegistrationPage;
 import com.softserve.edu.opencart.tests.TestRunnerStrategy;
 
 //public class RegisterTest extends TestRunner{

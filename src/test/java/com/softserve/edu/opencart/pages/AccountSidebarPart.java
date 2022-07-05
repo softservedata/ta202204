@@ -23,7 +23,6 @@ public abstract class AccountSidebarPart extends TopPart {
     // public AccountSidebarPart(WebDriver driver) {
     public AccountSidebarPart() {
         // super(driver);
-        super();
         search = SearchStrategy.getSearch();
         initElements();
     }

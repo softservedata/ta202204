@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.product.Currencies;
 import com.softserve.edu.opencart.pages.HomePage;
 import com.softserve.edu.opencart.tests.TestRunnerStrategy;
 

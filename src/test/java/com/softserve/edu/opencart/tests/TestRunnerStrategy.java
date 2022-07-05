@@ -30,9 +30,7 @@ public abstract class TestRunnerStrategy {
     public static final String PRODUCT_NAME = "MacBook";
     public static final String EXPECTED_CURRENCY = "\u00A3 Currency";
 	public static final String EXPECTED_CURRENCY_CODE = "\u00A3";
-    //private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
-    //private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
     private Browsers browser = Browsers.CHROME_TEMPORARY;
     //private WebDriver driver;
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -79,7 +77,6 @@ public abstract class TestRunnerStrategy {
     /*
     @BeforeSuite
     public void beforeSuite() {
-        // System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
         //WebDriverManager.chromedriver().setup();
         // WebDriverManager.firefoxdriver().setup();
     }
@@ -104,7 +101,7 @@ public abstract class TestRunnerStrategy {
                 }
             }
         }
-        //DriverWrapper.setDriver(browser);
+        DriverWrapper.setDriver(browser);
     }
 
     @AfterClass(alwaysRun = true)
@@ -117,7 +114,7 @@ public abstract class TestRunnerStrategy {
 
     @BeforeMethod
     public void beforeMethod() {
-        DriverWrapper.setDriver(browser);
+        // DriverWrapper.setDriver(browser);
         SearchStrategy.setImplicitStrategy();
         //driver.get(BASE_URL);
         // TODO
@@ -139,13 +136,9 @@ public abstract class TestRunnerStrategy {
             //takeScreenShot(testName);
             //takePageSource(testName);
             //saveTextAttach("Attach file: testng.xml = ", "testng.xml");
-            DriverWrapper.deleteCookies();
-            // driver.manage().deleteAllCookies(); // clear cache; delete cookie; delete
+            DriverWrapper.deleteCookies(); // clear cache; delete cookie; delete
             // session;
         }
-        //driver.findElement(By.cssSelector("#logo .img-responsive")).click();
-        //driver.findElement(By.cssSelector("#logo > a")).click();
-        //driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]/..")).click();
         presentationSleep(); // For Presentation ONLY
     }
 

@@ -1,7 +1,7 @@
 package com.softserve.edu.opencart.pages;
 
-import com.softserve.edu.opencart.data.Currencies;
-import com.softserve.edu.opencart.data.Product;
+import com.softserve.edu.opencart.data.product.Currencies;
+import com.softserve.edu.opencart.data.product.Product;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
@@ -21,7 +21,6 @@ public class HomePage extends TopPart {
     // public HomePage(WebDriver driver) {
     public HomePage() {
         // super(driver);
-    	super();
     	search = SearchStrategy.getSearch();
         initElements();
     }

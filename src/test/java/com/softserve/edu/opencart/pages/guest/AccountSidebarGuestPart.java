@@ -1,7 +1,8 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.guest;
 
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.pages.AccountSidebarPart;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
@@ -16,7 +17,6 @@ public abstract class AccountSidebarGuestPart extends AccountSidebarPart {
     // public AccountSidebarGuestPart(WebDriver driver) {
     public AccountSidebarGuestPart() {
         //super(driver);
-    	super();
     	search = SearchStrategy.getSearch();
         initElements();
     }

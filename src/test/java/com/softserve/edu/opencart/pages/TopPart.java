@@ -1,6 +1,16 @@
 package com.softserve.edu.opencart.pages;
 
-import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.product.Currencies;
+import com.softserve.edu.opencart.pages.footer.customerservice.ContactUsPage;
+import com.softserve.edu.opencart.pages.footer.information.AboutUsPage;
+import com.softserve.edu.opencart.pages.footer.information.DeliveryInformationPage;
+import com.softserve.edu.opencart.pages.footer.information.PrivacyPolicyPage;
+import com.softserve.edu.opencart.pages.footer.information.TermsConditionsPage;
+import com.softserve.edu.opencart.pages.guest.AccountLogoutPage;
+import com.softserve.edu.opencart.pages.guest.GuestDropdown;
+import com.softserve.edu.opencart.pages.guest.LoginPage;
+import com.softserve.edu.opencart.pages.guest.RegisterPage;
+import com.softserve.edu.opencart.pages.logged.LoggedDropdown;
 import com.softserve.edu.opencart.tools.browser.DriverWrapper;
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
@@ -34,6 +44,22 @@ public abstract class TopPart {
     private WebElement searchTopField;
     private WebElement searchTopButton;
     private WebElement cartButton;
+    private WebElement aboutUs;
+    private WebElement deliveryInformation;
+    private WebElement privacyPolicy;
+    private WebElement termsConditions;
+    private WebElement contactUs;
+    private WebElement returns;
+    private WebElement siteMap;
+    private WebElement brands;
+    private WebElement giftCertificates;
+    private WebElement affiliates;
+    private WebElement specials;
+    private WebElement myAccountFooter;
+    private WebElement orderHistory;
+    private WebElement wishListFooter;
+    private WebElement newsletterFooter;
+    private WebElement poweredBy;
 
     // List<MenuComponent> menu;
     //
@@ -69,6 +95,22 @@ public abstract class TopPart {
         searchTopField = search.name("search");
         searchTopButton = search.cssSelector("button.btn.btn-default");
         cartButton = search.cssSelector("#cart > button");
+        aboutUs = search.xpath("//footer//a[contains(text(),'About Us')]");
+        deliveryInformation = search.xpath("//footer//a[contains(text(),'Delivery Information')]");
+        privacyPolicy = search.xpath("//footer//a[contains(text(),'Privacy Policy')]");
+        termsConditions = search.xpath("//footer//a[contains(text(),'Terms & Conditions')]");
+        contactUs = search.xpath("//footer//a[contains(text(),'Contact Us')]");
+        returns = search.xpath("//footer//a[contains(text(),'Returns')]");
+        siteMap = search.xpath("//footer//a[contains(text(),'Site Map')]");
+        brands = search.xpath("//footer//a[contains(text(),'Brands')]");
+        giftCertificates = search.xpath("//footer//a[contains(text(),'Gift Certificates')]");
+        affiliates = search.xpath("//footer//a[contains(text(),'Affiliates')]");
+        specials = search.xpath("//footer//a[contains(text(),'Specials')]");
+        myAccountFooter = search.xpath("//footer//a[contains(text(),'My Account')]");
+        orderHistory = search.xpath("//footer//a[contains(text(),'Order History')]");
+        wishListFooter = search.xpath("//footer//a[contains(text(),'Wish List')]");
+        newsletterFooter = search.xpath("//footer//a[contains(text(),'Newsletter')]");
+        poweredBy = search.xpath("//footer//a[contains(text(),'OpenCart')]");
     }
 
     // Page Object
@@ -314,6 +356,199 @@ public abstract class TopPart {
         clickSearchTopField();
         dropdownLogged = null;
     }
+    
+    // aboutUs
+    public WebElement getAboutUs() {
+        return aboutUs;
+    }
+
+    public String getAboutUsText() {
+        return getAboutUs().getText();
+    }
+
+    public void clickAboutUs() {
+        getAboutUs().click();
+    }
+    
+    public WebElement getDeliveryInformation() {
+        return deliveryInformation;
+    }
+
+    public String getDeliveryInformationText() {
+        return getDeliveryInformation().getText();
+    }
+
+    public void clickDeliveryInformation() {
+        getDeliveryInformation().click();
+    }
+    
+    public WebElement getPrivacyPolicy() {
+        return privacyPolicy;
+    }
+
+    public String getPrivacyPolicyText() {
+        return getPrivacyPolicy().getText();
+    }
+
+    public void clickPrivacyPolicy() {
+    	getPrivacyPolicy().click();
+    }
+    
+    public WebElement getTermsConditions() {
+        return termsConditions;
+    }
+
+    public String getTermsConditionsText() {
+        return getTermsConditions().getText();
+    }
+
+    public void clickTermsConditions() {
+    	getTermsConditions().click();
+    }
+    
+    public WebElement getContactUs() {
+        return contactUs;
+    }
+
+    public String getContactUsText() {
+        return getContactUs().getText();
+    }
+
+    public void clickContactUs() {
+    	getContactUs().click();
+    }
+    
+    public WebElement getReturns() {
+        return returns;
+    }
+
+    public String getReturnsText() {
+        return getReturns().getText();
+    }
+
+    public void clickReturns() {
+    	getReturns().click();
+    }
+    
+    public WebElement getSiteMap() {
+        return siteMap;
+    }
+
+    public String getSiteMapText() {
+        return getSiteMap().getText();
+    }
+
+    public void clickSiteMap() {
+    	getSiteMap().click();
+    }
+    
+    public WebElement getBrands() {
+        return brands;
+    }
+
+    public String getBrandsText() {
+        return getBrands().getText();
+    }
+
+    public void clickBrands() {
+    	getBrands().click();
+    }
+    
+    public WebElement getGiftCertificates() {
+        return giftCertificates;
+    }
+
+    public String getGiftCertificatesText() {
+        return getGiftCertificates().getText();
+    }
+
+    public void clickGiftCertificates() {
+    	getGiftCertificates().click();
+    }
+    
+    public WebElement getAffiliates() {
+        return affiliates;
+    }
+
+    public String getAffiliatesText() {
+        return getAffiliates().getText();
+    }
+
+    public void clickAffiliates() {
+    	getAffiliates().click();
+    }
+    
+    public WebElement getSpecials() {
+        return specials;
+    }
+
+    public String getSpecialsText() {
+        return getSpecials().getText();
+    }
+
+    public void clickSpecials() {
+    	getSpecials().click();
+    }
+    
+    public WebElement getMyAccountFooter() {
+        return myAccountFooter;
+    }
+
+    public String getMyAccountFooterText() {
+        return getMyAccountFooter().getText();
+    }
+
+    public void clickMyAccountFooter() {
+    	getMyAccountFooter().click();
+    }
+    
+    public WebElement getOrderHistory() {
+        return orderHistory;
+    }
+
+    public String getOrderHistoryText() {
+        return getOrderHistory().getText();
+    }
+
+    public void clickOrderHistory() {
+    	getOrderHistory().click();
+    }
+    
+    public WebElement getWishListFooter() {
+        return wishListFooter;
+    }
+
+    public String getWishListFooterText() {
+        return getWishListFooter().getText();
+    }
+
+    public void clickWishListFooter() {
+    	getWishListFooter().click();
+    }
+    
+    public WebElement getNewsletterFooter() {
+        return newsletterFooter;
+    }
+
+    public String getNewsletterFooterText() {
+        return getNewsletterFooter().getText();
+    }
+
+    public void clickNewsletterFooter() {
+    	getNewsletterFooter().click();
+    }
+    
+    public WebElement getPoweredBy() {
+        return poweredBy;
+    }
+
+    public String getPoweredByText() {
+        return getPoweredBy().getText();
+    }
+
+    public void clickPoweredBy() {
+    	getPoweredBy().click();
+    }
 
     // menu // TODO
 
@@ -393,6 +628,31 @@ public abstract class TopPart {
     	clickDropdownCurrencySelect(currency);
     	// return new HomePage(driver);
     	return new HomePage();
+    }
+    
+    public AboutUsPage gotoAboutUsPage() {
+    	clickAboutUs();
+    	return new AboutUsPage();
+    }
+    
+    public DeliveryInformationPage gotoDeliveryInformationPage() {
+    	clickDeliveryInformation();
+    	return new DeliveryInformationPage();
+    }
+    
+    public PrivacyPolicyPage gotoPrivacyPolicyPage() {
+    	clickPrivacyPolicy();
+    	return new PrivacyPolicyPage();
+    }
+    
+    public TermsConditionsPage gotoTermsConditionsPage() {
+    	clickTermsConditions();
+    	return new TermsConditionsPage();
+    }
+    
+    public ContactUsPage gotoContactUsPage() {
+    	clickContactUs();
+    	return new ContactUsPage();
     }
 
 }

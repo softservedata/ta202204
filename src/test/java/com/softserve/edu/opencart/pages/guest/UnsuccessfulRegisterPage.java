@@ -1,30 +1,28 @@
-package com.softserve.edu.opencart.pages;
+package com.softserve.edu.opencart.pages.guest;
 
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.opencart.tools.search.Search;
 import com.softserve.edu.opencart.tools.search.SearchStrategy;
 
-public class UnsuccessfulLoginPage extends LoginPage {
-
-    public static final String EXPECTED_LOGIN_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
-    public static final String EXPECTED_LOCK_MESSAGE = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.";
+public class UnsuccessfulRegisterPage extends RegisterPage{
+	
+	public /*static*/ final String EXPECTED_REGISTER_MESSAGE = "Warning: You must agree to the Privacy Policy!";
     //
-    
-    protected Search search;
-    
+	
+	protected Search search;
+	
     private WebElement alertWarning;
 
-    // public UnsuccessfulLoginPage(WebDriver driver) {
-    public UnsuccessfulLoginPage() {
+    // public UnsuccessfulRegisterPage(WebDriver driver) {
+    public UnsuccessfulRegisterPage() {
         // super(driver);
-    	super();
     	search = SearchStrategy.getSearch();
         initElements();
     }
 
     private void initElements() {
-//        alertWarning = driver.findElement(By.cssSelector(".alert.alert-danger"));
+        // alertWarning = driver.findElement(By.cssSelector(".alert.alert-danger"));
     	alertWarning = search.cssSelector(".alert.alert-danger");
     }
 
